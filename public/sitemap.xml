@@ -2,11 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/posts/a_vow_i_made/</loc>
+    <lastmod>2019-03-18T17:52:55-05:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2019-03-07T14:24:31-05:00</lastmod>
+    <lastmod>2019-03-18T17:52:55-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2019-03-07T14:24:31-05:00</lastmod>
+    <lastmod>2019-03-18T17:52:55-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/down_in_the_muck_of_data/</loc>
+    <lastmod>2019-03-11T17:05:14-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/matrix_math/</loc>
+    <lastmod>2019-03-07T16:46:17-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/some_blather/</loc>
     <lastmod>2019-03-07T14:24:31-05:00</lastmod>

@@ -54,13 +54,29 @@ I was in Cambridge last week, semi-covert, to work with my collaborator. We subm
 I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and finally broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I’m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation that was covered on Vox, uses Theil’s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.">
   <meta itemprop="datePublished" content="2019-03-07T14:24:31-05:00">
   <meta itemprop="dateModified" content="2019-03-07T14:24:31-05:00">
-  <meta itemprop="wordCount" content="1272">
+  <meta itemprop="wordCount" content="1287">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Some blather about Theil&#39;s H">
   <meta name="twitter:description" content="I was feeling guilty because I had not updated this blog in two weeks. Then I reminded myself that the whole point is that I put in entries here when I have time, and if I’ve delayed in doing so because I have been Living My Best Life(tm), that’s a good thing!
 I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and finally broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I’m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation that was covered on Vox, uses Theil’s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.">
 
-	
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
   </head><body class="ma0 avenir bg-near-white development is-page is-page page-some_blather">
     
    
@@ -126,7 +142,7 @@ I was in Cambridge last week, semi-covert, to work with my collaborator. We subm
 $$H = \sum_j \frac{p_j}{p} \frac{E-E_j}{E}$$<p>With me so far? Good. Here&rsquo;s where it gets fun.</p>
 <p>Let&rsquo;s imagine that our workplaces are nested within groups. This happens all the time. In the US, for example, workplaces are scattered all over the country, and racial populations are also scattered&ndash;non-uniformly!&ndash;over the country. Thus there are a lot of latino workers in Californian worklplaces and far fewer in Maine workplaces. Does this difference represent segregation, though? It&rsquo;s a judgment call in each case, but in <em>this</em> case I would say no. No one who lives in California is likely to work in Maine and vice versa. Where people live of course isn&rsquo;t random, and a ton of people study that; but if you want to characterize and understand segregation among workers, you want to start with units that could feasibly be integrated. Another way to say this is, if all of the segregation between worklpaces in America could be reduced to the uneven geographic spread of different racial populations, then fretting about and intervening at the level of the workplace doesn&rsquo;t make much sense. We want a way to separate out these two, and Theil&rsquo;s $H$ gives us a way.</p>
 <p>If the unit can be completely divided into $G$ mutually exclusive groups then Theil&rsquo;s $H$ can be decomposed into $G+1$ components: one for the segregation <em>between</em> groups and $G$ for the segregation within each group:</p>
-$$H = fancy$$<p>Notice that each of the within-group bits is just the simpler version of $H$. That&rsquo;s how the fractal nature of this statistic shows up. Those lower-level statistics are then put into a weighted sum, where the weights are the group&rsquo;s relative size <em>and</em> the group&rsquo;s relative diversity (i.e., its relative entropy).</p>
+$$H = \overbrace{ \sum_g \frac{p_g}{p} \frac{E-E_g}{E}}^\text{Between-group} + \overbrace{ \sum_g \frac{p_g}{p} \frac{E_g}{E} \left( \sum_j \frac{p_{gj}}{p_g} \frac{E_g-E_{gj}}{E_g} \right) }^\text{Within groups}$$<p>Notice that each of the within-group bits is just the simpler version of $H$. That&rsquo;s how the fractal nature of this statistic shows up. Those lower-level statistics are then put into a weighted sum, where the weights are the group&rsquo;s relative size <em>and</em> the group&rsquo;s relative diversity (i.e., its relative entropy).</p>
 <p>I don&rsquo;t want to lose track of why this is useful. If you go back to my example, the first term above&ndash;that &ldquo;Between-group&rdquo; bit&ndash;would account for the different distribution of races between, say, California and Maine. This makes interpreting the second terms easier. <em>Given</em> the structure of the workforce in California, how segregated are workers between workplaces there? <em>Given</em> the structure of the workforce in Maine, how segregated are workers between workplaces there?</p>
 <p>This also gives you a way to think about why the weights are what they are. Californian workplaces might be less segregated than &ldquo;Downeaster&rdquo; ones (or whatever the Hell people from Maine call themselves&ndash;<em>I can&rsquo;t even be bothered to Google it</em>). Yet California is a lot <em>bigger</em> than Maine, so what segregation there is affects more people. And California is a lot more <em>diverse</em> than Maine, so again the possible impact of segregation is bigger. Hence those weights.</p>
 <p>You can keep doing this. We&rsquo;ve calculated three-level decompositions that include segregation between occupations <em>within</em> workplaces, for example. But eventually the code for doing so starts to break your head. Or at least it does given how we&rsquo;d written it! Solving <em>that</em> little problem will be a matter for future posts.</p>

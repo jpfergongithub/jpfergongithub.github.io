@@ -49,12 +49,28 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="JP Ferguson dot net">
-  <meta itemprop="datePublished" content="2019-03-07T14:24:31-05:00">
-  <meta itemprop="dateModified" content="2019-03-07T14:24:31-05:00">
+  <meta itemprop="datePublished" content="2019-03-18T17:52:55-05:00">
+  <meta itemprop="dateModified" content="2019-03-18T17:52:55-05:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="JP Ferguson dot net">
 
-	
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
   </head><body class="ma0 avenir bg-near-white development is-home">
     
 
@@ -113,15 +129,14 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/some_blather/" class="color-inherit dim link">
-            Some blather about Theil&#39;s H
+          <a href="/posts/a_vow_i_made/" class="color-inherit dim link">
+            A vow I made
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>I was feeling guilty because I had not updated this blog in two weeks. Then I reminded myself that the whole <em>point</em> is that I put in entries here when I have time, and if I&rsquo;ve delayed in doing so because I have been Living My Best Life(tm), that&rsquo;s a good thing!</p>
-<p>I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and <em>finally</em> broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I&rsquo;m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation <a href="https://www.jpferguson.net/blog/blog-post-title-four-tl2th-m8k2z">that was covered on Vox</a>, uses Theil&rsquo;s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.</p>
+          <p>This has to do with a paper that I published in 2015 but that I started working on in late 2012 and substantively wrote in 2013: &ldquo;<a href="https://osf.io/zf9j8">The Control of Managerial Discretion: Evidence from Unionization&rsquo;s Impact on Employment Segregation</a>.&rdquo; In many ways, that paper riffs off of work that had been published a few years earlier, work that investigated the effect of firms&rsquo; diversity policies on their actual workforce composition. That work is both very good and limited: very good because it looked at longitudinal, within-firm changes rather than just changes across a population of firms; limited because the authors could not model and adjust for the self-selection of firms into adopting such policies. (All good research is limited in some way, but that&rsquo;s a topic for another post.) My idea was to look at union-representation elections, because unions impose many of the same constraints on arbitrary management that diversity policies do, and yet unionization isn&rsquo;t self-selected by the employer. It <em>is</em> self-selected by the employees, but because they do so through election records, I could focus on very close elections and use a regression-discontinuity design to identify the treatment effect net of self-selection.</p>
         </div>
-        <a href="/posts/some_blather/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/a_vow_i_made/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -137,15 +152,15 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/were_on_vox/" class="color-inherit dim link">
-            We&#39;re on Vox
+          <a href="/posts/down_in_the_muck_of_data/" class="color-inherit dim link">
+            Down in the muck of data
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>I just found out that <a href="https://www.vox.com/authors/alvin">Alvin Chang</a> over at Vox has put together <a href="https://www.vox.com/policy-and-politics/2019/2/18/18217346/work-home-segregation-map">a really crackerjack article</a> on how much higher residential segregation is in America than employment segregation, and on how employment segregation has gotten worse over the last generation. I&rsquo;m biased, because he cites <a href="https://www.hbs.edu/faculty/Pages/profile.aspx?facId=876389">Rem Koning</a>&rsquo;s and my <a href="https://journals.sagepub.com/doi/10.1177/0003122418767438"><em>ASR</em> article</a> from last year, but still.</p>
-<p>What I find really impressive is that Alvin didn&rsquo;t get in touch with us before the video and article ran (we&rsquo;re the support group here, alongside Hall, Iceland, and Yi&rsquo;s recent <a href="https://link.springer.com/article/10.1007/s11113-019-09510-9"><em>Population Research and Policy Review</em></a> article [gated]), but he <em>nailed</em> the interpretation of our findings. I thought I wrote the article as clearly as possible, but I&rsquo;ve had trouble explaining its main import to reporters in the past.</p>
+          <p>I&rsquo;ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.</p>
+<p>I&rsquo;d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn&rsquo;t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:</p>
         </div>
-        <a href="/posts/were_on_vox/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/down_in_the_muck_of_data/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -161,15 +176,15 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/solving_little_mysteries/" class="color-inherit dim link">
-            Solving little mysteries
+          <a href="/posts/matrix_math/" class="color-inherit dim link">
+            Matrix math
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>The next two fields in these old ULP files are titled, simply, “county” and “state.” These seem straightforward enough, but in fact getting these right is key to any project I want to do. Any hypotheses about where ULPs happened historically, and whether and how that changed over time, can only be tested if the geographic information is good. I need to lay some foundations for these to work.</p>
-<p>Consider the relevant page from the code book:</p>
+          <p>On and off for about a year now, we&rsquo;ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil&rsquo;s information statistic at the industry level give us a window into these changes. Details to follow in the paper we&rsquo;re writing.</p>
+<p>We&rsquo;ve had a problem, though. I wrote all of our original code for calculating Theil&rsquo;s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it&rsquo;s <em>just</em> the code, with all comments and data-wrangling removed:</p>
         </div>
-        <a href="/posts/solving_little_mysteries/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/matrix_math/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -185,20 +200,26 @@
           
           
             <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/posts/some_blather/" class="link black dim">
+                Some blather about Theil&#39;s H
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/posts/were_on_vox/" class="link black dim">
+                We&#39;re on Vox
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/posts/solving_little_mysteries/" class="link black dim">
+                Solving little mysteries
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/posts/on_yak_shaving/" class="link black dim">
                 On yak shaving
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/a_blast_from_my_past/" class="link black dim">
-                A blast from my past
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/first_post/" class="link black dim">
-                First post
               </a>
             </h2>
           

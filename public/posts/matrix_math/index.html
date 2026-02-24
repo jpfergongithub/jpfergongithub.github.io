@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Matrix math | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="On and off for about a year now, we&rsquo;ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil&rsquo;s information statistic at the industry level give us a window into these changes. Details to follow in the paper we&rsquo;re writing.
+We&rsquo;ve had a problem, though. I wrote all of our original code for calculating Theil&rsquo;s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it&rsquo;s just the code, with all comments and data-wrangling removed:">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/matrix_math/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/matrix_math/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Matrix math">
+  <meta property="og:description" content="On and off for about a year now, we’ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil’s information statistic at the industry level give us a window into these changes. Details to follow in the paper we’re writing.
+We’ve had a problem, though. I wrote all of our original code for calculating Theil’s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it’s just the code, with all comments and data-wrangling removed:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-03-07T16:46:17-05:00">
+    <meta property="article:modified_time" content="2019-03-07T16:46:17-05:00">
+
+  <meta itemprop="name" content="Matrix math">
+  <meta itemprop="description" content="On and off for about a year now, we’ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil’s information statistic at the industry level give us a window into these changes. Details to follow in the paper we’re writing.
+We’ve had a problem, though. I wrote all of our original code for calculating Theil’s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it’s just the code, with all comments and data-wrangling removed:">
+  <meta itemprop="datePublished" content="2019-03-07T16:46:17-05:00">
+  <meta itemprop="dateModified" content="2019-03-07T16:46:17-05:00">
+  <meta itemprop="wordCount" content="2043">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Matrix math">
+  <meta name="twitter:description" content="On and off for about a year now, we’ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil’s information statistic at the industry level give us a window into these changes. Details to follow in the paper we’re writing.
+We’ve had a problem, though. I wrote all of our original code for calculating Theil’s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it’s just the code, with all comments and data-wrangling removed:">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-matrix_math">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-matrix_math flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Matrix math</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-03-07T16:46:17-05:00">March 7, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>On and off for about a year now, we&rsquo;ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil&rsquo;s information statistic at the industry level give us a window into these changes. Details to follow in the paper we&rsquo;re writing.</p>
+<p>We&rsquo;ve had a problem, though. I wrote all of our original code for calculating Theil&rsquo;s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it&rsquo;s <em>just</em> the code, with all comments and data-wrangling removed:</p>
+<pre tabindex="0"><code class="language-stata" data-lang="stata">foreach race of global races {
+    forvalues o = 1/9 {
+        generate phi_aj`o&#39;_`race&#39; = cond(w_aj`o&#39; == 0, 0, `race&#39;`o&#39;/w_aj`o&#39;)
+        generate E_aj`o&#39;_`race&#39; = cond(phi_aj`o&#39;_`race&#39; == 0, 0, ///
+            phi_aj`o&#39;_`race&#39; * (ln(1/phi_aj`o&#39;_`race&#39;)/ln(2)), 0)
+    }
+}
+foreach race of global races {
+    generate phi_aj_`race&#39; = (`race&#39;/w_aj)
+    generate E_aj_`race&#39; = cond(phi_aj_`race&#39; == 0, 0, ///
+        phi_aj_`race&#39; * (ln(1/phi_aj_`race&#39;)/ln(2)), 0)
+}
+bysort year $area: egen w_a = total(w_aj)
+foreach race of global races {
+    by year $area: egen w_a_`race&#39; = total(`race&#39;)
+    generate phi_a_`race&#39; = w_a_`race&#39;/w_a
+    generate E_a_`race&#39; = cond(phi_a_`race&#39; == 0, 0, ///
+        phi_a_`race&#39; * (ln(1/phi_a_`race&#39;)/ln(2)), 0)
+}
+egen a_tag = tag(year $area )
+by year: egen w = total(w_a) if a_tag
+by year $area: replace w = sum(w)
+foreach race of global races {
+    by year: egen w_`race&#39; = total(w_a_`race&#39;) if a_tag
+    generate phi_`race&#39; = w_`race&#39;/w if a_tag
+    generate E_`race&#39; = cond(phi_`race&#39; == 0, 0, ///
+        phi_`race&#39; * (ln(1/phi_`race&#39;)/ln(2)), 0) if a_tag
+}
+foreach race of global races {
+    forvalues o = 1/9 {
+        drop phi_aj`o&#39;_`race&#39;
+    }
+    drop phi_aj_`race&#39;
+    drop phi_a_`race&#39;
+    drop phi_`race&#39;
+}
+forvalues o = 1/9 {
+    generate E_aj`o&#39; = E_aj`o&#39;_white + E_aj`o&#39;_black + E_aj`o&#39;_hispanic ///
+        + E_aj`o&#39;_other // occupation
+}
+generate E_aj = E_aj_white + E_aj_black + E_aj_hispanic + E_aj_other // est
+generate E_a = E_a_white + E_a_black + E_a_hispanic + E_a_other // area
+generate E = E_white + E_black + E_hispanic + E_other if a_tag // US
+    by year $area: replace E = sum(E)
+forvalues o = 1/9 {
+    generate H_aj`o&#39;_cmp = (w_aj`o&#39;/w_aj) * ((E_aj - E_aj`o&#39;)/E_aj)
+}
+egen H_aj = rowtotal(H_aj1_cmp H_aj2_cmp H_aj3_cmp H_aj4_cmp H_aj5_cmp ///
+    H_aj6_cmp H_aj7_cmp H_aj8_cmp H_aj9_cmp)
+generate H_a_btw_cmp = (w_aj/w_a) * ((E_a - E_aj)/E_a)
+by year $area: egen H_a_btw = total(H_a_btw_cmp)
+generate H_a_win_cmp = ((w_aj*E_aj)/(w_a*E_a)) * H_aj
+by year $area: egen H_a_win = total(H_a_win_cmp)
+generate H_a = H_a_btw + H_a_win
+generate H_btw_cmp = (w_a/w) * ((E-E_a)/E) if a_tag
+by year: egen H_btw = total(H_btw_cmp) if a_tag
+generate H_win_btw_cmp = ((w_a*E_a)/(w*E)) * H_a_btw if a_tag
+generate H_win_win_cmp = ((w_a*E_a)/(w*E)) * H_a_win if a_tag
+by year: egen H_win_btw = total(H_win_btw_cmp) if a_tag
+by year: egen H_win_win = total(H_win_win_cmp) if a_tag
+by year: generate H = H_btw + H_win_btw if a_tag
+by year: generate HwithOcc = H_btw + H_win_btw ///
+    + H_win_win if a_tag
+by year $area: replace H = sum(H)
+by year $area: replace HwithOcc = sum(HwithOcc)
+</code></pre><p>I think you&rsquo;ll agree with me that this is ridiculous. It doesn&rsquo;t help that Stata insists on calling its variables &ldquo;macros&rdquo; and has an extremely particular syntax for referencing them, or that it insists on holding one data set in memory at a time&hellip;or that its programming language has even thornier syntax for defining helper functions. Things like this are why I&rsquo;ve been trying to learn R. I don&rsquo;t love R, but it has strengths that offset many of Stata&rsquo;s weaknesses, and it plays better with other software.</p>
+<p>By comparison, at one point last year I wrote some python to build a hierarchical tree structure in which to hold data like these. Once I had that tree structure built, I could write helper functions and ultimately a function like this one:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">theil</span>(tree, unit, levels):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; Size-weighted sum of entropy deviations of a unit&#39;s sub-units. &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    the_theil <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> levels <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> subunit <span style="color:#f92672">in</span> tree<span style="color:#f92672">.</span>children(unit):
+</span></span><span style="display:flex;"><span>            the_theil <span style="color:#f92672">+=</span> theil_cmp(tree, subunit<span style="color:#f92672">.</span>identifier)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> subunit <span style="color:#f92672">in</span> tree<span style="color:#f92672">.</span>children(unit):
+</span></span><span style="display:flex;"><span>            the_theil <span style="color:#f92672">+=</span> theil_cmp(tree, subunit<span style="color:#f92672">.</span>identifier)
+</span></span><span style="display:flex;"><span>            sub_weight <span style="color:#f92672">=</span> subunit<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>total() <span style="color:#f92672">/</span> tree[unit]<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>total()
+</span></span><span style="display:flex;"><span>            the_theil <span style="color:#f92672">+=</span> sub_weight <span style="color:#f92672">*</span> theil(tree, subunit<span style="color:#f92672">.</span>identifier,
+</span></span><span style="display:flex;"><span>                                            levels <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> the_theil
+</span></span></code></pre></div><p>Hey, look, it calls itself recursively! The structure of the code reflects the structure of the computation! Obviously we should go this route!</p>
+<p>This led to another problem, though. I can write code in python, but I can&rsquo;t necessarily write <em>fast</em> code in python. All of the functions I built to calculate the statistics were wicked fast, but the functions that actually built the data structure were unforgivably slow. A full set of analyses on our data, from building the structure through spitting numbers into a matrix, could take up to 40 minutes. Stata by comparison ran in less than 10.</p>
+<p>That might feel OK. We&rsquo;re not writing production code, after all&ndash;we&rsquo;re academics! And code that&rsquo;s easy to modify, or generally to understand and work with after you&rsquo;ve been away from it for a while, is really important. I learned this well in graduate school. The first time you get a revise-and-resubmit asking for further analyses, and you open up the project&rsquo;s code base and can&rsquo;t even remember which file calls which file, never mind what they each do&hellip;when you find yourself drawing a dependency graph for your <em>own</em> scripts, it&rsquo;s time to focus on writing clearer code.</p>
+<p>All that said, though, 40 minutes was still unacceptable. In this project, we needed a way to distinguish what are basically random movements of the various components of the statistic from &ldquo;real&rdquo; shifts. There are no analytically defined standard errors for Theil&rsquo;s $H$, though&ndash;what statistical papers exist on the topic basically amount to a flame war about how every prior attempt is garbage. The way to proceed under such conditions is to simulate a probability distribution with the data at hand, either through bootstrapping or via a permutation test. Yet these techniques require you to perform a given calculation not once but hundreds or thousands of times. If we were to go with 1,000 repetitions, our projected compute time shot from 40 minutes to more than three months&hellip;or more than three weeks if we used the thorny Stata code.</p>
+<p>Once we realized this, we set the project aside for several months. This is reasonable enough when you have a tough problem and a busy job. In between, we literally collected and analyzed data for another paper, wrote a draft, workshopped it, and submitted it to a journal. So it&rsquo;s not like we were idle. But this one has been gnawing at me. Finally in January I wrote my co-author and suggested that we book time at the end of February to sit down and finally figure this out.</p>
+<p>Along the way, we decided to try this next in R. The python approach was fundamentally sound, but my co-author&rsquo;s as fast in R as I am in Stata, and we could just write and trouble-shoot code faster that way. Plus, if we could speed things up in R, it would be easier to share with other academics.</p>
+<p>Like all statistical languages, R is optimized for fast vectorized calculations. And so I wanted to work out as much of this as I could in those terms, ideally before I got to Cambridge. So, I had the idea to ignore programming languages entirely and to try to write everything as matrix math.</p>
+<p>This took some reviewing for me. I&rsquo;ve never taken a full linear algebra class, and my shakiness with parts of it, more than anything about statistics <em>per se</em>, was often what tripped me up in econometrics classes. But here it seemed the right tool for the job.</p>
+<p>I ultimately wrote <a href="https://www.jpferguson.net/programming.pdf">this document</a>. When I&rsquo;m working on research and not sure about my math, I&rsquo;ll often write documents like this one. I find that the rigor involved in typesetting math, however tedious, and then seeing my handwritten work typeset often helps me spot errors I&rsquo;ve made. Much of it often ends up in an article&rsquo;s appendices, and it can be useful for future researchers to see how you did something, in all its detail.</p>
+<p>This time, it really paid off. It&rsquo;s straightforward to write matrix math in R, and so translating from the document to code was comparatively painless:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>p_agj <span style="color:#f92672">&lt;-</span> (R <span style="color:#f92672">%*%</span> j)
+</span></span><span style="display:flex;"><span>p_ag <span style="color:#f92672">&lt;-</span> (S_ag <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_ag) <span style="color:#f92672">%*%</span> (R <span style="color:#f92672">%*%</span> j)))
+</span></span><span style="display:flex;"><span>p_a <span style="color:#f92672">&lt;-</span> (S_a <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_a) <span style="color:#f92672">%*%</span> (R <span style="color:#f92672">%*%</span> j)))
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">&lt;-</span> (<span style="color:#a6e22e">t</span>(i) <span style="color:#f92672">%*%</span> (i <span style="color:#f92672">%*%</span> (R <span style="color:#f92672">%*%</span> j)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>w_agj <span style="color:#f92672">&lt;-</span> p_agj <span style="color:#f92672">/</span> p_ag
+</span></span><span style="display:flex;"><span>w_ag <span style="color:#f92672">&lt;-</span> p_ag <span style="color:#f92672">/</span> p_a
+</span></span><span style="display:flex;"><span>w_a <span style="color:#f92672">&lt;-</span> p_a <span style="color:#f92672">/</span> p
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>phi_agj <span style="color:#f92672">&lt;-</span> R <span style="color:#f92672">/</span> ((R <span style="color:#f92672">%*%</span> j) <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(j))
+</span></span><span style="display:flex;"><span>phi_ag <span style="color:#f92672">&lt;-</span> (S_ag <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_ag) <span style="color:#f92672">%*%</span> R)) <span style="color:#f92672">/</span> (S_ag <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_ag) <span style="color:#f92672">%*%</span> ((R <span style="color:#f92672">%*%</span> j) <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(j))))
+</span></span><span style="display:flex;"><span>phi_a <span style="color:#f92672">&lt;-</span> (S_a <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_a) <span style="color:#f92672">%*%</span> R)) <span style="color:#f92672">/</span> (S_a <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_a) <span style="color:#f92672">%*%</span> ((R <span style="color:#f92672">%*%</span> j) <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(j))))
+</span></span><span style="display:flex;"><span>phi <span style="color:#f92672">&lt;-</span> (<span style="color:#a6e22e">t</span>(i) <span style="color:#f92672">%*%</span> (i <span style="color:#f92672">%*%</span> R)) <span style="color:#f92672">/</span> ((<span style="color:#a6e22e">t</span>(i) <span style="color:#f92672">%*%</span> ((i <span style="color:#f92672">%*%</span> R) <span style="color:#f92672">%*%</span> j)) <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(j))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>E_agj <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">-1</span> <span style="color:#f92672">*</span> ((phi_agj <span style="color:#f92672">*</span> <span style="color:#a6e22e">tri</span>(phi_agj)) <span style="color:#f92672">%*%</span> j)
+</span></span><span style="display:flex;"><span>E_ag <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">-1</span> <span style="color:#f92672">*</span> ((phi_ag <span style="color:#f92672">*</span> <span style="color:#a6e22e">tri</span>(phi_ag)) <span style="color:#f92672">%*%</span> j)
+</span></span><span style="display:flex;"><span>E_a <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">-1</span> <span style="color:#f92672">*</span> ((phi_a <span style="color:#f92672">*</span> <span style="color:#a6e22e">tri</span>(phi_a)) <span style="color:#f92672">%*%</span> j)
+</span></span><span style="display:flex;"><span>E <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">-1</span> <span style="color:#f92672">*</span> ((phi <span style="color:#f92672">*</span> <span style="color:#a6e22e">tri</span>(phi)) <span style="color:#f92672">%*%</span> j)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>d_agj <span style="color:#f92672">&lt;-</span> E_agj <span style="color:#f92672">/</span> E_ag <span style="color:#75715e"># This never gets used</span>
+</span></span><span style="display:flex;"><span>d_ag <span style="color:#f92672">&lt;-</span> E_ag <span style="color:#f92672">/</span> E_a
+</span></span><span style="display:flex;"><span>d_a <span style="color:#f92672">&lt;-</span> E_a <span style="color:#f92672">/</span> E
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>d_agj <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(<span style="color:#a6e22e">is.na</span>(d_agj), <span style="color:#ae81ff">0</span>, d_agj)
+</span></span><span style="display:flex;"><span>d_ag <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(<span style="color:#a6e22e">is.na</span>(d_ag), <span style="color:#ae81ff">0</span>, d_ag)
+</span></span><span style="display:flex;"><span>d_a <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(<span style="color:#a6e22e">is.na</span>(d_a), <span style="color:#ae81ff">0</span>, d_a)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>h_agj <span style="color:#f92672">&lt;-</span> w_agj <span style="color:#f92672">*</span> ((E_ag <span style="color:#f92672">-</span> E_agj) <span style="color:#f92672">/</span> E_ag)
+</span></span><span style="display:flex;"><span>h_ag <span style="color:#f92672">&lt;-</span> S_ag <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_ag) <span style="color:#f92672">%*%</span> h_agj)
+</span></span><span style="display:flex;"><span>h_a <span style="color:#f92672">&lt;-</span> S_a <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_a) <span style="color:#f92672">%*%</span> (w_ag <span style="color:#f92672">*</span> d_ag <span style="color:#f92672">*</span> h_ag))
+</span></span><span style="display:flex;"><span>h <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(i) <span style="color:#f92672">%*%</span> (i <span style="color:#f92672">%*%</span> (w_a <span style="color:#f92672">*</span> (E <span style="color:#f92672">-</span> E_a) <span style="color:#f92672">/</span> E)) <span style="color:#75715e"># Not used</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>h_agj <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(<span style="color:#a6e22e">is.na</span>(h_agj), <span style="color:#ae81ff">0</span>, h_agj)
+</span></span><span style="display:flex;"><span>h_ag <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(<span style="color:#a6e22e">is.na</span>(h_ag), <span style="color:#ae81ff">0</span>, h_ag)
+</span></span><span style="display:flex;"><span>h_a <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(<span style="color:#a6e22e">is.na</span>(h_a), <span style="color:#ae81ff">0</span>, h_a)
+</span></span><span style="display:flex;"><span>h <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(<span style="color:#a6e22e">is.na</span>(h), <span style="color:#ae81ff">0</span>, h) <span style="color:#75715e"># Not used</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>H_g <span style="color:#f92672">&lt;-</span> S_g <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">t</span>(S_g) <span style="color:#f92672">%*%</span> (w_a <span style="color:#f92672">*</span> d_a <span style="color:#f92672">*</span> w_ag <span style="color:#f92672">*</span> d_ag <span style="color:#f92672">*</span> h_agj))
+</span></span></code></pre></div><p>That isn&rsquo;t as pretty as the python code, but the parallels at different levels of calculation are <em>much</em> clearer, and eventually we&rsquo;ll wrap and collapse all of this into some recursively defined helper functions.</p>
+<p>Two things to note here. The first is that, when we first tried to run this, lines like <code>p_ag &lt;- S_ag %*% t(S_ag) %*% R %*% j</code> were causing our machines to hang and crash. We were getting ready to abandon this approach when it hit me: $\mathbf{S_{ag}}$ is an $N \times K$ matrix, and so $\mathbf{S_{ag}}\mathbf{S_{ag}}^T$ is an $N \times N$ matrix. If, as here, $N \gg 100,000$, that thing can have tens or hundreds of billions of elements. Yet we don&rsquo;t need it! Our ultimate goal was an $N \times 1$ vector, so if we just changed the order of operations we could post-multiply the second term by the third and fourth, then pre-multiply that by the first. At no point did we actually need to create the gigantic matrix.</p>
+<p>We did that, and the operation went from crashing our machines to finishing in a fraction of a second.</p>
+<p>The second was with how we generated $\mathbf{S_{ag}}$ in the first place. We were using the <code>fastdummies</code> library in R. It looked like <code>fastdummies</code> wasn&rsquo;t fast, though. Generating these matrices took up to 30 seconds on our real dataset. After some searching, we found that we could generate sparse matrices with the <code>matrix</code> library&hellip;and what had been taking 30 seconds now took .3 seconds.</p>
+<p>With changes like these, we sped up the computation 500 or more times. Our projected compute has fallen from more than three months to fewer than six hours.</p>
+<p>I have two reasons for writing this all up. The first is that someone might find it helpful, both in its specifics and in the general sense of seeing how those of us with little formal training in computer science can still go about solving practical problems in computation. None of anything I did here is rocket science; it just takes persistence and rethinking how to approach the problem.</p>
+<p>The second reason, of course, is that I figured something out in an area where I usually feel like a fraud, and I&rsquo;m proud of it. It isn&rsquo;t a brag to share such moments with people. It&rsquo;s a chance to feel good about yourself, justifiably so, and have people validate those feelings. Given how often when doing research we feel rotten, it&rsquo;s important to mark the really triumphant moments, too.</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Down in the muck of data | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="I&rsquo;ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.
+I&rsquo;d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn&rsquo;t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/down_in_the_muck_of_data/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/down_in_the_muck_of_data/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Down in the muck of data">
+  <meta property="og:description" content="I’ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.
+I’d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn’t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-03-11T17:05:14-05:00">
+    <meta property="article:modified_time" content="2019-03-11T17:05:14-05:00">
+
+  <meta itemprop="name" content="Down in the muck of data">
+  <meta itemprop="description" content="I’ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.
+I’d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn’t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:">
+  <meta itemprop="datePublished" content="2019-03-11T17:05:14-05:00">
+  <meta itemprop="dateModified" content="2019-03-11T17:05:14-05:00">
+  <meta itemprop="wordCount" content="2049">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Down in the muck of data">
+  <meta name="twitter:description" content="I’ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.
+I’d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn’t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-down_in_the_muck_of_data">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-down_in_the_muck_of_data flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Down in the muck of data</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-03-11T17:05:14-05:00">March 11, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>I&rsquo;ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.</p>
+<p>I&rsquo;d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn&rsquo;t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:</p>
+<ul>
+<li>Tabulate the recorded values</li>
+<li>Flag any values that shouldn&rsquo;t appear, given your list of acceptable values</li>
+<li>Try to resolve what the anomalous value should have been, if possible</li>
+<li>Set any remaining anomalous values to missing</li>
+<li>Encode the sanitized list of characters into a factor variable</li>
+</ul>
+<p>This is simplest with states, which are only supposed to have around 50 values. You know that <code>37</code> is a legitimate value because it&rsquo;s a valid FIPS code for a state (North Carolina, FWIW). By contrast, <code>&amp;7</code> is an error, because there is no FIPS code with an ampersand. And <code>3</code> is ambiguous&ndash;it could be <code>03</code>, <code>30</code>, or something else entirely. Finally, a number like <code>81</code> is outside the range of FIPS values. In all of these cases, I would set the state value of those records to missing. So, I tablute the state variable, find all of the typos, and do that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>stateStrikes <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;  &#39;</span>, <span style="color:#e6db74">&#39;&amp; &#39;</span>, <span style="color:#e6db74">&#39;&amp;7&#39;</span>, <span style="color:#e6db74">&#39;0 &#39;</span>, <span style="color:#e6db74">&#39;00&#39;</span>, <span style="color:#e6db74">&#39;0D&#39;</span>, <span style="color:#e6db74">&#39;2Y&#39;</span>, <span style="color:#e6db74">&#39;3 &#39;</span>, <span style="color:#e6db74">&#39;4 &#39;</span>, <span style="color:#e6db74">&#39;52&#39;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#e6db74">&#39;53&#39;</span>, <span style="color:#e6db74">&#39;54&#39;</span>, <span style="color:#e6db74">&#39;55&#39;</span>, <span style="color:#e6db74">&#39;5K&#39;</span>, <span style="color:#e6db74">&#39;61&#39;</span>, <span style="color:#e6db74">&#39;67&#39;</span>, <span style="color:#e6db74">&#39;70&#39;</span>, <span style="color:#e6db74">&#39;71&#39;</span>, <span style="color:#e6db74">&#39;72&#39;</span>, <span style="color:#e6db74">&#39;73&#39;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#e6db74">&#39;74&#39;</span>, <span style="color:#e6db74">&#39;79&#39;</span>, <span style="color:#e6db74">&#39;81&#39;</span>, <span style="color:#e6db74">&#39;87&#39;</span>, <span style="color:#e6db74">&#39;91&#39;</span>, <span style="color:#e6db74">&#39;92&#39;</span>, <span style="color:#e6db74">&#39;97&#39;</span>, <span style="color:#e6db74">&#39;99&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (i <span style="color:#66d9ef">in</span> stateStrikes) {
+</span></span><span style="display:flex;"><span>    ulp <span style="color:#f92672">&lt;-</span> ulp <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(state <span style="color:#f92672">=</span> <span style="color:#a6e22e">na_if</span>(state, i))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ditto for counties. There&rsquo;re a lot more counties, and county is a three-character string, so there&rsquo;s more room for error. But for many types of typo, at least, the process is the same:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>countyStrikes <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;   &#39;</span>, <span style="color:#e6db74">&#39;  3&#39;</span>, <span style="color:#e6db74">&#39; 09&#39;</span>, <span style="color:#e6db74">&#39; 25&#39;</span>, <span style="color:#e6db74">&#39; 27&#39;</span>, <span style="color:#e6db74">&#39; 57&#39;</span>, <span style="color:#e6db74">&#39;-04&#39;</span>, <span style="color:#e6db74">&#39;-71&#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;..2&#39;</span>, <span style="color:#e6db74">&#39;{35&#39;</span>, <span style="color:#e6db74">&#39;{39&#39;</span>, <span style="color:#e6db74">&#39;{79&#39;</span>, <span style="color:#e6db74">&#39;{EG&#39;</span>, <span style="color:#e6db74">&#39;{GE&#39;</span>, <span style="color:#e6db74">&#39;}00&#39;</span>, <span style="color:#e6db74">&#39;&amp;  &#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;&amp;&amp;&amp;&#39;</span>, <span style="color:#e6db74">&#39;0  &#39;</span>, <span style="color:#e6db74">&#39;0 7&#39;</span>, <span style="color:#e6db74">&#39;0}1&#39;</span>, <span style="color:#e6db74">&#39;00 &#39;</span>, <span style="color:#e6db74">&#39;00}&#39;</span>, <span style="color:#e6db74">&#39;00+&#39;</span>, <span style="color:#e6db74">&#39;000&#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;01 &#39;</span>, <span style="color:#e6db74">&#39;02}&#39;</span>, <span style="color:#e6db74">&#39;03 &#39;</span>, <span style="color:#e6db74">&#39;04 &#39;</span>, <span style="color:#e6db74">&#39;05 &#39;</span>, <span style="color:#e6db74">&#39;05}&#39;</span>, <span style="color:#e6db74">&#39;06 &#39;</span>, <span style="color:#e6db74">&#39;06}&#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;08 &#39;</span>, <span style="color:#e6db74">&#39;09 &#39;</span>, <span style="color:#e6db74">&#39;0B9&#39;</span>, <span style="color:#e6db74">&#39;0X1&#39;</span>, <span style="color:#e6db74">&#39;1  &#39;</span>, <span style="color:#e6db74">&#39;1 4&#39;</span>, <span style="color:#e6db74">&#39;1 5&#39;</span>, <span style="color:#e6db74">&#39;1?7&#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;10-&#39;</span>, <span style="color:#e6db74">&#39;13 &#39;</span>, <span style="color:#e6db74">&#39;13}&#39;</span>, <span style="color:#e6db74">&#39;15 &#39;</span>, <span style="color:#e6db74">&#39;16 &#39;</span>, <span style="color:#e6db74">&#39;16-&#39;</span>, <span style="color:#e6db74">&#39;17 &#39;</span>, <span style="color:#e6db74">&#39;20 &#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;23}&#39;</span>, <span style="color:#e6db74">&#39;24}&#39;</span>, <span style="color:#e6db74">&#39;25}&#39;</span>, <span style="color:#e6db74">&#39;3  &#39;</span>, <span style="color:#e6db74">&#39;3 1&#39;</span>, <span style="color:#e6db74">&#39;30{&#39;</span>, <span style="color:#e6db74">&#39;30}&#39;</span>, <span style="color:#e6db74">&#39;36{&#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;37 &#39;</span>, <span style="color:#e6db74">&#39;41 &#39;</span>, <span style="color:#e6db74">&#39;7  &#39;</span>, <span style="color:#e6db74">&#39;70}&#39;</span>, <span style="color:#e6db74">&#39;75}&#39;</span>, <span style="color:#e6db74">&#39;9  &#39;</span>, <span style="color:#e6db74">&#39;90 &#39;</span>, <span style="color:#e6db74">&#39;93}&#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;96}&#39;</span>, <span style="color:#e6db74">&#39;A13&#39;</span>, <span style="color:#e6db74">&#39;A27&#39;</span>, <span style="color:#e6db74">&#39;A45&#39;</span>, <span style="color:#e6db74">&#39;C60&#39;</span>, <span style="color:#e6db74">&#39;G50&#39;</span>, <span style="color:#e6db74">&#39;J30&#39;</span>, <span style="color:#e6db74">&#39;K40&#39;</span>,
+</span></span><span style="display:flex;"><span>                   <span style="color:#e6db74">&#39;K50&#39;</span>, <span style="color:#e6db74">&#39;L40&#39;</span>, <span style="color:#e6db74">&#39;Y11&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (i <span style="color:#66d9ef">in</span> countyStrikes) {
+</span></span><span style="display:flex;"><span>    ulp <span style="color:#f92672">&lt;-</span> ulp <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(county <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                              <span style="color:#a6e22e">replace</span>(county, county<span style="color:#f92672">==</span>i, <span style="color:#66d9ef">NA</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It&rsquo;s more complicated for counties because the list of invalid county FIPS codes varies by state. Thus <code>007</code> is invalid in Delaware (which only has three counties) but fine in New Jersey. Most county FIPS codes are odd, but when you add a county after the fact (I&rsquo;m looking at you, La Paz County, Arizona!) or have an independent city (Baltimore, St. Louis, too much of Virginia), they follow different schemes. There&rsquo;s no real way around this other than to tabulate the values <em>by state</em>, go through each state, and flag unacceptable ones. This is what a laptop and a lot of documentaries that you can listen to more than watch are for.</p>
+<p>Eventually I created a named list of lists, then used a nested loop to visit each state and set its individual list of invalid values to missing. The savvy among you will recognize this as a dictionary bodged into R:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>countyNAs <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;008&#39;</span>, <span style="color:#e6db74">&#39;066&#39;</span>, <span style="color:#e6db74">&#39;143&#39;</span>, <span style="color:#e6db74">&#39;145&#39;</span>, <span style="color:#e6db74">&#39;151&#39;</span>, <span style="color:#e6db74">&#39;155&#39;</span>, <span style="color:#e6db74">&#39;201&#39;</span>, <span style="color:#e6db74">&#39;295&#39;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#39;300&#39;</span>, <span style="color:#e6db74">&#39;352&#39;</span>, <span style="color:#e6db74">&#39;510&#39;</span>, <span style="color:#e6db74">&#39;521&#39;</span>, <span style="color:#e6db74">&#39;745&#39;</span>, <span style="color:#e6db74">&#39;889&#39;</span>),
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;006&#39;</span>, <span style="color:#e6db74">&#39;010&#39;</span>, <span style="color:#e6db74">&#39;020&#39;</span>, <span style="color:#e6db74">&#39;026&#39;</span>, <span style="color:#e6db74">&#39;030&#39;</span>, <span style="color:#e6db74">&#39;040&#39;</span>, <span style="color:#e6db74">&#39;046&#39;</span>, <span style="color:#e6db74">&#39;050&#39;</span>,
+</span></span><span style="display:flex;"><span>                 <span style="color:#e6db74">&#39;060&#39;</span>, <span style="color:#e6db74">&#39;063&#39;</span>, <span style="color:#e6db74">&#39;070&#39;</span>, <span style="color:#e6db74">&#39;077&#39;</span>, <span style="color:#e6db74">&#39;090&#39;</span>, <span style="color:#e6db74">&#39;110&#39;</span>, <span style="color:#e6db74">&#39;111&#39;</span>, <span style="color:#e6db74">&#39;113&#39;</span>,
+</span></span><span style="display:flex;"><span>                 .
+</span></span><span style="display:flex;"><span>                 .
+</span></span><span style="display:flex;"><span>                 .
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;040&#39;</span>, <span style="color:#e6db74">&#39;049&#39;</span>, <span style="color:#e6db74">&#39;079&#39;</span>, <span style="color:#e6db74">&#39;095&#39;</span>, <span style="color:#e6db74">&#39;141&#39;</span>))                 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">names</span>(countyNAs) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Alabama&#34;</span>, <span style="color:#e6db74">&#34;Alaska&#34;</span>, <span style="color:#e6db74">&#34;Arizona&#34;</span>, <span style="color:#e6db74">&#34;Arkansas&#34;</span>,
+</span></span><span style="display:flex;"><span>                      .
+</span></span><span style="display:flex;"><span>                      .
+</span></span><span style="display:flex;"><span>                      .
+</span></span><span style="display:flex;"><span>                      <span style="color:#e6db74">&#34;West Virginia&#34;</span>, <span style="color:#e6db74">&#34;Wisconsin&#34;</span>, <span style="color:#e6db74">&#34;Wyoming&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (i <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">names</span>(countyNAs)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (j <span style="color:#66d9ef">in</span> countyNAs[[i]]) {
+</span></span><span style="display:flex;"><span>        ulp <span style="color:#f92672">&lt;-</span> ulp <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(county <span style="color:#f92672">=</span> <span style="color:#a6e22e">replace</span>(county,
+</span></span><span style="display:flex;"><span>                                               state<span style="color:#f92672">==</span>i <span style="color:#f92672">&amp;</span> county<span style="color:#f92672">==</span>j, <span style="color:#66d9ef">NA</span>))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>So far, so good.</p>
+<h1 id="the-limits-of-cleaning">The limits of cleaning</h1>
+<p>Let&rsquo;s note right here how often judgment enters into this process. We don&rsquo;t talk about it enough. Most datasets have problems&ndash;typos, missing data, machine or language-encoding hiccups, shifts in coding schemes. The analyst has to make decisions about how to deal with these, and historically those decisions were almost never documented. To this day, no one wants to write up every single design choice they made. That is why it&rsquo;s important to share your data and code; but also that&rsquo;s why it&rsquo;s important to make lists like these, however tedious they seem. If I were to go through my data in Excel or the like, changing errors as I saw them, there would be no record of what I&rsquo;d done, short of analyzing two datasets side by side. Even then, different rules could produce similar results in some cases. Don&rsquo;t just clean your data; whenever possible, clean your data with code.</p>
+<p>Having <em>finally</em> cleaned up the counties and managed to encode them, I moved on to the <code>complainant</code> and <code>respondent</code> variables. Per the codebook, these are four-character strings:</p>
+<p>muck1.png</p>
+<p>Notice that there&rsquo;s no apparent translation for how to interpret those four characters! Elsewhere in this codebook they refer to another PDF that lists union names, of which I have a copy:</p>
+<p>muck2.png</p>
+<p>It seems that <code>036</code> corresponds to the Retail Clerks, per the codebook&rsquo;s example, so that&rsquo;s good. But what does the <code>7</code> at the start mean? And sure, I can imagine they use <code>000</code> to mean employer&ndash;or does that mean employer <em>association</em>, while <code>R</code> means employer? And what code indicates an individual?</p>
+<p>Here, I&rsquo;m running up against the limits of the available documentation. For my research, I mostly care whether it&rsquo;s the union or the employer filing the complaint, and I can probably back it out of these data, but it&rsquo;s worth noting that I <em>cannot</em> proceed from here without making some judgment calls. For the moment, I&rsquo;m going to focus on the last three characters in these variables, and come back to the first ones.</p>
+<h1 id="suspicious-error-patterns">Suspicious error patterns</h1>
+<p>With that in mind, I tabulated the last three characters of the <code>complainant</code> variable, and started the same procedure as for states and counties. Eventually I compiled this list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>complainantStrikes <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;   &#34;</span>, <span style="color:#e6db74">&#34;  -&#34;</span>, <span style="color:#e6db74">&#34;  }&#34;</span>, <span style="color:#e6db74">&#34;  &amp;&#34;</span>, <span style="color:#e6db74">&#34;  1&#34;</span>, <span style="color:#e6db74">&#34;  2&#34;</span>, <span style="color:#e6db74">&#34;  3&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;  {&#34;</span>, <span style="color:#e6db74">&#34; { &#34;</span>, <span style="color:#e6db74">&#34;{  &#34;</span>, <span style="color:#e6db74">&#34; } &#34;</span>, <span style="color:#e6db74">&#34;}  &#34;</span>, <span style="color:#e6db74">&#34; &amp; &#34;</span>, <span style="color:#e6db74">&#34;&amp;  &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;  0&#34;</span>, <span style="color:#e6db74">&#34; 0 &#34;</span>, <span style="color:#e6db74">&#34;0  &#34;</span>, <span style="color:#e6db74">&#34;  1&#34;</span>, <span style="color:#e6db74">&#34; 1 &#34;</span>, <span style="color:#e6db74">&#34; 3 &#34;</span>, <span style="color:#e6db74">&#34;3  &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;  4&#34;</span>, <span style="color:#e6db74">&#34; 4 &#34;</span>, <span style="color:#e6db74">&#34;4  &#34;</span>, <span style="color:#e6db74">&#34;0{ &#34;</span>, <span style="color:#e6db74">&#34;0} &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;  5&#34;</span>, <span style="color:#e6db74">&#34;  9&#34;</span>, <span style="color:#e6db74">&#34;  {&#34;</span>, <span style="color:#e6db74">&#34;  &amp;&#34;</span>, <span style="color:#e6db74">&#34; 02&#34;</span>, <span style="color:#e6db74">&#34; 03&#34;</span>, <span style="color:#e6db74">&#34; 05&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 07&#34;</span>, <span style="color:#e6db74">&#34; 21&#34;</span>, <span style="color:#e6db74">&#34; 22&#34;</span>, <span style="color:#e6db74">&#34; 23&#34;</span>, <span style="color:#e6db74">&#34; 25&#34;</span>, <span style="color:#e6db74">&#34; 26&#34;</span>, <span style="color:#e6db74">&#34;  3&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 30&#34;</span>, <span style="color:#e6db74">&#34; 33&#34;</span>, <span style="color:#e6db74">&#34; 36&#34;</span>, <span style="color:#e6db74">&#34;  4&#34;</span>, <span style="color:#e6db74">&#34; 41&#34;</span>, <span style="color:#e6db74">&#34; 42&#34;</span>, <span style="color:#e6db74">&#34; 43&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 46&#34;</span>, <span style="color:#e6db74">&#34; 50&#34;</span>, <span style="color:#e6db74">&#34; 51&#34;</span>, <span style="color:#e6db74">&#34; 52&#34;</span>, <span style="color:#e6db74">&#34; 63&#34;</span>, <span style="color:#e6db74">&#34; 71&#34;</span>, <span style="color:#e6db74">&#34; 72&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 78&#34;</span>, <span style="color:#e6db74">&#34; 79&#34;</span>, <span style="color:#e6db74">&#34; 83&#34;</span>, <span style="color:#e6db74">&#34; 87&#34;</span>, <span style="color:#e6db74">&#34;---&#34;</span>, <span style="color:#e6db74">&#34;.23&#34;</span>, <span style="color:#e6db74">&#34;{00&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;&amp;&amp;&amp;&#34;</span>, <span style="color:#e6db74">&#34;  0&#34;</span>, <span style="color:#e6db74">&#34; 0 &#34;</span>, <span style="color:#e6db74">&#34; 1 &#34;</span>, <span style="color:#e6db74">&#34;0 &amp;&#34;</span>, <span style="color:#e6db74">&#34;0 0&#34;</span>, <span style="color:#e6db74">&#34;0 1&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;0 2&#34;</span>, <span style="color:#e6db74">&#34;0 3&#34;</span>, <span style="color:#e6db74">&#34;0 5&#34;</span>, <span style="color:#e6db74">&#34;0 6&#34;</span>, <span style="color:#e6db74">&#34; 0{&#34;</span>, <span style="color:#e6db74">&#34;0{&amp;&#34;</span>, <span style="color:#e6db74">&#34;0{0&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 0}&#34;</span>, <span style="color:#e6db74">&#34;0}5&#34;</span>, <span style="color:#e6db74">&#34; 00&#34;</span>, <span style="color:#e6db74">&#34;00 &#34;</span>, <span style="color:#e6db74">&#34;00-&#34;</span>, <span style="color:#e6db74">&#34;00{&#34;</span>, <span style="color:#e6db74">&#34;00}&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;00&amp;&#34;</span>, <span style="color:#e6db74">&#34;00C&#34;</span>, <span style="color:#e6db74">&#34;01 &#34;</span>, <span style="color:#e6db74">&#34; 01&#34;</span>, <span style="color:#e6db74">&#34;01N&#34;</span>, <span style="color:#e6db74">&#34;01O&#34;</span>, <span style="color:#e6db74">&#34;01R&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;02 &#34;</span>, <span style="color:#e6db74">&#34;02O&#34;</span>, <span style="color:#e6db74">&#34;03 &#34;</span>, <span style="color:#e6db74">&#34;03A&#34;</span>, <span style="color:#e6db74">&#34;03J&#34;</span>, <span style="color:#e6db74">&#34;03O&#34;</span>, <span style="color:#e6db74">&#34;05 &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;05M&#34;</span>, <span style="color:#e6db74">&#34; 06&#34;</span>, <span style="color:#e6db74">&#34;06 &#34;</span>, <span style="color:#e6db74">&#34;06J&#34;</span>, <span style="color:#e6db74">&#34;06L&#34;</span>, <span style="color:#e6db74">&#34;07K&#34;</span>, <span style="color:#e6db74">&#34;07N&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;08 &#34;</span>, <span style="color:#e6db74">&#34; 08&#34;</span>, <span style="color:#e6db74">&#34;0A5&#34;</span>, <span style="color:#e6db74">&#34;0A6&#34;</span>, <span style="color:#e6db74">&#34;0B3&#34;</span>, <span style="color:#e6db74">&#34;0C2&#34;</span>, <span style="color:#e6db74">&#34;0C6&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;0F1&#34;</span>, <span style="color:#e6db74">&#34; 0L&#34;</span>, <span style="color:#e6db74">&#34;1  &#34;</span>, <span style="color:#e6db74">&#34;1 1&#34;</span>, <span style="color:#e6db74">&#34;1 3&#34;</span>, <span style="color:#e6db74">&#34;1 5&#34;</span>, <span style="color:#e6db74">&#34;1{3&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;1{5&#34;</span>, <span style="color:#e6db74">&#34; 10&#34;</span>, <span style="color:#e6db74">&#34;10 &#34;</span>, <span style="color:#e6db74">&#34;10+&#34;</span>, <span style="color:#e6db74">&#34;10J&#34;</span>, <span style="color:#e6db74">&#34;10L&#34;</span>, <span style="color:#e6db74">&#34;10N&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 11&#34;</span>, <span style="color:#e6db74">&#34;11 &#34;</span>, <span style="color:#e6db74">&#34; 12&#34;</span>, <span style="color:#e6db74">&#34;12 &#34;</span>, <span style="color:#e6db74">&#34;12J&#34;</span>, <span style="color:#e6db74">&#34;12N&#34;</span>, <span style="color:#e6db74">&#34; 13&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;13 &#34;</span>, <span style="color:#e6db74">&#34;13}&#34;</span>, <span style="color:#e6db74">&#34; 14&#34;</span>, <span style="color:#e6db74">&#34;14 &#34;</span>, <span style="color:#e6db74">&#34;14J&#34;</span>, <span style="color:#e6db74">&#34;14O&#34;</span>, <span style="color:#e6db74">&#34; 15&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;15 &#34;</span>, <span style="color:#e6db74">&#34; 16&#34;</span>, <span style="color:#e6db74">&#34;16 &#34;</span>, <span style="color:#e6db74">&#34;16O&#34;</span>, <span style="color:#e6db74">&#34; 17&#34;</span>, <span style="color:#e6db74">&#34;17 &#34;</span>, <span style="color:#e6db74">&#34;17J&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;17K&#34;</span>, <span style="color:#e6db74">&#34;17N&#34;</span>, <span style="color:#e6db74">&#34;17P&#34;</span>, <span style="color:#e6db74">&#34;17Q&#34;</span>, <span style="color:#e6db74">&#34;17R&#34;</span>, <span style="color:#e6db74">&#34; 18&#34;</span>, <span style="color:#e6db74">&#34;18 &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;18M&#34;</span>, <span style="color:#e6db74">&#34; 19&#34;</span>, <span style="color:#e6db74">&#34;19 &#34;</span>, <span style="color:#e6db74">&#34;1D1&#34;</span>, <span style="color:#e6db74">&#34;1E1&#34;</span>, <span style="color:#e6db74">&#34;1H4&#34;</span>, <span style="color:#e6db74">&#34;2 1&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;2 3&#34;</span>, <span style="color:#e6db74">&#34;2 4&#34;</span>, <span style="color:#e6db74">&#34;2 9&#34;</span>, <span style="color:#e6db74">&#34;2{4&#34;</span>, <span style="color:#e6db74">&#34; 20&#34;</span>, <span style="color:#e6db74">&#34;20 &#34;</span>, <span style="color:#e6db74">&#34;20F&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;20J&#34;</span>, <span style="color:#e6db74">&#34; 21&#34;</span>, <span style="color:#e6db74">&#34;21 &#34;</span>, <span style="color:#e6db74">&#34;21+&#34;</span>, <span style="color:#e6db74">&#34;21A&#34;</span>, <span style="color:#e6db74">&#34;21C&#34;</span>, <span style="color:#e6db74">&#34;21J&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;21L&#34;</span>, <span style="color:#e6db74">&#34; 22&#34;</span>, <span style="color:#e6db74">&#34;22 &#34;</span>, <span style="color:#e6db74">&#34;22K&#34;</span>, <span style="color:#e6db74">&#34; 23&#34;</span>, <span style="color:#e6db74">&#34;23 &#34;</span>, <span style="color:#e6db74">&#34;23C&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;23L&#34;</span>, <span style="color:#e6db74">&#34; 24&#34;</span>, <span style="color:#e6db74">&#34;24 &#34;</span>, <span style="color:#e6db74">&#34;24O&#34;</span>, <span style="color:#e6db74">&#34;25 &#34;</span>, <span style="color:#e6db74">&#34; 25&#34;</span>, <span style="color:#e6db74">&#34; 29&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;29 &#34;</span>, <span style="color:#e6db74">&#34;29J&#34;</span>, <span style="color:#e6db74">&#34;29K&#34;</span>, <span style="color:#e6db74">&#34;29P&#34;</span>, <span style="color:#e6db74">&#34;2A9&#34;</span>, <span style="color:#e6db74">&#34;2C3&#34;</span>, <span style="color:#e6db74">&#34;2D6&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 3 &#34;</span>, <span style="color:#e6db74">&#34;3  &#34;</span>, <span style="color:#e6db74">&#34;3 1&#34;</span>, <span style="color:#e6db74">&#34;3 3&#34;</span>, <span style="color:#e6db74">&#34;3 8&#34;</span>, <span style="color:#e6db74">&#34;3 9&#34;</span>, <span style="color:#e6db74">&#34;3--&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 30&#34;</span>, <span style="color:#e6db74">&#34;30 &#34;</span>, <span style="color:#e6db74">&#34;30L&#34;</span>, <span style="color:#e6db74">&#34;31 &#34;</span>, <span style="color:#e6db74">&#34; 31&#34;</span>, <span style="color:#e6db74">&#34;31L&#34;</span>, <span style="color:#e6db74">&#34; 32&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;32 &#34;</span>, <span style="color:#e6db74">&#34; 33&#34;</span>, <span style="color:#e6db74">&#34;33 &#34;</span>, <span style="color:#e6db74">&#34;34K&#34;</span>, <span style="color:#e6db74">&#34; 35&#34;</span>, <span style="color:#e6db74">&#34;35 &#34;</span>, <span style="color:#e6db74">&#34;35*&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;35N&#34;</span>, <span style="color:#e6db74">&#34; 36&#34;</span>, <span style="color:#e6db74">&#34;36 &#34;</span>, <span style="color:#e6db74">&#34;37J&#34;</span>, <span style="color:#e6db74">&#34;3B2&#34;</span>, <span style="color:#e6db74">&#34;3D2&#34;</span>, <span style="color:#e6db74">&#34;  4&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 4 &#34;</span>, <span style="color:#e6db74">&#34;4  &#34;</span>, <span style="color:#e6db74">&#34;4 1&#34;</span>, <span style="color:#e6db74">&#34;4 2&#34;</span>, <span style="color:#e6db74">&#34; 40&#34;</span>, <span style="color:#e6db74">&#34;40 &#34;</span>, <span style="color:#e6db74">&#34; 41&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;41 &#34;</span>, <span style="color:#e6db74">&#34; 45&#34;</span>, <span style="color:#e6db74">&#34;45 &#34;</span>, <span style="color:#e6db74">&#34;45J&#34;</span>, <span style="color:#e6db74">&#34; 46&#34;</span>, <span style="color:#e6db74">&#34;46 &#34;</span>, <span style="color:#e6db74">&#34;46L&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 47&#34;</span>, <span style="color:#e6db74">&#34;47 &#34;</span>, <span style="color:#e6db74">&#34; 48&#34;</span>, <span style="color:#e6db74">&#34;48 &#34;</span>, <span style="color:#e6db74">&#34;4F3&#34;</span>, <span style="color:#e6db74">&#34; 5 &#34;</span>, <span style="color:#e6db74">&#34;5  &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;5 3&#34;</span>, <span style="color:#e6db74">&#34;5 9&#34;</span>, <span style="color:#e6db74">&#34; 54&#34;</span>, <span style="color:#e6db74">&#34;54 &#34;</span>, <span style="color:#e6db74">&#34; 56&#34;</span>, <span style="color:#e6db74">&#34;56 &#34;</span>, <span style="color:#e6db74">&#34;5D1&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;5F3&#34;</span>, <span style="color:#e6db74">&#34;  6&#34;</span>, <span style="color:#e6db74">&#34; 6 &#34;</span>, <span style="color:#e6db74">&#34;6  &#34;</span>, <span style="color:#e6db74">&#34;6 1&#34;</span>, <span style="color:#e6db74">&#34;60L&#34;</span>, <span style="color:#e6db74">&#34; 61&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;61 &#34;</span>, <span style="color:#e6db74">&#34; 62&#34;</span>, <span style="color:#e6db74">&#34;62 &#34;</span>, <span style="color:#e6db74">&#34; 63&#34;</span>, <span style="color:#e6db74">&#34;63 &#34;</span>, <span style="color:#e6db74">&#34; 68&#34;</span>, <span style="color:#e6db74">&#34;68 &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 71&#34;</span>, <span style="color:#e6db74">&#34;71 &#34;</span>, <span style="color:#e6db74">&#34;72G&#34;</span>, <span style="color:#e6db74">&#34; 75&#34;</span>, <span style="color:#e6db74">&#34;75 &#34;</span>, <span style="color:#e6db74">&#34; 76&#34;</span>, <span style="color:#e6db74">&#34;76 &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;  8&#34;</span>, <span style="color:#e6db74">&#34; 8 &#34;</span>, <span style="color:#e6db74">&#34;8  &#34;</span>, <span style="color:#e6db74">&#34;8 1&#34;</span>, <span style="color:#e6db74">&#34;8 2&#34;</span>, <span style="color:#e6db74">&#34; 83&#34;</span>, <span style="color:#e6db74">&#34;83 &#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34; 9 &#34;</span>, <span style="color:#e6db74">&#34;9  &#34;</span>, <span style="color:#e6db74">&#34;9 6&#34;</span>, <span style="color:#e6db74">&#34; 99&#34;</span>, <span style="color:#e6db74">&#34;99 &#34;</span>, <span style="color:#e6db74">&#34;V00&#34;</span>)
+</span></span></code></pre></div><p>Yes, I&rsquo;m aware how long that list is&ndash;<em>I had to type it</em>. But typing has its uses; you notice when you&rsquo;re hitting some keys more than others. For example, there are a lot of errors that include the first few letters of the alphabet. That might just be an encoding issue. But there are also a lot of errors that include keys from the right-hand side of the home row. In particular, the letters &ldquo;J&rdquo;, &ldquo;K&rdquo;, and &ldquo;L&rdquo; show up a lot more than you&rsquo;d expect from random error, with &ldquo;M&rdquo;, &ldquo;N&rdquo;, &ldquo;O&rdquo;, and &ldquo;P&rdquo; somewhere close behind.</p>
+<p>That&rsquo;s <em>weird</em>, right? Erroneous &ldquo;Q&quot;s, &ldquo;A&quot;s, and &ldquo;Z&quot;s show up a lot, because they&rsquo;re right next to the Shift and Tab keys. &ldquo;O&rdquo; and &ldquo;P&rdquo; maybe, since they&rsquo;re below the &ldquo;9&rdquo; and &ldquo;0&rdquo; keys. But &ldquo;J&rdquo;? It&rsquo;s right in the middle of the letter keys.</p>
+<p>Then it hit me: <em>these weren&rsquo;t typed on a modern keyboard</em>. These data come from punched cards, and those would have been typed on a specialized keypunch machine. I have <em>no</em> idea what those keyboards look like. To Google!</p>
+<p>I have reason to suspect that the NLRB and AFL-CIO were using IBM mainframes. Even if I didn&rsquo;t, those were the most common type. With the rise of System/360, the most common keypunch machine was the IBM 29:</p>
+<p>(By <a href="https://de.wikipedia.org/wiki/Benutzer:waelder">waelder</a> - Own work, <a href="https://creativecommons.org/licenses/by/2.5">CC BY 2.5</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1962578">Link</a>)</p>
+<p>If you squint, there are some telltale marks on that keyboard! Let&rsquo;s &ldquo;enhance&rdquo;:</p>
+<p>(By <a href="https://commons.wikimedia.org/wiki/User:Chumwa">Maximilian Dörrbecker</a> - Own work, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA, 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1588025">Link</a>)</p>
+<p>Bingo. The IBM 29 didn&rsquo;t have a separate numeral row. Instead there was a telephone-style numeric keypad on the right-hand side of the keyboard. Since punched cards didn&rsquo;t use upper- and lowercase, you had &ldquo;number-shift&rdquo; and &ldquo;letter-shift&rdquo; keys (the &ldquo;<em>numerisch</em>&rdquo; and &ldquo;<em>alpha</em>&rdquo; keys here). If you stuttered on a &ldquo;4&rdquo;, you&rsquo;d enter a &ldquo;J&rdquo;, and so on. That accounts for a lot of these typos. It even suggests where they ampersands might be coming from&ndash;a missed &ldquo;3&rdquo;!</p>
+<h1 id="delving-deeper">Delving deeper</h1>
+<p>This doesn&rsquo;t solve all problems, of course. It still isn&rsquo;t clear where all the &ldquo;A&quot;s, &ldquo;B&quot;s, and &ldquo;C&quot;s are coming from, nor what that first character in the complainant and respondent variables is supposed to represent. But whenever I find something like this&ndash;a connection between a seemingly random string of digits and the mechanical or human processes that generated it&ndash;I feel like I&rsquo;m coming to understand my data better.</p>
+<p>The next and biggest mystery, at least on this front, is where all the curly-brace characters are coming from! Bear in mind that, because these were punched cards from an old IBM mainframe, they were encoded in some variant of <a href="https://en.wikipedia.org/wiki/EBCDIC">EBCDIC</a> instead of <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a>, and EBCDIC didn&rsquo;t <em>have</em> curly-brace characters. This suggests some sort of encoding-translation error, but parsing that may be a bridge too far, even for me.</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

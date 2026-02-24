@@ -6,8 +6,29 @@
     <description>Recent content in Posts on JP Ferguson dot net</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Mar 2019 14:24:31 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2019 17:52:55 -0500</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A vow I made</title>
+      <link>http://localhost:1313/posts/a_vow_i_made/</link>
+      <pubDate>Mon, 18 Mar 2019 17:52:55 -0500</pubDate>
+      <guid>http://localhost:1313/posts/a_vow_i_made/</guid>
+      <description>&lt;p&gt;This has to do with a paper that I published in 2015 but that I started working on in late 2012 and substantively wrote in 2013: &amp;ldquo;&lt;a href=&#34;https://osf.io/zf9j8&#34;&gt;The Control of Managerial Discretion: Evidence from Unionization&amp;rsquo;s Impact on Employment Segregation&lt;/a&gt;.&amp;rdquo; In many ways, that paper riffs off of work that had been published a few years earlier, work that investigated the effect of firms&amp;rsquo; diversity policies on their actual workforce composition. That work is both very good and limited: very good because it looked at longitudinal, within-firm changes rather than just changes across a population of firms; limited because the authors could not model and adjust for the self-selection of firms into adopting such policies. (All good research is limited in some way, but that&amp;rsquo;s a topic for another post.) My idea was to look at union-representation elections, because unions impose many of the same constraints on arbitrary management that diversity policies do, and yet unionization isn&amp;rsquo;t self-selected by the employer. It &lt;em&gt;is&lt;/em&gt; self-selected by the employees, but because they do so through election records, I could focus on very close elections and use a regression-discontinuity design to identify the treatment effect net of self-selection.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Down in the muck of data</title>
+      <link>http://localhost:1313/posts/down_in_the_muck_of_data/</link>
+      <pubDate>Mon, 11 Mar 2019 17:05:14 -0500</pubDate>
+      <guid>http://localhost:1313/posts/down_in_the_muck_of_data/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn&amp;rsquo;t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Matrix math</title>
+      <link>http://localhost:1313/posts/matrix_math/</link>
+      <pubDate>Thu, 07 Mar 2019 16:46:17 -0500</pubDate>
+      <guid>http://localhost:1313/posts/matrix_math/</guid>
+      <description>&lt;p&gt;On and off for about a year now, we&amp;rsquo;ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil&amp;rsquo;s information statistic at the industry level give us a window into these changes. Details to follow in the paper we&amp;rsquo;re writing.&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;ve had a problem, though. I wrote all of our original code for calculating Theil&amp;rsquo;s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it&amp;rsquo;s &lt;em&gt;just&lt;/em&gt; the code, with all comments and data-wrangling removed:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Some blather about Theil&#39;s H</title>
       <link>http://localhost:1313/posts/some_blather/</link>
