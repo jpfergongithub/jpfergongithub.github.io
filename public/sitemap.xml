@@ -2,17 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/aws/</loc>
-    <lastmod>2026-02-24T07:28:49-05:00</lastmod>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2019-03-07T14:24:31-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-02-24T07:28:49-05:00</lastmod>
+    <lastmod>2019-03-07T14:24:31-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-02-24T07:28:49-05:00</lastmod>
+    <loc>http://localhost:1313/posts/some_blather/</loc>
+    <lastmod>2019-03-07T14:24:31-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hello-world/</loc>
-    <lastmod>2026-02-23T15:00:45-05:00</lastmod>
+    <loc>http://localhost:1313/posts/were_on_vox/</loc>
+    <lastmod>2019-02-19T14:17:27-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/solving_little_mysteries/</loc>
+    <lastmod>2019-02-03T13:58:39-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/on_yak_shaving/</loc>
+    <lastmod>2019-01-27T13:43:54-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/a_blast_from_my_past/</loc>
+    <lastmod>2019-01-21T13:26:14-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/first_post/</loc>
+    <lastmod>2019-01-19T13:22:29-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>

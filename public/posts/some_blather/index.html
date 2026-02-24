@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Some blather about Theil&#39;s H | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="I was feeling guilty because I had not updated this blog in two weeks. Then I reminded myself that the whole point is that I put in entries here when I have time, and if I&rsquo;ve delayed in doing so because I have been Living My Best Life(tm), that&rsquo;s a good thing!
+I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and finally broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I&rsquo;m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation that was covered on Vox, uses Theil&rsquo;s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/some_blather/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/some_blather/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Some blather about Theil&#39;s H">
+  <meta property="og:description" content="I was feeling guilty because I had not updated this blog in two weeks. Then I reminded myself that the whole point is that I put in entries here when I have time, and if I’ve delayed in doing so because I have been Living My Best Life(tm), that’s a good thing!
+I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and finally broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I’m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation that was covered on Vox, uses Theil’s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-03-07T14:24:31-05:00">
+    <meta property="article:modified_time" content="2019-03-07T14:24:31-05:00">
+
+  <meta itemprop="name" content="Some blather about Theil&#39;s H">
+  <meta itemprop="description" content="I was feeling guilty because I had not updated this blog in two weeks. Then I reminded myself that the whole point is that I put in entries here when I have time, and if I’ve delayed in doing so because I have been Living My Best Life(tm), that’s a good thing!
+I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and finally broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I’m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation that was covered on Vox, uses Theil’s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.">
+  <meta itemprop="datePublished" content="2019-03-07T14:24:31-05:00">
+  <meta itemprop="dateModified" content="2019-03-07T14:24:31-05:00">
+  <meta itemprop="wordCount" content="1272">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Some blather about Theil&#39;s H">
+  <meta name="twitter:description" content="I was feeling guilty because I had not updated this blog in two weeks. Then I reminded myself that the whole point is that I put in entries here when I have time, and if I’ve delayed in doing so because I have been Living My Best Life(tm), that’s a good thing!
+I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and finally broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I’m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation that was covered on Vox, uses Theil’s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-some_blather">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-some_blather flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Some blather about Theil&#39;s H</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-03-07T14:24:31-05:00">March 7, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>I was feeling guilty because I had not updated this blog in two weeks. Then I reminded myself that the whole <em>point</em> is that I put in entries here when I have time, and if I&rsquo;ve delayed in doing so because I have been Living My Best Life(tm), that&rsquo;s a good thing!</p>
+<p>I was in Cambridge last week, semi-covert, to work with my collaborator. We submitted one paper and <em>finally</em> broke a log jam on another that had stalled for several months. While the project is unrelated to the ULP-diffusion project I&rsquo;m concentrating on in this blog, solving problems related to it also reminds me why I do research, and I think it is worth talking about. Also, this project, like the one on workplace segregation <a href="https://www.jpferguson.net/blog/blog-post-title-four-tl2th-m8k2z">that was covered on Vox</a>, uses Theil&rsquo;s information statistic to measure segregation. I do enough work with this thing, and have explained it enough times, that I might as well put it down here in the blog as well.</p>
+<p>An intuitive definition of segregation is uneven division of a unit&rsquo;s population among its sub-units. Think of uneven division of a school district&rsquo;s students among its schools, or uneven division of a city&rsquo;s residents among its neighborhoods. You need a metric of how unevenly divided that population is. There are a lot of these, but we like Theil&rsquo;s statistic for several reasons. The most important is that it handles multiple groups gracefully. A lot of measures, including the popular index of dissimilarity, were devised for two-group cases. This is fine if you care about white/black or white/non-white, but they can give wonky results as the number of relevant groups increases. In America today, you really should use a multi-group measure.</p>
+<p>The other great advantage of Theil&rsquo;s statistic is that it is <em>fractally decomposable</em>. Fancy words, but it just means that you can, say, separate segregation in the US into segregation <em>between</em> labor markets plus segregation <em>within</em> labor markets; then separate the latter into segregation <em>between</em> industries within labor markets, plus segregation <em>within</em> industries in labor markets, and so on. If your goal is to understand how changes at different levels might drive changes in segregation (and that is ours!), then this is an incredibly useful feature.</p>
+<p>The statistic leverages the concept of entropy that Claude Shannon developed in his seminal 1948 article &ldquo;<a href="http://math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">A Mathematical Theory of Communication</a>.&rdquo; A bit is informative to the extent that it is rare or unexpected. Imagine I were to feed you a letter at a time, and you were to try to guess the word that I was spelling. Before I speak, your possibility space is the entire vocabulary of English&ndash;that&rsquo;s the baseline level of entropy in the system. If I say &ldquo;e,&rdquo; that reduces the search space for you some. But if I say &ldquo;z,&rdquo; that reduces the search space a lot more. Because &ldquo;z&rdquo; is a rare letter and words starting with &ldquo;z&rdquo; even more so, knowing there&rsquo;s a &ldquo;z&rdquo; prunes the probability space a lot more than knowing there&rsquo;s an &ldquo;e&rdquo; does. It&rsquo;s this reduction in entropy that we define as information.</p>
+<p>In the context of employment segregation, imagine we have a workforce. I choose a worker at random and ask you to guess their race. How much uncertainty do you have? That depends on the baseline level of entropy. If the workforce is all of one race, there&rsquo;s no entropy, and no uncertainty. As you add races, and as you distribute the workforce more evenly among however many races, your uncertainty increases. Thus if $\phi_r$ is the share of race $r$ in the workforce, entropy is defined as $\sum_r \phi_r \mathrm(ln)\phi_r$. (Play around with that, keeping in mind that we&rsquo;ll define the log of a zero as zero. It works.)</p>
+<p>OK, so you have a baseline level of entropy in the workforce, and that specifies your uncertainty about the race of a randomly chosen worker. <em>Now suppose I tell you where they work.</em> How does that information affect your uncertainty?</p>
+<ul>
+<li>If there is <em>no</em> segregation, this is uninformative. Your uncertainty remains unchanged.</li>
+<li>If there is <em>total</em> segregation, this is extremely informative. Your uncertainty is removed completely.</li>
+<li>For in-between levels of segregation, your uncertainty is reduced proportionately to the level of segregation.</li>
+</ul>
+<p>Theil&rsquo;s statistic leverages this idea. We calculate the entropy for the unit, $E$. We calculate the entropy for each of the $j$ sub-units in the unit, $E_j$. Then the statistic averages the sub-unit&rsquo;s deviations from the larger unit. It&rsquo;s a weighted average, where the weight is the sub-unit&rsquo;s size as a share of the unit, $p_j/p$. And we scale the entropy deviation by the unit&rsquo;s entropy, so that we can compare this measure across different types of units. That gives us this:</p>
+$$H = \sum_j \frac{p_j}{p} \frac{E-E_j}{E}$$<p>With me so far? Good. Here&rsquo;s where it gets fun.</p>
+<p>Let&rsquo;s imagine that our workplaces are nested within groups. This happens all the time. In the US, for example, workplaces are scattered all over the country, and racial populations are also scattered&ndash;non-uniformly!&ndash;over the country. Thus there are a lot of latino workers in Californian worklplaces and far fewer in Maine workplaces. Does this difference represent segregation, though? It&rsquo;s a judgment call in each case, but in <em>this</em> case I would say no. No one who lives in California is likely to work in Maine and vice versa. Where people live of course isn&rsquo;t random, and a ton of people study that; but if you want to characterize and understand segregation among workers, you want to start with units that could feasibly be integrated. Another way to say this is, if all of the segregation between worklpaces in America could be reduced to the uneven geographic spread of different racial populations, then fretting about and intervening at the level of the workplace doesn&rsquo;t make much sense. We want a way to separate out these two, and Theil&rsquo;s $H$ gives us a way.</p>
+<p>If the unit can be completely divided into $G$ mutually exclusive groups then Theil&rsquo;s $H$ can be decomposed into $G+1$ components: one for the segregation <em>between</em> groups and $G$ for the segregation within each group:</p>
+$$H = fancy$$<p>Notice that each of the within-group bits is just the simpler version of $H$. That&rsquo;s how the fractal nature of this statistic shows up. Those lower-level statistics are then put into a weighted sum, where the weights are the group&rsquo;s relative size <em>and</em> the group&rsquo;s relative diversity (i.e., its relative entropy).</p>
+<p>I don&rsquo;t want to lose track of why this is useful. If you go back to my example, the first term above&ndash;that &ldquo;Between-group&rdquo; bit&ndash;would account for the different distribution of races between, say, California and Maine. This makes interpreting the second terms easier. <em>Given</em> the structure of the workforce in California, how segregated are workers between workplaces there? <em>Given</em> the structure of the workforce in Maine, how segregated are workers between workplaces there?</p>
+<p>This also gives you a way to think about why the weights are what they are. Californian workplaces might be less segregated than &ldquo;Downeaster&rdquo; ones (or whatever the Hell people from Maine call themselves&ndash;<em>I can&rsquo;t even be bothered to Google it</em>). Yet California is a lot <em>bigger</em> than Maine, so what segregation there is affects more people. And California is a lot more <em>diverse</em> than Maine, so again the possible impact of segregation is bigger. Hence those weights.</p>
+<p>You can keep doing this. We&rsquo;ve calculated three-level decompositions that include segregation between occupations <em>within</em> workplaces, for example. But eventually the code for doing so starts to break your head. Or at least it does given how we&rsquo;d written it! Solving <em>that</em> little problem will be a matter for future posts.</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
