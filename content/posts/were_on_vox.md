@@ -1,6 +1,6 @@
 +++
 date = '2019-02-19T14:17:27-05:00'
-draft = true
+draft = false
 title = "We're on Vox"
 +++
 

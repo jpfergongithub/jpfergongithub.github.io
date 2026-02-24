@@ -1,6 +1,6 @@
 +++
 date = '2019-01-21T13:26:14-05:00'
-draft = true
+draft = false
 title = 'A blast from my past'
 +++
 

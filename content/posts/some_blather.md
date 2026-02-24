@@ -1,6 +1,6 @@
 +++
 date = '2019-03-07T14:24:31-05:00'
-draft = true
+draft = false
 title = "Some blather about Theil's H"
 +++
 

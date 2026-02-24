@@ -1,6 +1,6 @@
 +++
 date = '2019-01-27T13:43:54-05:00'
-draft = true
+draft = false
 title = 'On yak shaving'
 +++
 
