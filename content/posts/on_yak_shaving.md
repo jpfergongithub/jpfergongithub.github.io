@@ -24,7 +24,7 @@ To this point, I’d saved the archives from CISER in my Downloads folder. This 
 
 In principle, you can create a folder named “Project” and save *everything* inside it. I did this for my first couple projects. It sort of worked, but only because I have a good memory. As soon as I started working with co-authors, I discovered all the ways this was insufficient. I therefore started making project directories that have a structure like this one:
 
-yakshave1.png
+![foo](/yakshave1.webp)
 
 Here, “canonical” holds primary data. Is it a file that you cannot re-create using *other* files in the project? Then it goes in canonical. By contrast, any data files that I create go in “data,” and the code that generates them goes in “scripts.” I put any codebooks, manuals, or the like in “documentation,” and any articles or book chapters that inform the substantive research question \(as distinct from the data-creation and -analysis processes\) in “literature.” The output of the project winds up in “drafts,” “figures,” “tables,” and “presentations,” in ways that are probably self-explanatory.
 
@@ -36,23 +36,23 @@ Thus the very first bit of yak shaving: organize the original files, such that t
 
 Reading fixed-width data into R is easy enough; you can use `read.fwf()` to do it. That command requires you to specify the *widths* of each element, that is, their start and end positions in the original 80-character record. This is where the codebook becomes important:
 
-yakshave2.png
+![foo](/yakshave2.webp)
 
 The codebook tells me, for example, that element 15 \(the count of charges in the situation\) is 3 characters wide \(fields 41-43\), that elements 16 is one character wide, and so on. I thus tried doing just that, and ran into problems:
 
-yakshave3.png
+![foo](/yakshave3.webp)
 
 The `read.fwf()` command is expecting simple ASCII or UTF-8 unicode in the text file. Fancy characters and multibyte strings are a problem because they violate the one-character, one-field mapping that a fixed-width file is supposed to respect. You see this sometimes: somewhere along the way, there was a mistake such that characters were written wrong at the bit level. This isn’t something that `read.fwf()` knows how to handle, and it dies. The solution is to inspect the file for non-ASCII characters, try to strip them out and replace them with whatever is supposed to be there, and move on.
 
 The standard tool for this is `grep`, which if you haven’t used it is taken to mean “Get Regular Expression and Print.” \(If you’re doing quantitative social science and haven’t heard of `grep`, it’s time to stop and re-examine your priorities.\) I don’t do this often, but I know that there’s a pretty standard way to search for non-ASCII characters. Some Googling pulls up the right pattern; I try it, and no dice:
 
-yakshave4.png
+![foo](/yakshave4.webp)
 
 It seems that the version of `grep` that comes standard on the Mac doesn’t recognize the `-P` flag! Some more Googling reveals that, as of Mountain Lion, OSX uses BSD `grep` rather than GNU `grep`, and the former doesn’t support “Perl compatible regular expressions,” which is what I specified. All is not lost, though, because there’s a package I can install with the remarkable [Homebrew](https://brew.sh/) \(If you use a Mac and do not use Homebrew, again with the priorities\) called “`pcre`” and which has *inter alia* a command called `pcregrep` which, well, you can guess from the name.
 
 So, I type `brew install pcre`. No dice again:
 
-yakshave5.png
+![foo](/yakshave5.webp)
 
 Xcode is out of date! If you do any sort of programming or even package management on a Mac, you know what Xcode is: the suite of developer tools that for some reason *aren’t* installed by default. I have them on this machine, but I haven’t updated them recently, and Homebrew has determined that some of pcre’s dependencies require a newer version. So, I start updating Xcode...which usually takes a little while.
 
@@ -67,7 +67,7 @@ This is a good time to recap. Right now,
 
 This is classic yak shaving. Frankly, I’m a little nervous that I’m going to have to update my operating system next...but no, Xcode eventually updates, and I start climbing back up the chain. Eventually I can run `pcregrep` and get real results:
 
-yakshave6.png
+![foo](/yakshave6.webp)
 
 This is telling us that, on the 257,194th line of this file \(which has about 440,000 lines\), There is a non-ASCII character just before the characters “806.” This is telling, because if you go back to the original error message, it said that there was an `invalid multibyte string at '<ba>806<39> \'`. It looks like this might be our culprit. Furthermore, when I open the file in Emacs and go to line 257194, I see a superscript “o” in that position. My best guess \(trust me?\) is that this is supposed to be a zero.
 

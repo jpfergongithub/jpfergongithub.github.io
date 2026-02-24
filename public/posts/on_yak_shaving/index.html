@@ -55,7 +55,7 @@ You have probably noticed how the tiniest Java programming project, or home impr
 You have probably noticed how the tiniest Java programming project, or home improvement project often grows seemingly without bound. You start to do something very simple. You need a tool to do that. You notice the tool needs to be tuned a bit to do the job properly. So you set out to sharpen the tool. To do that, you need to read some documentation. In the process, you notice the documentation is obsolete. So you set out to update the documentation… This chain goes on and on. Eventually you can unwind your to-do stack.">
   <meta itemprop="datePublished" content="2019-01-27T13:43:54-05:00">
   <meta itemprop="dateModified" content="2019-01-27T13:43:54-05:00">
-  <meta itemprop="wordCount" content="1897">
+  <meta itemprop="wordCount" content="1891">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="On yak shaving">
   <meta name="twitter:description" content="It is hard to do quantitative social science without picking up some of the habits of computer science. Most of these are technical, but sometimes you imbibe a bit of the culture as well. One cultural artifact that I picked up while a graduate student at MIT was the concept of “yak shaving.” I’ll quote a definition:
@@ -139,21 +139,21 @@ You have probably noticed how the tiniest Java programming project, or home impr
 <h1 id="the-first-digression">The first digression</h1>
 <p>To this point, I’d saved the archives from CISER in my Downloads folder. This wouldn’t work going forward; any project requires more organization so you can remember how the pieces fit together when you go away and come back to it.</p>
 <p>In principle, you can create a folder named “Project” and save <em>everything</em> inside it. I did this for my first couple projects. It sort of worked, but only because I have a good memory. As soon as I started working with co-authors, I discovered all the ways this was insufficient. I therefore started making project directories that have a structure like this one:</p>
-<p>yakshave1.png</p>
+<p><img src="/yakshave1.webp" alt="foo"></p>
 <p>Here, “canonical” holds primary data. Is it a file that you cannot re-create using <em>other</em> files in the project? Then it goes in canonical. By contrast, any data files that I create go in “data,” and the code that generates them goes in “scripts.” I put any codebooks, manuals, or the like in “documentation,” and any articles or book chapters that inform the substantive research question (as distinct from the data-creation and -analysis processes) in “literature.” The output of the project winds up in “drafts,” “figures,” “tables,” and “presentations,” in ways that are probably self-explanatory.</p>
 <p>This whole directory lives on Dropbox. Here, the data are public, and so there’s no privacy concern with posting things this way. My experience over the last eight years has been that Dropbox is the easiest way for me to share files with co-authors and keep everything synced. Before this, I used Subversion, but found that some co-authors never really cottoned to version control. For similar reasons, I’ve been slow to move things into Git repositories. Maybe some day. The key point is that, this way, the entire project lives somewhere that is shared, automatically synced, and protected with version control.</p>
 <p>Thus the very first bit of yak shaving: organize the original files, such that the text files are in canonical and the codebooks are in documentation.</p>
 <h1 id="reading-time">Reading time</h1>
 <p>Reading fixed-width data into R is easy enough; you can use <code>read.fwf()</code> to do it. That command requires you to specify the <em>widths</em> of each element, that is, their start and end positions in the original 80-character record. This is where the codebook becomes important:</p>
-<p>yakshave2.png</p>
+<p><img src="/yakshave2.webp" alt="foo"></p>
 <p>The codebook tells me, for example, that element 15 (the count of charges in the situation) is 3 characters wide (fields 41-43), that elements 16 is one character wide, and so on. I thus tried doing just that, and ran into problems:</p>
-<p>yakshave3.png</p>
+<p><img src="/yakshave3.webp" alt="foo"></p>
 <p>The <code>read.fwf()</code> command is expecting simple ASCII or UTF-8 unicode in the text file. Fancy characters and multibyte strings are a problem because they violate the one-character, one-field mapping that a fixed-width file is supposed to respect. You see this sometimes: somewhere along the way, there was a mistake such that characters were written wrong at the bit level. This isn’t something that <code>read.fwf()</code> knows how to handle, and it dies. The solution is to inspect the file for non-ASCII characters, try to strip them out and replace them with whatever is supposed to be there, and move on.</p>
 <p>The standard tool for this is <code>grep</code>, which if you haven’t used it is taken to mean “Get Regular Expression and Print.” (If you’re doing quantitative social science and haven’t heard of <code>grep</code>, it’s time to stop and re-examine your priorities.) I don’t do this often, but I know that there’s a pretty standard way to search for non-ASCII characters. Some Googling pulls up the right pattern; I try it, and no dice:</p>
-<p>yakshave4.png</p>
+<p><img src="/yakshave4.webp" alt="foo"></p>
 <p>It seems that the version of <code>grep</code> that comes standard on the Mac doesn’t recognize the <code>-P</code> flag! Some more Googling reveals that, as of Mountain Lion, OSX uses BSD <code>grep</code> rather than GNU <code>grep</code>, and the former doesn’t support “Perl compatible regular expressions,” which is what I specified. All is not lost, though, because there’s a package I can install with the remarkable <a href="https://brew.sh/">Homebrew</a> (If you use a Mac and do not use Homebrew, again with the priorities) called “<code>pcre</code>” and which has <em>inter alia</em> a command called <code>pcregrep</code> which, well, you can guess from the name.</p>
 <p>So, I type <code>brew install pcre</code>. No dice again:</p>
-<p>yakshave5.png</p>
+<p><img src="/yakshave5.webp" alt="foo"></p>
 <p>Xcode is out of date! If you do any sort of programming or even package management on a Mac, you know what Xcode is: the suite of developer tools that for some reason <em>aren’t</em> installed by default. I have them on this machine, but I haven’t updated them recently, and Homebrew has determined that some of pcre’s dependencies require a newer version. So, I start updating Xcode&hellip;which usually takes a little while.</p>
 <h1 id="down-the-rabbit-hole">Down the rabbit hole</h1>
 <p>This is a good time to recap. Right now,</p>
@@ -164,7 +164,7 @@ You have probably noticed how the tiniest Java programming project, or home impr
 <li>&hellip;so I can bring the file into R with <code>read.fwf()</code>.</li>
 </ol>
 <p>This is classic yak shaving. Frankly, I’m a little nervous that I’m going to have to update my operating system next&hellip;but no, Xcode eventually updates, and I start climbing back up the chain. Eventually I can run <code>pcregrep</code> and get real results:</p>
-<p>yakshave6.png</p>
+<p><img src="/yakshave6.webp" alt="foo"></p>
 <p>This is telling us that, on the 257,194th line of this file (which has about 440,000 lines), There is a non-ASCII character just before the characters “806.” This is telling, because if you go back to the original error message, it said that there was an <code>invalid multibyte string at '&lt;ba&gt;806&lt;39&gt; \'</code>. It looks like this might be our culprit. Furthermore, when I open the file in Emacs and go to line 257194, I see a superscript “o” in that position. My best guess (trust me?) is that this is supposed to be a zero.</p>
 <p>I change it, save the file, and run <code>pcregrep again</code>. This time it exits without reporting any hits. It seems we’ve found the source of the hiccups&hellip;</p>
 <p>&hellip;until the next error. This one turns out to involve a lot of Googling, but little actual yak shaving. The file includes #s, which are a comment character in R. You have to tell <code>read.fwf()</code> that the comment character is something else&ndash;I chose <em>nothing</em>&ndash;so it will ignore these. With that change, I can read in the file at last!</p>

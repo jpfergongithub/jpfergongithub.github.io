@@ -54,7 +54,7 @@ I’d foundered on cleaning up and encoding the counties that I talked about in 
 I’d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn’t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:">
   <meta itemprop="datePublished" content="2019-03-11T17:05:14-05:00">
   <meta itemprop="dateModified" content="2019-03-11T17:05:14-05:00">
-  <meta itemprop="wordCount" content="2049">
+  <meta itemprop="wordCount" content="2047">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Down in the muck of data">
   <meta name="twitter:description" content="I’ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.
@@ -182,9 +182,9 @@ I’d foundered on cleaning up and encoding the counties that I talked about in 
 <h1 id="the-limits-of-cleaning">The limits of cleaning</h1>
 <p>Let&rsquo;s note right here how often judgment enters into this process. We don&rsquo;t talk about it enough. Most datasets have problems&ndash;typos, missing data, machine or language-encoding hiccups, shifts in coding schemes. The analyst has to make decisions about how to deal with these, and historically those decisions were almost never documented. To this day, no one wants to write up every single design choice they made. That is why it&rsquo;s important to share your data and code; but also that&rsquo;s why it&rsquo;s important to make lists like these, however tedious they seem. If I were to go through my data in Excel or the like, changing errors as I saw them, there would be no record of what I&rsquo;d done, short of analyzing two datasets side by side. Even then, different rules could produce similar results in some cases. Don&rsquo;t just clean your data; whenever possible, clean your data with code.</p>
 <p>Having <em>finally</em> cleaned up the counties and managed to encode them, I moved on to the <code>complainant</code> and <code>respondent</code> variables. Per the codebook, these are four-character strings:</p>
-<p>muck1.png</p>
+<p><img src="/muck1.webp" alt="foo"></p>
 <p>Notice that there&rsquo;s no apparent translation for how to interpret those four characters! Elsewhere in this codebook they refer to another PDF that lists union names, of which I have a copy:</p>
-<p>muck2.png</p>
+<p><img src="/muck2.webp" alt="foo"></p>
 <p>It seems that <code>036</code> corresponds to the Retail Clerks, per the codebook&rsquo;s example, so that&rsquo;s good. But what does the <code>7</code> at the start mean? And sure, I can imagine they use <code>000</code> to mean employer&ndash;or does that mean employer <em>association</em>, while <code>R</code> means employer? And what code indicates an individual?</p>
 <p>Here, I&rsquo;m running up against the limits of the available documentation. For my research, I mostly care whether it&rsquo;s the union or the employer filing the complaint, and I can probably back it out of these data, but it&rsquo;s worth noting that I <em>cannot</em> proceed from here without making some judgment calls. For the moment, I&rsquo;m going to focus on the last three characters in these variables, and come back to the first ones.</p>
 <h1 id="suspicious-error-patterns">Suspicious error patterns</h1>
@@ -234,9 +234,11 @@ I’d foundered on cleaning up and encoding the counties that I talked about in 
 <p>That&rsquo;s <em>weird</em>, right? Erroneous &ldquo;Q&quot;s, &ldquo;A&quot;s, and &ldquo;Z&quot;s show up a lot, because they&rsquo;re right next to the Shift and Tab keys. &ldquo;O&rdquo; and &ldquo;P&rdquo; maybe, since they&rsquo;re below the &ldquo;9&rdquo; and &ldquo;0&rdquo; keys. But &ldquo;J&rdquo;? It&rsquo;s right in the middle of the letter keys.</p>
 <p>Then it hit me: <em>these weren&rsquo;t typed on a modern keyboard</em>. These data come from punched cards, and those would have been typed on a specialized keypunch machine. I have <em>no</em> idea what those keyboards look like. To Google!</p>
 <p>I have reason to suspect that the NLRB and AFL-CIO were using IBM mainframes. Even if I didn&rsquo;t, those were the most common type. With the rise of System/360, the most common keypunch machine was the IBM 29:</p>
-<p>(By <a href="https://de.wikipedia.org/wiki/Benutzer:waelder">waelder</a> - Own work, <a href="https://creativecommons.org/licenses/by/2.5">CC BY 2.5</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1962578">Link</a>)</p>
+<p><img src="/muck3.webp" alt="foo">
+(By <a href="https://de.wikipedia.org/wiki/Benutzer:waelder">waelder</a> - Own work, <a href="https://creativecommons.org/licenses/by/2.5">CC BY 2.5</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1962578">Link</a>)</p>
 <p>If you squint, there are some telltale marks on that keyboard! Let&rsquo;s &ldquo;enhance&rdquo;:</p>
-<p>(By <a href="https://commons.wikimedia.org/wiki/User:Chumwa">Maximilian Dörrbecker</a> - Own work, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA, 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1588025">Link</a>)</p>
+<p><img src="/muck4.webp" alt="foo">
+(By <a href="https://commons.wikimedia.org/wiki/User:Chumwa">Maximilian Dörrbecker</a> - Own work, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA, 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1588025">Link</a>)</p>
 <p>Bingo. The IBM 29 didn&rsquo;t have a separate numeral row. Instead there was a telephone-style numeric keypad on the right-hand side of the keyboard. Since punched cards didn&rsquo;t use upper- and lowercase, you had &ldquo;number-shift&rdquo; and &ldquo;letter-shift&rdquo; keys (the &ldquo;<em>numerisch</em>&rdquo; and &ldquo;<em>alpha</em>&rdquo; keys here). If you stuttered on a &ldquo;4&rdquo;, you&rsquo;d enter a &ldquo;J&rdquo;, and so on. That accounts for a lot of these typos. It even suggests where they ampersands might be coming from&ndash;a missed &ldquo;3&rdquo;!</p>
 <h1 id="delving-deeper">Delving deeper</h1>
 <p>This doesn&rsquo;t solve all problems, of course. It still isn&rsquo;t clear where all the &ldquo;A&quot;s, &ldquo;B&quot;s, and &ldquo;C&quot;s are coming from, nor what that first character in the complainant and respondent variables is supposed to represent. But whenever I find something like this&ndash;a connection between a seemingly random string of digits and the mechanical or human processes that generated it&ndash;I feel like I&rsquo;m coming to understand my data better.</p>

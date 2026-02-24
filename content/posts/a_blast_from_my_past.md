@@ -34,7 +34,7 @@ One of the things Larry needed to know was the size of the work groups involved 
 
 I went online. Some searching directed me to Google Books, which hadn’t really existed back in 2009, and there I found an obscure volume by Gordon Law detailing sources of information about the NLRB. Eventually I was looking at this screenshot:
 
-retro_ulp1.png
+![foo](/retro_ulp1.webp)
 
 Let me highlight a bit:
 
@@ -44,7 +44,7 @@ Reader, my heart skipped a beat when I saw that. At some point in the late 1980s
 
 I hied to [CISER](https://ciser.cornell.edu/)’s website, and sure enough, they seemed to have the goods. I downloaded a series of files, unzipped one, and ran head to see what was in them:
 
-retro_ulp2.png
+![foo](/retro_ulp2.webp)
 
 That might look like gibberish. The key thing, though, is that each of the lines that ends in a backslash is *exactly 80 characters long*. Back in the day, a standard IBM punched card held 80 characters' worth of data. \(This is why standard terminals are also 80 characters wide.\) All signs point to these being the original records–and CISER had a code book, too.
 

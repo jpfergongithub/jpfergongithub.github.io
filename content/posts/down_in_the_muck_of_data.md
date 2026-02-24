@@ -78,11 +78,11 @@ Let's note right here how often judgment enters into this process. We don't talk
 
 Having *finally* cleaned up the counties and managed to encode them, I moved on to the `complainant` and `respondent` variables. Per the codebook, these are four-character strings:
 
-muck1.png
+![foo](/muck1.webp)
 
 Notice that there's no apparent translation for how to interpret those four characters! Elsewhere in this codebook they refer to another PDF that lists union names, of which I have a copy:
 
-muck2.png
+![foo](/muck2.webp)
 
 It seems that `036` corresponds to the Retail Clerks, per the codebook's example, so that's good. But what does the `7` at the start mean? And sure, I can imagine they use `000` to mean employer--or does that mean employer *association*, while `R` means employer? And what code indicates an individual?
 
@@ -144,10 +144,12 @@ Then it hit me: *these weren't typed on a modern keyboard*. These data come from
 
 I have reason to suspect that the NLRB and AFL-CIO were using IBM mainframes. Even if I didn't, those were the most common type. With the rise of System/360, the most common keypunch machine was the IBM 29:
 
+![foo](/muck3.webp)
 (By [waelder](https://de.wikipedia.org/wiki/Benutzer:waelder) - Own work, [CC BY 2.5](https://creativecommons.org/licenses/by/2.5), [Link](https://commons.wikimedia.org/w/index.php?curid=1962578))
 
 If you squint, there are some telltale marks on that keyboard! Let's "enhance":
 
+![foo](/muck4.webp)
 (By [Maximilian Dörrbecker](https://commons.wikimedia.org/wiki/User:Chumwa) - Own work, [CC BY-SA, 3.0](http://creativecommons.org/licenses/by-sa/3.0/), [Link](https://commons.wikimedia.org/w/index.php?curid=1588025))
 
 Bingo. The IBM 29 didn't have a separate numeral row. Instead there was a telephone-style numeric keypad on the right-hand side of the keyboard. Since punched cards didn't use upper- and lowercase, you had "number-shift" and "letter-shift" keys (the "*numerisch*" and "*alpha*" keys here). If you stuttered on a "4", you'd enter a "J", and so on. That accounts for a lot of these typos. It even suggests where they ampersands might be coming from--a missed "3"!

@@ -8,7 +8,7 @@ The next two fields in these old ULP files are titled, simply, “county” and 
 
 Consider the relevant page from the code book:
 
-solving1.png
+![foo](/solving1.webp)
 
 Notice a few things here. No text is recorded in this file, remember; everything’s a code whose key is external to the file. Here, the codebook just points us to another codebook. Counties and states are recorded using a numerical code maintained by the General Services Administration’s Office of Finance. We have an example: Erie County, Ohio is encoded as 04334, i.e., Ohio is 34, and Erie County *within* Ohio is 043. To Google!
 
@@ -16,7 +16,7 @@ My first guess is that these are, at root, FIPS codes, part of the Federal Infor
 
 A quick search of the General Service Administration’s site reveals that, yes, the Geographic Location Codes are based on the FIPS, and they have available for download an Excel file filled with cities and their relevant geographic codes:
 
-solving2.png
+![foo](/solving2.webp)
 
 The problem here is that I only need unique county codes. This file has unique *city* codes, which means it repeats many of the counties many times. It’s okay, though. This is why the Good Lord gave us Emacs.
 
@@ -24,7 +24,7 @@ This is not the place to sing the praises of Emacs. Suffice it to say that, if y
 
 I wrote up a detailed example of how you might transform that Excel file into something like this using Emacs...
 
-solving3.png
+![foo](/solving3.webp)
 
 ...but I deleted all of it, because it felt more like I was showing off than like I was imparting useful information. In point of fact, there are many, many good tutorials on using Emacs to be found online and indeed within Emacs itself. And, to be fair, a *lot* of people who have no fear of complicated text manipulation nonetheless despise it. \(I’m looking at you, Vi users.\) I think it’s the best thing for a lot of our work, but the larger point is that the power of a good text editor is not to be ignored.
 
@@ -36,7 +36,7 @@ Notice that that codebook page doesn’t specify which *edition* of the GSA’s 
 
 So, I did that:
 
-solving5.png
+![foo](/solving5.webp)
 
 Notice that the text names that I’m giving those counties--the labels that will appear once the factor variables are properly encoded--also have the two-letter state in them. *This is important*. Tons of states have Washington or Jefferson Counties \(And Wyoming Counties! It’s a river in Pennsylvania, people!\). If you don’t distinguish the state in the county names, the best-case scenario is that your function will fail because the factors are not uniquely identified. The worst-case scenario is that it *doesn’t* fail, and now you have multiple factor variables with the same label. This defeats the purpose of having labels.
 
@@ -44,7 +44,7 @@ So, I wrote up some long functions that would define factor variables for counti
 
 I encoded the states, then started trying to check that the encoding worked. For example, I thought I’d make sure that counties were mapping uniquely to states. But that didn’t seem to be happening:
 
-solving6.png
+![foo](/solving6.webp)
 
 It appeared that the county designation `015` was spread across almost *all* states. This happened with others as well. For several minutes, I despaired, thinking that this project might be dead in the water. If the geographic location data wasn’t any good, there wasn’t much point continuing.
 
@@ -61,7 +61,7 @@ The first is almost never true, and the second never is. Yet I find it distressi
 
 That said, I still had a problem. When I tabulated the *states*, the counts looked all wrong:
 
-solving7.png
+![foo](/solving7.webp)
 
 A thing about the output of R’s `table()` function: it lists values above then counts below, left to right. This is telling us for example that 1 record has the state recorded as `&7`, 5,611 have it recorded as `01`, and so on. What I want you to focus on are the counts for `03` and `04`. I mentioned above that the FIPS-2 doesn’t have a label for `03`; so why are there 2,693 records with it? Furthermore, `04` is Arizona, while `06` is California. Yet here, `06` only has 4,059 records, while `04` has fully 57,771! That makes no sense.
 
@@ -71,7 +71,7 @@ Eventually, I surmised that the NLRB had kept using a much older edition of the 
 
 More Googling led me to a scanned copy of a 1969 edition of the GSA’s Geographical Location Codes, provided by the University of Michgan to *someone*. Before I go on, let’s just pause to admire this gem of a cover:
 
-solving8.png
+![foo](/solving8.webp)
 
 How old-school can you get? We’ve got magnetic tape; we’ve got punched cards; Hell, their example of a foreign-yet-familiar place is “Saigon, Viet-Nam!”
 
@@ -79,7 +79,7 @@ I love the smell of old documents in the morning. It smells like *comprehension*
 
 Inside was the key I needed:
 
-solving9.png
+![foo](/solving9.webp)
 
 Bingo. In the 1969 and earlier editions, California was coded `03`, *Pennsylvania* was actually coded `37`--but Texas was `42`, which makes sense. Dig how Alaska was `50` and Hawai’i was `51`. This strongly suggests that this edition included incremental changes from some point in the 1950s, before either became a state.
 

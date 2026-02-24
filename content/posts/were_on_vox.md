@@ -10,11 +10,11 @@ What I find really impressive is that Alvin didn't get in touch with us before t
 
 It's also really neat to see our explanation of different forms of segregation show up almost unchanged in the video. Here's the first figure from our paper:
 
-vox1.png
+![foo](/vox1.webp)
 
 And here's the key shot at 4:59 in the [video on YouTube](https://www.youtube.com/watch?v=qaPQN0aW47I):
 
-vox2.png
+![foo](/vox2.webp)
 
 The last thing that should be noted here is that, when they showed the paper in the video, they used the preprint version that Rem and I posted on [SocArXiv](https://osf.io/preprints/socarxiv/c6hsd/) before the article was accepted. The ease with which you can find it, versus the hoops I just jumped through to find the \(gated\) copy of Hall *et al.*'s article, is a pleasant little testament to the value of open access and preprint servers.
 

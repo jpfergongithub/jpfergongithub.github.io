@@ -52,7 +52,7 @@ In 2009, I attended a talk by Bruce Western about the collapse of trade-union no
   <meta itemprop="description" content="A whole lotta context In 2009, I attended a talk by Bruce Western about the collapse of trade-union norms in the United States. He and Jake Rosenfeld had this paper where they analyzed the effect of trade-union membership on wage dispersion in various areas and times. They argued that “unions helped institutionalize norms of equity, reducing the dispersion of nonunion wages in highly unionized regions and industries.” The fall of the house of labor, in turn, explained a non-trivial share of the growth in U.S. wage inequality in recent decades.">
   <meta itemprop="datePublished" content="2019-01-21T13:26:14-05:00">
   <meta itemprop="dateModified" content="2019-01-21T13:26:14-05:00">
-  <meta itemprop="wordCount" content="1606">
+  <meta itemprop="wordCount" content="1604">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="A blast from my past">
   <meta name="twitter:description" content="A whole lotta context In 2009, I attended a talk by Bruce Western about the collapse of trade-union norms in the United States. He and Jake Rosenfeld had this paper where they analyzed the effect of trade-union membership on wage dispersion in various areas and times. They argued that “unions helped institutionalize norms of equity, reducing the dispersion of nonunion wages in highly unionized regions and industries.” The fall of the house of labor, in turn, explained a non-trivial share of the growth in U.S. wage inequality in recent decades.">
@@ -141,14 +141,14 @@ In 2009, I attended a talk by Bruce Western about the collapse of trade-union no
 <p>There the story seemed to end. But then we cut to this past November, 2018. I still do <em>pro bono</em> data analysis for the AFL-CIO from time to time. This fall, I was one of several people working on briefing papers for their Future of Work Commission. Larry Mishels of the <a href="https://www.epi.org/">Economic Policy Institute</a> wrote me. For his own briefing paper, he was running some simulations, and he needed values for some of his parameters. What was the win rate in union representation elections in, say, 1987? I’m one of the few people who is conversant with the election data, so Larry and I got to talking.</p>
 <p>One of the things Larry needed to know was the size of the work groups involved in each election. In the NLRB’s Case Handling Information Processing System (CHIPS), which they used from roughly 1984 to 1999, there is a field in each record for the unit size. It isn’t a real number, though; it’s a categorical variable. This almost certainly corresponded to a coding scheme: 0 for 1-9, 1 for 10-19, 2 for 20-49, and so on. Where there’s a coding scheme, there must (or at least should!) be a codebook. But where?</p>
 <p>I went online. Some searching directed me to Google Books, which hadn’t really existed back in 2009, and there I found an obscure volume by Gordon Law detailing sources of information about the NLRB. Eventually I was looking at this screenshot:</p>
-<p>retro_ulp1.png</p>
+<p><img src="/retro_ulp1.webp" alt="foo"></p>
 <p>Let me highlight a bit:</p>
 <blockquote>
 <p>Data files were also produced covering elections (1972-1987), representation cases closed (1964-1986), <strong>and unfair labor practices (1963-1986)</strong>, although these are not available from the National Archives and Records Administration. <strong>One copy of these earlier files is held by the Data Archive at the Cornell Institute for Social and Economic Research</strong>.</p>
 </blockquote>
 <p>Reader, my heart skipped a beat when I saw that. At some point in the late 1980s, someone <em>had</em> made a data-dump of the NLRB’s ULP micro-data, and it might still exist!</p>
 <p>I hied to <a href="https://ciser.cornell.edu/">CISER</a>’s website, and sure enough, they seemed to have the goods. I downloaded a series of files, unzipped one, and ran head to see what was in them:</p>
-<p>retro_ulp2.png</p>
+<p><img src="/retro_ulp2.webp" alt="foo"></p>
 <p>That might look like gibberish. The key thing, though, is that each of the lines that ends in a backslash is <em>exactly 80 characters long</em>. Back in the day, a standard IBM punched card held 80 characters&rsquo; worth of data. (This is why standard terminals are also 80 characters wide.) All signs point to these being the original records–and CISER had a code book, too.</p>
 <p>Suddenly, nearly a decade after I set this project aside, it seemed like I could actually do it.</p>
 <h1 id="why-i-am-writing-this">Why I am writing this</h1>
