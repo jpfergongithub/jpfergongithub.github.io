@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sounds better</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Sounds better</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Feb 2026 07:28:49 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aws</title>
+      <link>http://localhost:1313/posts/aws/</link>
+      <pubDate>Tue, 24 Feb 2026 07:28:49 -0500</pubDate>
+      <guid>http://localhost:1313/posts/aws/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com&#34;&gt;Amazon Web Services (AWS)&lt;/a&gt; has revolutionized the world of cloud computing, providing a robust and scalable platform for businesses, startups, and developers. With a vast array&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-features-of-amazon-web-services&#34;&gt;Key Features of Amazon Web Services:&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-compute-services&#34;&gt;1. &lt;strong&gt;Compute Services:&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;AWS offers a variety of compute services, including Amazon EC2 (Elastic Compute Cloud) for scalable virtual servers, AWS Lambda for serverless computing, and AWS Elastic Beanstalk for easy application deployment.&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-storage-solutions&#34;&gt;2. &lt;strong&gt;Storage Solutions:&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;From Amazon S3 (Simple Storage Service) for scalable object storage to Amazon EBS &amp;hellip;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello World</title>
+      <link>http://localhost:1313/posts/hello-world/</link>
+      <pubDate>Mon, 23 Feb 2026 15:00:45 -0500</pubDate>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
+      <description>&lt;h1 id=&#34;hello-world&#34;&gt;Hello World&lt;/h1&gt;&#xA;&lt;p&gt;This is &lt;strong&gt;bold&lt;/strong&gt; text and this is &lt;em&gt;italicized&lt;/em&gt; text.&lt;/p&gt;&#xA;&lt;h2 id=&#34;2nd-level&#34;&gt;2nd level&lt;/h2&gt;&#xA;&lt;h3 id=&#34;3rd-level&#34;&gt;3rd level&lt;/h3&gt;&#xA;&lt;p&gt;Good times&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
