@@ -32,7 +32,7 @@ Let's imagine that our workplaces are nested within groups. This happens all the
 
 If the unit can be completely divided into $G$ mutually exclusive groups then Theil's $H$ can be decomposed into $G+1$ components: one for the segregation *between* groups and $G$ for the segregation within each group:
 
-$$H = fancy$$
+$$H = \overbrace{ \sum_g \frac{p_g}{p} \frac{E-E_g}{E}}^\text{Between-group} + \overbrace{ \sum_g \frac{p_g}{p} \frac{E_g}{E} \left( \sum_j \frac{p_{gj}}{p_g} \frac{E_g-E_{gj}}{E_g} \right) }^\text{Within groups}$$
 
 Notice that each of the within-group bits is just the simpler version of $H$. That's how the fractal nature of this statistic shows up. Those lower-level statistics are then put into a weighted sum, where the weights are the group's relative size *and* the group's relative diversity \(i.e., its relative entropy\).
 
