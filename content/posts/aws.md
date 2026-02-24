@@ -1,6 +1,6 @@
 +++
 date = '2026-02-24T07:28:49-05:00'
-draft = true
+draft = false
 title = 'Aws'
 +++
 
