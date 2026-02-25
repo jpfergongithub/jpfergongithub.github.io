@@ -49,8 +49,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="JP Ferguson dot net">
-  <meta itemprop="datePublished" content="2019-03-18T17:52:55-05:00">
-  <meta itemprop="dateModified" content="2019-03-18T17:52:55-05:00">
+  <meta itemprop="datePublished" content="2020-01-19T20:54:16-05:00">
+  <meta itemprop="dateModified" content="2020-01-19T20:54:16-05:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="JP Ferguson dot net">
 
@@ -129,14 +129,14 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/a_vow_i_made/" class="color-inherit dim link">
-            A vow I made
+          <a href="/posts/fun_with_modulo_and_boole/" class="color-inherit dim link">
+            Fun with modulo and Boole
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>This has to do with a paper that I published in 2015 but that I started working on in late 2012 and substantively wrote in 2013: &ldquo;<a href="https://osf.io/zf9j8">The Control of Managerial Discretion: Evidence from Unionization&rsquo;s Impact on Employment Segregation</a>.&rdquo; In many ways, that paper riffs off of work that had been published a few years earlier, work that investigated the effect of firms&rsquo; diversity policies on their actual workforce composition. That work is both very good and limited: very good because it looked at longitudinal, within-firm changes rather than just changes across a population of firms; limited because the authors could not model and adjust for the self-selection of firms into adopting such policies. (All good research is limited in some way, but that&rsquo;s a topic for another post.) My idea was to look at union-representation elections, because unions impose many of the same constraints on arbitrary management that diversity policies do, and yet unionization isn&rsquo;t self-selected by the employer. It <em>is</em> self-selected by the employees, but because they do so through election records, I could focus on very close elections and use a regression-discontinuity design to identify the treatment effect net of self-selection.</p>
+          <p>Segregation research has what is called the &ldquo;Checkerboard problem.&rdquo; Back in 1983, Michael White pointed out that most segregation measures look at how evenly distributed groups are between sub-units in a larger unit, like neighborhoods in a city, but ignore the spatial arrangement of groups within and between those units. The problem&rsquo;s name comes from imagining a city where each census tract looks like a checkerboard. Assume the city is half white and half black. A census tract that has houses arranged in the classic checkerboard pattern would be half white and half black, like the city as a whole; but so too would a tract where all the squares on the left-hand side of the board are white and all the squares on the right-hand side are black. The &ldquo;problem&rdquo; here is that traditional segregation measures would say that both of these tracts are unsegregated, but the spatial arrangement tells us otherwise:</p>
         </div>
-        <a href="/posts/a_vow_i_made/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/fun_with_modulo_and_boole/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -152,15 +152,14 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/down_in_the_muck_of_data/" class="color-inherit dim link">
-            Down in the muck of data
+          <a href="/posts/a_christmas_miracle/" class="color-inherit dim link">
+            A Christmas miracle: New working paper
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>I&rsquo;ve been back in the ULP dataset. I was working in it about three weeks ago and set it aside while I went down to Boston to work on other projects. I had some spare time this weekend, though, and decided to open it back up.</p>
-<p>I&rsquo;d foundered on cleaning up and encoding the counties that I talked about in [this post][0]. Both state and county names were saved using FIPS codes, but the data has plenty of typos. This shouldn&rsquo;t surprise us. All of these records were typed in by a person, and there are more than 440,000 of them. Even a 99.5% accuracy rate would leave more than 2,000 corrupted entries. Thus cleaning, which always takes the same dreary form:</p>
+          <p>As mentioned in the last post (which, dear God, was more than two months ago!), I&rsquo;ve been underwater for most of a term. Which is a thing that happens to professors sometimes, and I needn&rsquo;t apologize for letting blogging slip. Not least because today, less than 48 hours after I posted the grades for my last classes, I finished the first complete draft of a paper that we&rsquo;ve been working on, in fits and starts, since February 2018.</p>
         </div>
-        <a href="/posts/down_in_the_muck_of_data/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/a_christmas_miracle/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -176,15 +175,15 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/matrix_math/" class="color-inherit dim link">
-            Matrix math
+          <a href="/posts/why_i_love_emacs_sometimes/" class="color-inherit dim link">
+            Why I love Emacs sometimes
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>On and off for about a year now, we&rsquo;ve been working on a paper that tries to understand how changes to the US industrial structure have affected racial segregation between US workplaces. We think that decompositions of Theil&rsquo;s information statistic at the industry level give us a window into these changes. Details to follow in the paper we&rsquo;re writing.</p>
-<p>We&rsquo;ve had a problem, though. I wrote all of our original code for calculating Theil&rsquo;s $H$ in Stata. I did this because I know Stata quite well, but it is terrible at handling recursion. This for example is the code I wrote for calculating a three-level decomposition. And it&rsquo;s <em>just</em> the code, with all comments and data-wrangling removed:</p>
+          <p>When I moved from Stanford to McGill, I was startled by how differently the two schools handle their exams. Stanford has a strong honor code; McGill has a strong police state. In Quebec I first heard the (admittedly awesome) term &ldquo;invigilators,&rdquo; the personnel who perch at the front of an examination room and, in extremis, even accompany students to the bathroom during tests.</p>
+<p>I mustn&rsquo;t let my dislike for this system hijack this post, so I&rsquo;ll zoom in on one aspect: preparing multiple-choice exams. For classes above a certain size, professors must submit multiple versions of any exams that have a multiple-choice component. The rationale is that, while students are supposed to sit with an empty chair between them, sometimes (<em>Horrors!</em>) they have to sit side by side. In such instances, they should have exams that present the questions in a different order, to complicate copying.</p>
         </div>
-        <a href="/posts/matrix_math/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/posts/why_i_love_emacs_sometimes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -200,26 +199,26 @@
           
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/some_blather/" class="link black dim">
-                Some blather about Theil&#39;s H
+              <a href="/posts/trials_of_self_replication/" class="link black dim">
+                The trials of self replication
               </a>
             </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/were_on_vox/" class="link black dim">
-                We&#39;re on Vox
+              <a href="/posts/social_science_and_the_big_o/" class="link black dim">
+                Social science and the big O
               </a>
             </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/solving_little_mysteries/" class="link black dim">
-                Solving little mysteries
+              <a href="/posts/will_it_work/" class="link black dim">
+                Will it work?
               </a>
             </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/on_yak_shaving/" class="link black dim">
-                On yak shaving
+              <a href="/posts/not_denying_the_data/" class="link black dim">
+                Not denying the data
               </a>
             </h2>
           

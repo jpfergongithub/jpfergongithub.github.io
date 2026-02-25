@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Fun with modulo and Boole | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Segregation research has what is called the &ldquo;Checkerboard problem.&rdquo; Back in 1983, Michael White pointed out that most segregation measures look at how evenly distributed groups are between sub-units in a larger unit, like neighborhoods in a city, but ignore the spatial arrangement of groups within and between those units. The problem&rsquo;s name comes from imagining a city where each census tract looks like a checkerboard. Assume the city is half white and half black. A census tract that has houses arranged in the classic checkerboard pattern would be half white and half black, like the city as a whole; but so too would a tract where all the squares on the left-hand side of the board are white and all the squares on the right-hand side are black. The &ldquo;problem&rdquo; here is that traditional segregation measures would say that both of these tracts are unsegregated, but the spatial arrangement tells us otherwise:">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/fun_with_modulo_and_boole/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/fun_with_modulo_and_boole/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Fun with modulo and Boole">
+  <meta property="og:description" content="Segregation research has what is called the “Checkerboard problem.” Back in 1983, Michael White pointed out that most segregation measures look at how evenly distributed groups are between sub-units in a larger unit, like neighborhoods in a city, but ignore the spatial arrangement of groups within and between those units. The problem’s name comes from imagining a city where each census tract looks like a checkerboard. Assume the city is half white and half black. A census tract that has houses arranged in the classic checkerboard pattern would be half white and half black, like the city as a whole; but so too would a tract where all the squares on the left-hand side of the board are white and all the squares on the right-hand side are black. The “problem” here is that traditional segregation measures would say that both of these tracts are unsegregated, but the spatial arrangement tells us otherwise:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-01-19T20:54:16-05:00">
+    <meta property="article:modified_time" content="2020-01-19T20:54:16-05:00">
+
+  <meta itemprop="name" content="Fun with modulo and Boole">
+  <meta itemprop="description" content="Segregation research has what is called the “Checkerboard problem.” Back in 1983, Michael White pointed out that most segregation measures look at how evenly distributed groups are between sub-units in a larger unit, like neighborhoods in a city, but ignore the spatial arrangement of groups within and between those units. The problem’s name comes from imagining a city where each census tract looks like a checkerboard. Assume the city is half white and half black. A census tract that has houses arranged in the classic checkerboard pattern would be half white and half black, like the city as a whole; but so too would a tract where all the squares on the left-hand side of the board are white and all the squares on the right-hand side are black. The “problem” here is that traditional segregation measures would say that both of these tracts are unsegregated, but the spatial arrangement tells us otherwise:">
+  <meta itemprop="datePublished" content="2020-01-19T20:54:16-05:00">
+  <meta itemprop="dateModified" content="2020-01-19T20:54:16-05:00">
+  <meta itemprop="wordCount" content="2603">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Fun with modulo and Boole">
+  <meta name="twitter:description" content="Segregation research has what is called the “Checkerboard problem.” Back in 1983, Michael White pointed out that most segregation measures look at how evenly distributed groups are between sub-units in a larger unit, like neighborhoods in a city, but ignore the spatial arrangement of groups within and between those units. The problem’s name comes from imagining a city where each census tract looks like a checkerboard. Assume the city is half white and half black. A census tract that has houses arranged in the classic checkerboard pattern would be half white and half black, like the city as a whole; but so too would a tract where all the squares on the left-hand side of the board are white and all the squares on the right-hand side are black. The “problem” here is that traditional segregation measures would say that both of these tracts are unsegregated, but the spatial arrangement tells us otherwise:">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-fun_with_modulo_and_boole">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-fun_with_modulo_and_boole flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Fun with modulo and Boole</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-01-19T20:54:16-05:00">January 19, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Segregation research has what is called the &ldquo;Checkerboard problem.&rdquo; Back in 1983, Michael White pointed out that most segregation measures look at how evenly distributed groups are between sub-units in a larger unit, like neighborhoods in a city, but ignore the spatial arrangement of groups within and between those units. The problem&rsquo;s name comes from imagining a city where each census tract looks like a checkerboard. Assume the city is half white and half black. A census tract that has houses arranged in the classic checkerboard pattern would be half white and half black, like the city as a whole; but so too would a tract where all the squares on the left-hand side of the board are white and all the squares on the right-hand side are black. The &ldquo;problem&rdquo; here is that traditional segregation measures would say that both of these tracts are unsegregated, but the spatial arrangement tells us otherwise:</p>
+<p><img src="/boole1.webp" alt="foo"></p>
+<p>One way around this would be to look at segregation between sub-tracts, but this has practical limitations. Data are only recorded to a certain degree of resolution most of the time. Instead, it makes sense to develop spatially weighted measures of segregation, as Reardon and O&rsquo;Sullivan did in a 2004 paper. In that paper, they presented a nice graphic that shows the different dimensions of spatial segregation, contrasing Evenness/Clustering versus Isolation/Exposure:</p>
+<p><img src="/boole2.webp" alt="foo"></p>
+<p>I&rsquo;m working on a paper about spatial segregation, and I wanted to reproduce this diagram. The most obvious way to do that for most people would be to fire up PowerPoint, get to copying and pasting, and eventually save the result as a graphic you could paste into Word or even a LaTeX document. Sure, you <em>could</em> do that, but the previous posts on this blog strongly imply that I&rsquo;m not most people. Implementing this programmatically, as a vector graphic, seemed like a fun challenge.</p>
+<p>This meant it was time for TikZ. For the uninfected, TikZ is a way of building vector graphics that plays extremely well with LaTeX. Its name is a recursive German acronym for &ldquo;TikZ ist kein Zeichenprogramm,&rdquo; or &ldquo;TikZ is not a drawing program.&rdquo; This passes for humor among some nerds. I&rsquo;ve used TikZ on and off for a decade. When everything works, it can produce some truly lovely and clean data-driven graphics. But it is <em>always</em> a pain in the ass. Why do I keep coming back to it? Because each time, I learn a little more, and I&rsquo;m addicted to that feeling.</p>
+<p>The checkerboards in the first figure, for example, I drew in TikZ. And the code to do so is genuinely not that complicated:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#66d9ef">\documentclass</span>{standalone} <span style="color:#75715e">%
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\usepackage</span>{tikz}          <span style="color:#75715e">% Vanilla headers from LaTeX
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\begin</span>{document}           <span style="color:#75715e">%
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\begin</span>{tikzpicture}[scale=0.5]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\x</span> in {0,...,7}         <span style="color:#75715e">% Loops! We all know loops!
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\y</span> in {0,...,7} {     <span style="color:#75715e">% Iterate to draw a checkerboard.
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{iseven(<span style="color:#66d9ef">\x</span>+<span style="color:#66d9ef">\y</span>) ? &#34;black&#34; : &#34;white&#34;} <span style="color:#75715e">% ifthenelse
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[fill=\color]</span> (<span style="color:#66d9ef">\x</span>,<span style="color:#66d9ef">\y</span>) circle(0.4cm); <span style="color:#75715e">% Conditional fill
+</span></span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\begin</span>{scope}[xshift=9cm] <span style="color:#75715e">% Move all reference right of what we&#39;ve drawn
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\x</span> in {0,...,7}                     <span style="color:#75715e">% More loops!
+</span></span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\y</span> in {0,...,7} {                 <span style="color:#75715e">%
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{<span style="color:#66d9ef">\x</span>&gt;3 ? &#34;black&#34; : &#34;white&#34;} <span style="color:#75715e">% ifthenelse again
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[fill=\color]</span> (<span style="color:#66d9ef">\x</span>,<span style="color:#66d9ef">\y</span>) circle(0.4cm); <span style="color:#75715e">% Conditional fill
+</span></span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\end</span>{scope}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\end</span>{tikzpicture}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\end</span>{document}
+</span></span></code></pre></div><p>For the most part, that code is going through loops to draw circles: the inner <code>\foreach \y</code> loop builds a column of circles, and the outer <code>\foreach \x</code> loop builds a row of these columns. Probably the most offputting lines in there are the ones that start with <code>\pgfsetmacro</code>. And they <em>should</em> be offputting! Those lines are your first indication that the whole TikZ language sits on top of <em>another</em> language: PGF, or the Portable Graphics Format. Confused yet?</p>
+<p>Here&rsquo;s the thing about PGF, in my opinion: it&rsquo;s hot garbage. Or rather, it&rsquo;s an astonishingly low-level language, given how high-level TikZ itself is. This means that, whenever you have to do something tricky in your TikZ drawing, you punch through the glossy front end and fall a <em>long</em> way, down to a programming language that borrows from something clever that Don Knuth did in the 1970s.</p>
+<p>(Before I go on, let me clarify how the if-then-else operator works in PGF. <code>a ? b : c</code> means &ldquo;If <code>a</code> is true then <code>b</code>, else <code>c</code>.&rdquo; Therefore here <code>\pgfsetmacro</code> is setting the value of a variable (or &ldquo;macro&rdquo;&ndash;Stata users <em>brrrrrrup brrrrrrup!</em>) called <code>color</code> based on the if-then-else condition in the following set of braces. In the first case, I&rsquo;m adding the <code>x</code> and <code>y</code> indices of each circle, starting at the lower-left of the board, and coloring the circle black if the index is even. In the second, I&rsquo;m coloring all circles in the column black if the column index is 4 or greater.)</p>
+<h1 id="clock-math">Clock math</h1>
+<p>The upper panels of Reardon and O&rsquo;Sullivan&rsquo;s figure aren&rsquo;t that hard. They&rsquo;re basically repeating patterns in one dimension. <em>More or less</em> every third circle in the upper-right is black, for example. It gets a little janky as you move between rows, but we can work with that.</p>
+<p>As soon as you hear &ldquo;regular repeating pattern&rdquo; you should think loops, right? NO. I&rsquo;ve seen people in my field do that before, but&ndash;especially when you already have numbers you&rsquo;re looping over&ndash;you should be using the modulus function. This is not the place for an introduction to finite math, but if you want to be a quantitative social scientist and haven&rsquo;t spent much time with the modulus function, you have a homework assignment.</p>
+<p>Modular arithmetic is just math done on a clock face. Everyone understands that three hours after 10 o&rsquo;clock is 1 o&rsquo;clock. That means that everyone understands that $10 + 3(mod 12) = 1$ or that <code>mod(10+3,12)=1</code>. Modular arithmetic shows up all over the place, especially in cryptography (Diffie-Helman key exchange, anyone?), but it&rsquo;s also a bog-standard tool for generating repeating sequences. Thus the code for generating the upper-right checkerboard isn&rsquo;t that much more complicated than our most basic checkerboard:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\x</span> in {0,...,9} 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\y</span> in {0,...,11} {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\shift</span>}{mod(<span style="color:#66d9ef">\y</span>,2) ? .5 : 0}
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\bump</span>}{mod(<span style="color:#66d9ef">\y</span>,2) ? 0 : 1}
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{mod(<span style="color:#66d9ef">\x</span>+<span style="color:#66d9ef">\bump</span>,3) ? &#34;white&#34; : &#34;black&#34;}
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[fill=\color]</span> (<span style="color:#66d9ef">\x</span>+<span style="color:#66d9ef">\shift</span>,<span style="color:#66d9ef">\y</span>) circle (0.4cm);
+</span></span><span style="display:flex;"><span>      }
+</span></span></code></pre></div><p><img src="/boole3.webp" alt="foo"></p>
+<p>There are only a few changes. I set a macro <code>shift</code> that scooches the odd-numbered rows over half the distance of a circle, to resemble the original. (Remember that all the row and column indices start from zero, and they start at the <em>lower-left</em>&ndash;I wasted a couple of hours on this code before I remember that I shouldn&rsquo;t be numbering and counting from the <em>upper</em>-left!) This means that <code>shift</code> affects the <em>placement</em> of the circles but not their <em>color</em>. Note that it isn&rsquo;t invoked until the actual <code>\draw</code> command. Meanwhile <code>bump</code> gives us an offset so that which exact circles are black alternates between rows. Alternating rows are actually only offset by one, but when combined with the shifting of the rows it looks like more.</p>
+<p>Pay close attention to how the <code>mod()</code> operator works here. Row indices are being mapped onto a two-digit clockface, so $[0,1,2,3,\ldots{},8,9,10,11] \rightarrow [0,1,0,1,\ldots{},0,1,0,1]$. This is how <code>mod(\y,2)</code> lets me flag alternating rows. Then within the rows, the column indices are being mapped onto a three-digit clockface. On the even-numbered rows, $[0,1,2,3,4,5,6,7,8,9] \rightarrow [0,1,2,0,1,2,0,1,2,0]$. On the odd-numbered rows, because of the bump, $[1,2,3,4,5,6,7,8,9,10] \rightarrow [1,2,0,1,2,0,1,2,0,1]$. If you look closely, you&rsquo;ll see that the zeros in each of those right-hand sequences corresponds to a black circle. This is what that last if-then-else statement in the code does for us: any non-zero result receives the color &ldquo;white&rdquo; while zeros receive the color &ldquo;black.&rdquo;</p>
+<p>The upper-left panel of the figure works the same way, with different values for <code>\bump</code> and for the base of the modulus (Bonus points if you can figure them out). I had these two figured out within an hour of a cold start. The bottom two panels are more complicated, though. notice that they have multiple patterns, depending on the row index. And that lovely if-then-else operator, <code>a ? b : c</code>, <em>does not nest</em>.</p>
+<p>If I were going to make those lower panels, I was going to have to spend more quality time with PGF.</p>
+<h1 id="this-is-where-the-whining-starts">This is where the whining starts</h1>
+<p>Let me note that the idea for this post was born while I was wrestling fruitlessly with row and column indices within modular arithmetic earlier today. I kept getting bizarre results that were making me doubt my understanding of PGF, and possibly of my sanity. Sometimes the resulting pictures only made sense if you started enumerating indices from 1 rather than from 0; sometimes it looked like the if-then-else operator returned the first value for <em>zero</em> results and the second for everything else. Because the modular base is small (i.e., two), it was easy to see the results as flipped rather than offset. I pulled on my hair a lot this afternoon, and my confusion was not helped by the syntax of PGF.</p>
+<p>Consider the lower-right panel. Here there are three different line patterns. The first row is all white, the second has every third circle colored black, and the third row has every third circle <em>offset by one</em> colored white. The classic way to deal with three cases is a nested if-then-else: <code>a ? b : c ? d : e</code>. Alternatively you could write that as <code>a ? c ? d : e : c</code>, but it doesn&rsquo;t matter because neither works. Instead, you need to use a very low-level PGF command, <code>\ifnum</code>.</p>
+<p>This routine has some quirks. For starters, it only accepts integer arguments, which means that the floating-point results of, say, the <code>mod()</code> function will produce errors. Hence <code>int(mod())</code> will be necessary. Nor can you pass functions as arguments to <code>\ifnum</code> which can then be evaluated to produce variables. Instead the functions have to be evaluated outside the loop and passed to it as <code>\pgfmathresult</code>. As you might guess, each of these quirks took some time to sort out.</p>
+<p>Eventually I could produce the lower-right panel, including the offset of the alternating &ldquo;sets&rdquo; of triangles. This was eased by the fact that the logical tests that you have to pass to the if-then-else operator are not that complicated: either a circle&rsquo;s index modulo 3 is zero or it isn&rsquo;t. If it is, color it black in one case, white in the other.</p>
+<p>But with that said, turn your eyes back to the lower-<em>left</em> panel of Reardon and O&rsquo;Sullivan&rsquo;s diagram. Consider in particular the third row up from the bottom, the one with two black circles filled in. Here a circle should be black if its index modulo 5 is zero <em>OR</em> if its index modulo 6 is zero. Suddenly the logic becomes more complicated.</p>
+<p>It will not work to test for whether one condition <em>or</em> the other is satisfied here. But to understand why, we need to spend a little time with Boolean algebra.</p>
+<p>Once again, here I describe something that people with a background in mathematics or computer science will find very basic. But I stress that, in most of the social sciences, this sort of thing is maybe mentioned in an early class on probability theory and then never disinterred. Furthermore, the way these things work in the context of a programming language are <em>never</em> discussed.</p>
+<p>Take the humble <code>or()</code> operator. In Boolean algebra, $\mathrm{or}(a,b)$ evaluates as True if either $a$ or $b$ evaluates as true. Yet in many programming languages, including PGF, <code>or(a,b)</code> evaluates as True if either <code>a</code> or <code>b</code> returns a non-zero value. This is a problem for the modulus procedure, because most combinations will return a non-zero value. For example, <code>or(mod(\x+2,6),mod(\x+1,6))</code> will return a True value on <em>every</em> index, because either one of the moduli is non-zero or both are. I need to fill in circles with black only when one of those conditions is non-zero <em>and the other one is not</em>. This is the domain of <code>xor()</code>, the exclusive-or operator. Which has all sorts of uses, especially in binary arithmetic&ndash;but PGF does not have an <code>xor()</code> operator!</p>
+<p>That said, the point of Boolean algebra is to be able to build more complicated logical expressions from simpler ones. If you play around for a while, you&rsquo;ll realize that $\mathrm{xor}(a,b) \equiv \mathrm{and}(\mathrm{or}(a,b),\mathrm{not}(\mathrm{and}(a,b)))$. I used that to generate that row. But then I had to handle the row above it, where there are <em>three</em> tests to run, and where I want to shade a circle if <em>only one</em> of the three moduli returns zero. This sort of test can be implemented as nested exclusive-ors: <code>xor(xor(a,b),c)</code>. But what does that look like if you do not have a native exclusive-or operator? Behold:</p>
+<p>$\mathrm{and}(\mathrm{or}(\mathrm{and}(\mathrm{or}(a,b),\mathrm{not}(\mathrm{and}(a,b))),c),\mathrm{not}(\mathrm{and}(\mathrm{and}(\mathrm{or}(a,b),\mathrm{not}(\mathrm{and}(a,b))),c)))$</p>
+<p>I will admit that I patted myself on the back when I typed that in and it worked the first time! Thus the code for the lower-left panel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\x</span> in {0,...,9}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\foreach</span> <span style="color:#66d9ef">\y</span> in {0,...,11} {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\shift</span>}{mod(<span style="color:#66d9ef">\y</span>,2) ? .5 : 0}
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{&#34;white&#34;}
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\testx</span>}{<span style="color:#66d9ef">\x</span>+3*int(<span style="color:#66d9ef">\y</span>/6)}
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\pgfmathparse</span>{int(mod(<span style="color:#66d9ef">\y</span>-1,6))} <span style="color:#75715e">% Tip of triangle
+</span></span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\ifnum\pgfmathresult</span>=0 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{mod(<span style="color:#66d9ef">\testx</span>+2,6) ? &#34;white&#34; : &#34;black&#34;}
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">\pgfmathparse</span>{int(mod(<span style="color:#66d9ef">\y</span>-2,6))} <span style="color:#75715e">% 2nd of triangle
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">\ifnum\pgfmathresult</span>=0
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{
+</span></span><span style="display:flex;"><span>                and(or(mod(<span style="color:#66d9ef">\testx</span>+2,6),mod(<span style="color:#66d9ef">\testx</span>+1,6)),not(
+</span></span><span style="display:flex;"><span>                and(mod(<span style="color:#66d9ef">\testx</span>+2,6),mod(<span style="color:#66d9ef">\testx</span>+1,6)))) ? &#34;black&#34; : &#34;white&#34;}
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">\else</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">\pgfmathparse</span>{int(mod(<span style="color:#66d9ef">\y</span>-3,6))} <span style="color:#75715e">% 3rd of triangle
+</span></span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">\ifnum\pgfmathresult</span>=0
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{
+</span></span><span style="display:flex;"><span>                  and(or(and(or(mod(<span style="color:#66d9ef">\testx</span>+3,6),mod(<span style="color:#66d9ef">\testx</span>+2,6)),not(and(
+</span></span><span style="display:flex;"><span>                  mod(<span style="color:#66d9ef">\testx</span>+3,6),mod(<span style="color:#66d9ef">\testx</span>+2,6)))),mod(<span style="color:#66d9ef">\testx</span>+1,6)),not(and(
+</span></span><span style="display:flex;"><span>                  and(or(mod(<span style="color:#66d9ef">\testx</span>+3,6),mod(<span style="color:#66d9ef">\testx</span>+2,6)),not(and(
+</span></span><span style="display:flex;"><span>                  mod(<span style="color:#66d9ef">\testx</span>+3,6),mod(<span style="color:#66d9ef">\testx</span>+2,6)))),mod(<span style="color:#66d9ef">\testx</span>+1,6)))
+</span></span><span style="display:flex;"><span>                  ) ? &#34;white&#34; : &#34;black&#34;}
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">\else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">\pgfmathparse</span>{int(mod(<span style="color:#66d9ef">\y</span>-4,6))} <span style="color:#75715e">% top of triangle
+</span></span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">\ifnum\pgfmathresult</span>=0
+</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">\pgfmathsetmacro</span>{<span style="color:#66d9ef">\color</span>}{
+</span></span><span style="display:flex;"><span>                    and(or(mod(<span style="color:#66d9ef">\testx</span>-1,6),mod(<span style="color:#66d9ef">\testx</span>-2,6)),not(
+</span></span><span style="display:flex;"><span>                    and(mod(<span style="color:#66d9ef">\testx</span>-1,6),mod(<span style="color:#66d9ef">\testx</span>-2,6)))) ? &#34;white&#34; : &#34;black&#34;}
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">\fi</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">\fi</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">\fi</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\fi</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[fill=\color]</span> (<span style="color:#66d9ef">\x</span>+<span style="color:#66d9ef">\shift</span>,<span style="color:#66d9ef">\y</span>) circle (0.4cm);
+</span></span><span style="display:flex;"><span>      }
+</span></span></code></pre></div><p><img src="/boole4.webp" alt="foo"></p>
+<p>Hopefully we can all agree that the readability of the code suffers somewhat in this case. Yet at that point I could reproduce the entire figure in code:</p>
+<p><img src="/boole5.webp" alt="foo"></p>
+<h1 id="am-i-just-an-idiot">Am I just an idiot?</h1>
+<p>Literally as I wrote this blog post, complaining about the lack of an <code>xor()</code> operator in PGF, I realized that you could do what I needed without calling an <code>xor()</code>. You see, you can specifically test whether the modulus evaluates to zero. Thus instead of specifying</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span>and(or(mod(<span style="color:#66d9ef">\testx</span>+2,6),mod(<span style="color:#66d9ef">\testx</span>+1,6)),not(
+</span></span><span style="display:flex;"><span>    and(mod(<span style="color:#66d9ef">\testx</span>+2,6),mod(<span style="color:#66d9ef">\testx</span>+1,6)))) ? &#34;black&#34; : &#34;white&#34;}
+</span></span></code></pre></div><p>I could instead write</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span>or(mod(<span style="color:#66d9ef">\testx</span>+2,6)==0,mod(<span style="color:#66d9ef">\testx</span>+1,6)==0) ? &#34;black&#34; : &#34;white&#34;}
+</span></span></code></pre></div><p>Similar shortening could be done for the three-way test. This thus raises the question of whether I&rsquo;m just an idiot.</p>
+<p>But let&rsquo;s take a step back. Am I not <em>already</em> an idiot for spending literally a day hacking away at this, when I could have produced it in an hour or so in something like PowerPoint?</p>
+<p>I wrestle with this question all of the time. I like going down rabbit holes when I am working on things, and I like understanding how things work. I started trying to implement this figure in TikZ in the first place because I&rsquo;d never really mastered the language&rsquo;s looping and conditional structures, and it seemed like a chance to learn those. I&rsquo;ve definitely learned a ton! But I always have to balance that learning against the opportunity cost. Should I have gone skiing today instead?</p>
+<p>I once discussed TikZ with some PhD students at Stanford while Mike Hannan was in the room. Mike told the students in no uncertain terms that, cool as this stuff was, while you are <em>writing</em> the paper you should make a sketch on a piece of paper and then set it aside. Only at the very end should you wrestle with figure generation, because it&rsquo;s such a time sink. I recognize the value in that injunction, and in general I try to follow it. But sometimes it&rsquo;s down in these rabbit holes that I learn things that speed up my work somewhere else. I use modular arithmetic all of the time, for example, not only in data analysis but even in laying out tables in Salesforce to help our staff award students financial aid.</p>
+<p>Perhaps this has become a blog whose posts are triggered by my obsessions. But even then at least it may have the value of showing people how much work exists behind the work, and convincing you other obsessives that you are not alone!</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

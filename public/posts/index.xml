@@ -6,8 +6,57 @@
     <description>Recent content in Posts on JP Ferguson dot net</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Mar 2019 17:52:55 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jan 2020 20:54:16 -0500</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fun with modulo and Boole</title>
+      <link>http://localhost:1313/posts/fun_with_modulo_and_boole/</link>
+      <pubDate>Sun, 19 Jan 2020 20:54:16 -0500</pubDate>
+      <guid>http://localhost:1313/posts/fun_with_modulo_and_boole/</guid>
+      <description>&lt;p&gt;Segregation research has what is called the &amp;ldquo;Checkerboard problem.&amp;rdquo; Back in 1983, Michael White pointed out that most segregation measures look at how evenly distributed groups are between sub-units in a larger unit, like neighborhoods in a city, but ignore the spatial arrangement of groups within and between those units. The problem&amp;rsquo;s name comes from imagining a city where each census tract looks like a checkerboard. Assume the city is half white and half black. A census tract that has houses arranged in the classic checkerboard pattern would be half white and half black, like the city as a whole; but so too would a tract where all the squares on the left-hand side of the board are white and all the squares on the right-hand side are black. The &amp;ldquo;problem&amp;rdquo; here is that traditional segregation measures would say that both of these tracts are unsegregated, but the spatial arrangement tells us otherwise:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Christmas miracle: New working paper</title>
+      <link>http://localhost:1313/posts/a_christmas_miracle/</link>
+      <pubDate>Fri, 20 Dec 2019 20:50:56 -0500</pubDate>
+      <guid>http://localhost:1313/posts/a_christmas_miracle/</guid>
+      <description>&lt;p&gt;As mentioned in the last post (which, dear God, was more than two months ago!), I&amp;rsquo;ve been underwater for most of a term. Which is a thing that happens to professors sometimes, and I needn&amp;rsquo;t apologize for letting blogging slip. Not least because today, less than 48 hours after I posted the grades for my last classes, I finished the first complete draft of a paper that we&amp;rsquo;ve been working on, in fits and starts, since February 2018.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why I love Emacs sometimes</title>
+      <link>http://localhost:1313/posts/why_i_love_emacs_sometimes/</link>
+      <pubDate>Tue, 08 Oct 2019 20:40:28 -0500</pubDate>
+      <guid>http://localhost:1313/posts/why_i_love_emacs_sometimes/</guid>
+      <description>&lt;p&gt;When I moved from Stanford to McGill, I was startled by how differently the two schools handle their exams. Stanford has a strong honor code; McGill has a strong police state. In Quebec I first heard the (admittedly awesome) term &amp;ldquo;invigilators,&amp;rdquo; the personnel who perch at the front of an examination room and, in extremis, even accompany students to the bathroom during tests.&lt;/p&gt;&#xA;&lt;p&gt;I mustn&amp;rsquo;t let my dislike for this system hijack this post, so I&amp;rsquo;ll zoom in on one aspect: preparing multiple-choice exams. For classes above a certain size, professors must submit multiple versions of any exams that have a multiple-choice component. The rationale is that, while students are supposed to sit with an empty chair between them, sometimes (&lt;em&gt;Horrors!&lt;/em&gt;) they have to sit side by side. In such instances, they should have exams that present the questions in a different order, to complicate copying.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The trials of self replication</title>
+      <link>http://localhost:1313/posts/trials_of_self_replication/</link>
+      <pubDate>Wed, 17 Jul 2019 20:16:24 -0500</pubDate>
+      <guid>http://localhost:1313/posts/trials_of_self_replication/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m trying to calculate a spatially-weighted segregation statistic, one for which there&amp;rsquo;s no canned routine. After fiddling with it in Python, I could output numbers rather than error messages. But were they &lt;em&gt;good&lt;/em&gt; numbers? I paused to ensure that I could correctly implement the &lt;em&gt;aspatial&lt;/em&gt; version of the statistic. I knew what its values should be, from a &lt;a href=&#34;https://osf.io/preprints/socarxiv/c6hsd&#34;&gt;previous paper&lt;/a&gt;, so I could check my work against it.&lt;/p&gt;&#xA;&lt;p&gt;Focus on the previous result for a moment. Consider this figure:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Social science and the big O</title>
+      <link>http://localhost:1313/posts/social_science_and_the_big_o/</link>
+      <pubDate>Tue, 18 Jun 2019 19:54:53 -0500</pubDate>
+      <guid>http://localhost:1313/posts/social_science_and_the_big_o/</guid>
+      <description>&lt;p&gt;&amp;hellip;No, not &lt;em&gt;that&lt;/em&gt; Big O. Behave yourselves.&lt;/p&gt;&#xA;&lt;p&gt;One of my goals with this blog (insofar as a blog &lt;em&gt;has&lt;/em&gt; goals) is to write about the work behind social-science research, to discuss the process as much as the product of this thing I do. It is useful to see the process, especially if you are newer to the field; but utility aside there is so much that goes into a research project that doesn&amp;rsquo;t show up in the final product. One of the first, hard lessons of graduate school is that most of the work involved in &lt;em&gt;producing&lt;/em&gt; a study is of interest to no one save the producer. Indeed you can often tell a paper is written by a graduate student because it lavishes space on the details of the matching algorithm or some other &amp;ldquo;input&amp;rdquo; step. You can hear the youngling saying, surely this sort of thing isn&amp;rsquo;t meant to disappear forever, is it?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Will it work?</title>
+      <link>http://localhost:1313/posts/will_it_work/</link>
+      <pubDate>Wed, 08 May 2019 19:45:21 -0500</pubDate>
+      <guid>http://localhost:1313/posts/will_it_work/</guid>
+      <description>&lt;p&gt;Every research project has one or two assumptions that, if violated, torpedo it. These assumptions are the scariest things to test, and they can keep me from working. They often turn out to hold, which means that I procrastinated for no reason, but I can do little with that knowledge. This is how the anxious brain works.&lt;/p&gt;&#xA;&lt;p&gt;This week I&amp;rsquo;m working on a project to measure spatially-weighted racial employment segregation. The core idea is simple. We&amp;rsquo;ve found that racial segregation between establishments (workplaces) has grown over the last generation, yet many of us would say that our work environments have grown more racially diverse. Can we square that circle? One possibility is that we &lt;em&gt;do&lt;/em&gt; work in more diverse environments, but many of the people we encounter actually work for other employers. Think about outsourcing. I may see a cafeteria worker, janitor, or landscaper of a different race every day, but they needn&amp;rsquo;t be a recorded employee of &lt;em&gt;my&lt;/em&gt; employer. We interact, but on paper we are in different firms.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Not denying the data</title>
+      <link>http://localhost:1313/posts/not_denying_the_data/</link>
+      <pubDate>Tue, 07 May 2019 19:33:49 -0500</pubDate>
+      <guid>http://localhost:1313/posts/not_denying_the_data/</guid>
+      <description>&lt;p&gt;A friend of mine and I recently discussed a comparison between how researchers research and how programmers program. The focus was on &amp;ldquo;finding effects&amp;rdquo; and &amp;ldquo;debugging.&amp;rdquo; I excerpt his comment here:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Most programmers are poor debuggers who guess at fully-formed theories about why their programs are misbehaving (e.g., &amp;ldquo;could it be that, in module A, X is happening when Y?&amp;rdquo;) and then try to prove them right, learning very little&amp;ndash;or often nothing, because they forget the random little facts they have learned&amp;ndash;each time they guess wrong. Truly good debuggers try to prioritize the experiments that can most easily yield the most information (e.g., &amp;ldquo;is there a quick way to establish whether the problem is in module A or module B?&amp;rdquo;). They are relatively rare.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>A vow I made</title>
       <link>http://localhost:1313/posts/a_vow_i_made/</link>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>The trials of self replication | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="I&rsquo;m trying to calculate a spatially-weighted segregation statistic, one for which there&rsquo;s no canned routine. After fiddling with it in Python, I could output numbers rather than error messages. But were they good numbers? I paused to ensure that I could correctly implement the aspatial version of the statistic. I knew what its values should be, from a previous paper, so I could check my work against it.
+Focus on the previous result for a moment. Consider this figure:">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/trials_of_self_replication/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/trials_of_self_replication/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="The trials of self replication">
+  <meta property="og:description" content="I’m trying to calculate a spatially-weighted segregation statistic, one for which there’s no canned routine. After fiddling with it in Python, I could output numbers rather than error messages. But were they good numbers? I paused to ensure that I could correctly implement the aspatial version of the statistic. I knew what its values should be, from a previous paper, so I could check my work against it.
+Focus on the previous result for a moment. Consider this figure:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-07-17T20:16:24-05:00">
+    <meta property="article:modified_time" content="2019-07-17T20:16:24-05:00">
+
+  <meta itemprop="name" content="The trials of self replication">
+  <meta itemprop="description" content="I’m trying to calculate a spatially-weighted segregation statistic, one for which there’s no canned routine. After fiddling with it in Python, I could output numbers rather than error messages. But were they good numbers? I paused to ensure that I could correctly implement the aspatial version of the statistic. I knew what its values should be, from a previous paper, so I could check my work against it.
+Focus on the previous result for a moment. Consider this figure:">
+  <meta itemprop="datePublished" content="2019-07-17T20:16:24-05:00">
+  <meta itemprop="dateModified" content="2019-07-17T20:16:24-05:00">
+  <meta itemprop="wordCount" content="1657">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The trials of self replication">
+  <meta name="twitter:description" content="I’m trying to calculate a spatially-weighted segregation statistic, one for which there’s no canned routine. After fiddling with it in Python, I could output numbers rather than error messages. But were they good numbers? I paused to ensure that I could correctly implement the aspatial version of the statistic. I knew what its values should be, from a previous paper, so I could check my work against it.
+Focus on the previous result for a moment. Consider this figure:">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-trials_of_self_replication">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-trials_of_self_replication flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">The trials of self replication</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-07-17T20:16:24-05:00">July 17, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>I&rsquo;m trying to calculate a spatially-weighted segregation statistic, one for which there&rsquo;s no canned routine. After fiddling with it in Python, I could output numbers rather than error messages. But were they <em>good</em> numbers? I paused to ensure that I could correctly implement the <em>aspatial</em> version of the statistic. I knew what its values should be, from a <a href="https://osf.io/preprints/socarxiv/c6hsd">previous paper</a>, so I could check my work against it.</p>
+<p>Focus on the previous result for a moment. Consider this figure:</p>
+<p><img src="/trials1.webp" alt="foo">
+(From JP Ferguson &amp; Rem Koning, “Firm Turnover and the Return of Racial Establishment Segregation,” American Sociological Review)</p>
+<p>This is our estimate of racial employment segregation <em>between</em> US counties (in white), and racial employment segregation between workplaces <em>within</em> counties (in black). You want to keep the white separate from the black, and not because this is a study of segregation (<em>hey-O</em>); you don&rsquo;t want to confuse people&rsquo;s living in different labor markets with their working in different places within the same labor market. The former can still reflect segregation (see: spatial mismatch, sunset towns, Grand Apartheid, etc.), but of a qualitatively different type.</p>
+<p>The decline and rise of the within component was the &ldquo;A-ha&rdquo; finding of that paper, and it&rsquo;s this that I set out to replicate with my shiny new code. The first attempt was not encouraging, though:</p>
+<p><img src="/trials2.webp" alt="foo"></p>
+<p>Hopefully the differences between the two graphs are obvious. I rolled my eyes, sighed, realized no one could observe me and that I was being melodramatic, and dug in. Per this blog&rsquo;s ostensible focus on process, I&rsquo;ll present my investigations in order rather than jumping straight to the answer.</p>
+<p>Whence the differences? These new data are a strict subset of the old. Specifically, I calculated the new numbers on establishments that I successfully geocoded. Is there systematic bias in what was geocoded?</p>
+<p>If you squint at the second figure, you&rsquo;ll see two weird spikes. The between component jumps up between 1985 and 1986, and the within component jumps up between 2006 and 2007. I&rsquo;ve seen the jump in the within component before and know how to solve it; for now, focus on the between.</p>
+<p>The government recorded three-digit ZIP codes in these data through 1985, switching to five-digit codes in 1986. That probably affected the match rate. I tabulated the accuracy rate for the two years before and after the change:</p>
+<table>
+  <thead>
+      <tr>
+          <th>year</th>
+          <th>total</th>
+          <th>accurate</th>
+          <th>accrate</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1984</td>
+          <td>141137</td>
+          <td>108939</td>
+          <td>.771867</td>
+      </tr>
+      <tr>
+          <td>1985</td>
+          <td>140678</td>
+          <td>108642</td>
+          <td>.772274</td>
+      </tr>
+      <tr>
+          <td>1986</td>
+          <td>146455</td>
+          <td>94903</td>
+          <td>.648001</td>
+      </tr>
+      <tr>
+          <td>1987</td>
+          <td>148883</td>
+          <td>96409</td>
+          <td>.647549</td>
+      </tr>
+  </tbody>
+</table>
+<p>Weird. I thought the accuracy rate would have gone up? The match rate definitely did:</p>
+<table>
+  <thead>
+      <tr>
+          <th>year</th>
+          <th>match=0</th>
+          <th>match=1</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1984</td>
+          <td>3,529</td>
+          <td>137,608</td>
+      </tr>
+      <tr>
+          <td>(%)</td>
+          <td>2.50</td>
+          <td>97.50</td>
+      </tr>
+      <tr>
+          <td>1985</td>
+          <td>3,469</td>
+          <td>137,209</td>
+      </tr>
+      <tr>
+          <td>(%)</td>
+          <td>2.47</td>
+          <td>97.53</td>
+      </tr>
+      <tr>
+          <td>1986</td>
+          <td>199</td>
+          <td>146,256</td>
+      </tr>
+      <tr>
+          <td>(%)</td>
+          <td>0.14</td>
+          <td>99.86</td>
+      </tr>
+      <tr>
+          <td>1987</td>
+          <td>187</td>
+          <td>148,696</td>
+      </tr>
+      <tr>
+          <td>(%)</td>
+          <td>0.13</td>
+          <td>99.87</td>
+      </tr>
+      <tr>
+          <td>Total</td>
+          <td>7,384</td>
+          <td>569,769</td>
+      </tr>
+      <tr>
+          <td>(%)</td>
+          <td>1.28</td>
+          <td>98.72</td>
+      </tr>
+  </tbody>
+</table>
+<p>But wait, how can the accuracy rate go <em>down</em> if the match rate goes up? I summarized the accuracy score reported back from the geocoding algorithm, by year:</p>
+<table>
+  <thead>
+      <tr>
+          <th>year</th>
+          <th>mean_acc</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1984</td>
+          <td>.888</td>
+      </tr>
+      <tr>
+          <td>1985</td>
+          <td>.888</td>
+      </tr>
+      <tr>
+          <td>1986</td>
+          <td>.904</td>
+      </tr>
+      <tr>
+          <td>1987</td>
+          <td>.904</td>
+      </tr>
+  </tbody>
+</table>
+<p>Wait&ndash;this goes up, too? What the hell had I computed as the accuracy rate, then?</p>
+<p>Going back through my code, I realized that I had calculated the &ldquo;accuracy rate&rdquo; as the proportion of geocoded observations where the reported accuracy was 1. And I&rsquo;d kept only these. Yet those tables suggest that, while the average accuracy had gone up, the share of <em>perfect</em> accuracy had gone down. This is why the Good Lord gave us kernel densities:</p>
+<p><img src="/trials3.webp" alt="foo"></p>
+<p>With the three-digit ZIP codes before 1986, matching was basically an all-or-nothing proposition. From 1986, with the longer ZIP codes, more cases were matched, but more of the matches were good&ndash;i.e., 90%&ndash;but not perfect. By keeping just the observations with accuracy 1, I&rsquo;d inadvertently thrown out a non-trivial number of the matched observations from the later years. I changed the code to keep if accuracy was .9 or greater starting in 1986.</p>
+<p>The next step, just for sanity&rsquo;s sake, was to correct the post-2007 bump in the within component:</p>
+<p><img src="/trials4.webp" alt="foo"></p>
+<p>Better, though the level for the very early years still seems way too high. <em>That</em> might reflect which observations were being successfully geocoded in those early years. I know that the match rate is lowest in the early 1970s, so that seems likely.</p>
+<p>I now wanted to see <em>how</em> the improved match rate after 1986 might have introduced bias. A crude way to do this is to look at how the distribution of missing, non-geocoded observations changed across different states. I calculated the share of non-geocoded observations by state, in 1985 and 1986; calculated the change in states&rsquo; shares; squared that (to make outliers more obvious) and re-applied the sign of the change; and sorted the states by their signed squared change. That produced this graph:</p>
+<p><img src="/trials5.webp" alt="foo"></p>
+<p>This is telling. Before the change, California&rsquo;s establishments comprised a much higher share of the non-geocoded observations (hence the large negative change), followed by Florida&rsquo;s. Meanwhile, Illinois&rsquo;s establishments were a much <em>lower</em> share of the non-geocoded observations. This does not mean that fewer establishments were matched in Illinois in 1986 than in 1985; remember, the match rate goes up. Instead, far more establishments were added in California and FLorida than in Illinois.</p>
+<p>This matters becuase the demographics of these states are very different. California and Florida had far more latino and Asian residents in 1985/1986 than Illinois did. Furthermore, some of the other &ldquo;bulked-up&rdquo; states include Arizona, New Jersey, and New York, all of which were comparatively ethnically diverse, while the other &ldquo;slimmed-down&rdquo; states alongside Illinois include West Virginia, Kentucky, and Washington. The change in how the government recorded ZIP codes in the mid-1980s changes the population of establishments in the dataset, increasing the relative size and diversity of some states and thus increasing the between-area segregation measure.</p>
+<p>Two points are worth taking away from this. First, this implies that the jump after 1986 isn&rsquo;t the thing that needs explaining; the &ldquo;drop&rdquo; <em>before</em> 1986 is. And the explanation is sample-selection bias. This is good, because the later data are the more complete. I&rsquo;d <em>like</em> them to be the less-biased! But my instinct was to assume that the earlier years were right and that something went wrong. I think this is a common way of reasoning, but it&rsquo;s also because the between component lies below the within component in the earlier years and in the first figure, and I was asssuming that was right. I&rsquo;ll come back to this.</p>
+<p>Second, this isn&rsquo;t a &ldquo;bump&rdquo; that I can correct like the post-2007 one. The 2007 bump in was due to a one-time change that the government made to its data collection in 2007. That year, they made a special effort to survey firms that appeared in Dun &amp; Bradstreet records and seemed like they <em>should</em> have filed an EEO-1 survey but had not. The survey responses that year included many new workplaces (the sample size jumps by nearly 2%), most relatively small, single-establishment firms with relatively high latino employment. That shift in the response population caused the 2006/2007 jump. But this particular effort didn&rsquo;t continue. The EEOC didn&rsquo;t continue to seek out such firms, and so over time, as the firms first surveyed in 2007 turned over, the respondent population converged back toward the pre-2007 type. That explains the sharp decline in the within component in the years after 2007.</p>
+<p>To correct for this one-time shock, we removed the 2007 data from analyses, and we removed the firms that entered in 2007 from subsequent years&rsquo; calculations. But we cannot do this with the 1985/1986 change. The shift from 3-digit to 5-digit ZIP codes was permanent, so the uptick in the between component just has to be treated like a permament shift. Fortunately we mostly care about trends, not levels!</p>
+<p>So, I was almost there. But this is where the trials of self-replication really show up. You see, <em>that first figure has an error in it!</em> After we published the paper, <a href="https://ed.stanford.edu/faculty/seanreardon">Sean Reardon</a> pointed out that we calculated the within component as a size-weighted sum of counties&rsquo; between-establishment segregation measures, when instead we should have calculated it as the size-<em>and diversity</em>-weighted sum of same. We published a correction for this&hellip;</p>
+<p><a href="https://x.com/orgRem/status/1128721387869429761?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1128721387869429761%7Ctwgr%5Eba22c76c4fa8b91596c75a034449fd9075906950%7Ctwcon%5Es1_&amp;ref_url=https%3A%2F%2Fwww.jpferguson.net%2Fblog%2Frepost-the-trials-of-self-replication">Our correction</a></p>
+<p>&hellip;and noted that, while the proper weighting did not change the broad shape of the within component, it did shift everything downward slightly. (This is because more diverse counties are somewhat less internally segregated. Giving those counties more weight lowers the within component, which is just a sum.) Voilà:</p>
+<p><img src="/trials7.webp" alt="foo"></p>
+<p>This is about the <em>within</em> component, though. The between component <em>is</em> just a size-weighted sum, so it should not move when you make this correction. That implies that the between component has actually been larger than the within component almost this whole time! It&rsquo;s OK, we had no prior about this, and given that (e.g.) the between-industry component has always been bigger than the within-industry component of this measure, it isn&rsquo;t mind-blowing. But it does imply that when I rebuilt everything and got this:</p>
+<p><img src="/trials8.webp" alt="foo"></p>
+<p>&hellip;this is actually a faithful replication of the first figure, even though the two look different!</p>
+<p>So what did I learn?</p>
+<ul>
+<li>Your goal shouldn&rsquo;t be simply to reproduce the published figures, even if they&rsquo;re your own. If there&rsquo;s a problem or error, with the published results, you need to replicate a fixed version.</li>
+<li>But you can&rsquo;t just call your slightly-different version fixed and move on. You also want to explain why there&rsquo;s a difference in the first place. In such instances, showing that you can replicate the published results by <em>introducing the mistake into your code</em> is a good way to convince yourself that you&rsquo;re on the right track.</li>
+<li>Replication is hard. Remember, these are my own data and code!</li>
+<li>I should have started with this, rather than going straight to the spatially weighted calculations (of which more later, probably). Now, if I modify the calculation and get different results, I have a lot more confidence that this reflects real differences, and not some problem with my replicaiton strategy.</li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

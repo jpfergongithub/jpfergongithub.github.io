@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Social science and the big O | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="&hellip;No, not that Big O. Behave yourselves.
+One of my goals with this blog (insofar as a blog has goals) is to write about the work behind social-science research, to discuss the process as much as the product of this thing I do. It is useful to see the process, especially if you are newer to the field; but utility aside there is so much that goes into a research project that doesn&rsquo;t show up in the final product. One of the first, hard lessons of graduate school is that most of the work involved in producing a study is of interest to no one save the producer. Indeed you can often tell a paper is written by a graduate student because it lavishes space on the details of the matching algorithm or some other &ldquo;input&rdquo; step. You can hear the youngling saying, surely this sort of thing isn&rsquo;t meant to disappear forever, is it?">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/social_science_and_the_big_o/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/social_science_and_the_big_o/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Social science and the big O">
+  <meta property="og:description" content="…No, not that Big O. Behave yourselves.
+One of my goals with this blog (insofar as a blog has goals) is to write about the work behind social-science research, to discuss the process as much as the product of this thing I do. It is useful to see the process, especially if you are newer to the field; but utility aside there is so much that goes into a research project that doesn’t show up in the final product. One of the first, hard lessons of graduate school is that most of the work involved in producing a study is of interest to no one save the producer. Indeed you can often tell a paper is written by a graduate student because it lavishes space on the details of the matching algorithm or some other “input” step. You can hear the youngling saying, surely this sort of thing isn’t meant to disappear forever, is it?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-06-18T19:54:53-05:00">
+    <meta property="article:modified_time" content="2019-06-18T19:54:53-05:00">
+
+  <meta itemprop="name" content="Social science and the big O">
+  <meta itemprop="description" content="…No, not that Big O. Behave yourselves.
+One of my goals with this blog (insofar as a blog has goals) is to write about the work behind social-science research, to discuss the process as much as the product of this thing I do. It is useful to see the process, especially if you are newer to the field; but utility aside there is so much that goes into a research project that doesn’t show up in the final product. One of the first, hard lessons of graduate school is that most of the work involved in producing a study is of interest to no one save the producer. Indeed you can often tell a paper is written by a graduate student because it lavishes space on the details of the matching algorithm or some other “input” step. You can hear the youngling saying, surely this sort of thing isn’t meant to disappear forever, is it?">
+  <meta itemprop="datePublished" content="2019-06-18T19:54:53-05:00">
+  <meta itemprop="dateModified" content="2019-06-18T19:54:53-05:00">
+  <meta itemprop="wordCount" content="2819">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Social science and the big O">
+  <meta name="twitter:description" content="…No, not that Big O. Behave yourselves.
+One of my goals with this blog (insofar as a blog has goals) is to write about the work behind social-science research, to discuss the process as much as the product of this thing I do. It is useful to see the process, especially if you are newer to the field; but utility aside there is so much that goes into a research project that doesn’t show up in the final product. One of the first, hard lessons of graduate school is that most of the work involved in producing a study is of interest to no one save the producer. Indeed you can often tell a paper is written by a graduate student because it lavishes space on the details of the matching algorithm or some other “input” step. You can hear the youngling saying, surely this sort of thing isn’t meant to disappear forever, is it?">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-social_science_and_the_big_o">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-social_science_and_the_big_o flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Social science and the big O</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-06-18T19:54:53-05:00">June 18, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>&hellip;No, not <em>that</em> Big O. Behave yourselves.</p>
+<p>One of my goals with this blog (insofar as a blog <em>has</em> goals) is to write about the work behind social-science research, to discuss the process as much as the product of this thing I do. It is useful to see the process, especially if you are newer to the field; but utility aside there is so much that goes into a research project that doesn&rsquo;t show up in the final product. One of the first, hard lessons of graduate school is that most of the work involved in <em>producing</em> a study is of interest to no one save the producer. Indeed you can often tell a paper is written by a graduate student because it lavishes space on the details of the matching algorithm or some other &ldquo;input&rdquo; step. You can hear the youngling saying, surely this sort of thing isn&rsquo;t meant to disappear forever, is it?</p>
+<p>It <em>isn&rsquo;t</em> meant to be in the final paper, but that doesn&rsquo;t mean it&rsquo;s meant to disappear forever. Sometimes it would be useful to discuss these things, lest hard-won discoveries never spread. This post for example is about the efficiency of computation and things I learned relating to that, things that will only appear in the final paper insofar as they make that paper possible. But the blessing <em>and</em> curse of good research is that often you have to learn a little bit about a lot in order to do the job, because so much of our work is basically bespoke.</p>
+<p>With that, a preface: I am not a computer scientist. Take the following as a clever layman&rsquo;s understanding of these issues, and expect me to get some details wrong.</p>
+<p><a href="https://en.wikipedia.org/wiki/Big_O_notation">Big-O notation</a> is a thing in math and computer science that social scientists almost never encounter. You can read the Wikipedia entry for the details, but a common use of it is to describe how the compute time of an algorithm grows as the input data scales. As such it hooks into <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP</a> and all sorts of interesting ideas, but it often shows up in the workaday question, &ldquo;Why the hell is my code running so slow?!&rdquo;</p>
+<p>There are many ways to implement most functions, and those ways can vary enormously in their efficiency. Fifteen years ago, R was notorious for the inefficiency of many of its commands. For lists above a certain size, it was faster to set up a counter in a for-loop and iterate over the elements in the list, incrementing the counter each time, than it was to run <code>length(list)</code>! In the worst case, a length function should run in $O(n)$, that is, compute time should be proportional to the size of the object. (Let&rsquo;s call that &ldquo;linear time.&rdquo;) It takes a certain creativity to make that function take <em>more</em> than linear time. As a longtime Stata user, I cherished this tale about R, so much so that I&rsquo;ve never bothered to check whether it is in fact apocryphal.</p>
+<p>I have been reading up on big-O notation because I&rsquo;ve been working on a project that involves spatial data. Bracket the research question. I have $(x,y)$ data for about 100,000 establishments all over the United States, each year, for 40 years. For each establishment, I have to calculate a statistic that is based on the properties of nearby establishments, where &ldquo;nearby&rdquo; is defined by a radius that I choose. The statistic itself isn&rsquo;t complicated. Nor is it complicated, conceptually, to figure out which establishments are near any focal establishment. But computationally, this can be really inefficient.</p>
+<p>In the naïve case, for each point, you must calculate the distance to every other point, flagging those within the radius. If you can&rsquo;t keep track of which comparisons have already been made (i.e., if you have to calculate the distance from A to B <em>and</em> from B to A), then this involves $n \times (n=1)$, or $n^2-n$, comparisons. Even if you can keep track, that&rsquo;s still $(n^2-n)/2$ comparisons&hellip;and as $n$ grows, that quadratic term swamps the $1/2$ constant. Thus this naïve algorithm runs in $O(n^2)$, or quadratic time. Compute time here scales with the square of input size.</p>
+<p>This is <em>muy malo</em>. From what I&rsquo;ve seen on Stack Overflow posts, I&rsquo;m working with data that&rsquo;s about 10 times larger than most GIS projects. A routine that runs in $O(n^2)$ will thus take about <strong>100</strong> times longer on my data. For the record, that has worked out to more than a day for each year&rsquo;s data.</p>
+<p>But here&rsquo;s the thing: &ldquo;nearby&rdquo; in my case is about a quarter of a mile! I <em>know</em> that virtually all other establishments in the data are too far away to matter. What I needed was a fast way to zoom in on feasible candidates before further testing.</p>
+<h1 id="adventures-in-set-theory">Adventures in set theory</h1>
+<p>My first thought was that, given the tightness of my radius, I&rsquo;d just need to look at others within the same county&ndash;I have county recorded in the data. At worst, there might be establishments near the edges of their counties, in which case I&rsquo;d have to check adjacent counties, too.</p>
+<p>It&rsquo;s pretty easy to create an adjacency list for U.S. counties (really!). In python, make a dictionary, where they keys are the county FIPS codes, and the values are lists with the adjacent counties&rsquo; FIPS codes (include the county itself):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>county_adjacent <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1001</span> : [<span style="color:#ae81ff">1001</span>,<span style="color:#ae81ff">1021</span>,<span style="color:#ae81ff">1047</span>,<span style="color:#ae81ff">1051</span>,<span style="color:#ae81ff">1085</span>,<span style="color:#ae81ff">1101</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1003</span> : [<span style="color:#ae81ff">1003</span>,<span style="color:#ae81ff">1025</span>,<span style="color:#ae81ff">1053</span>,<span style="color:#ae81ff">1097</span>,<span style="color:#ae81ff">1099</span>,<span style="color:#ae81ff">1129</span>,<span style="color:#ae81ff">12033</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">78020</span> : [<span style="color:#ae81ff">78020</span>,<span style="color:#ae81ff">78030</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">78030</span> : [<span style="color:#ae81ff">78020</span>,<span style="color:#ae81ff">78030</span>],
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then you can write something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> county <span style="color:#f92672">in</span> county_adjacent[county]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> establishment <span style="color:#f92672">in</span> county:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">**</span> test <span style="color:#66d9ef">for</span> distance <span style="color:#f92672">and</span> do stuff <span style="color:#f92672">**</span>
+</span></span></code></pre></div><p>This greatly reduces the search space but is still pretty inefficient. Consider an establishment in Manhattan. There are six adjacent counties (Bergen and Hudson in New Jersey, plus the outer boroughs), and all of them are just lousy with large establishments. At the very least, this process will bog down in large cities.</p>
+<p>Next, it occurred to me to first try a spatial test. If I care about establishments within a certain radius, that implies a circle around the focal establishment (that&rsquo;s why I was building circles in the previous post). I could take that circle, as a geometric object, and see if it intersected with the various counties&rsquo; geometries. Then I&rsquo;d only have to check establishments in the counties that the circle actually overlapped&ndash;in most cases, just one!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> county <span style="color:#f92672">in</span> county_adjacent[county]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> circle<span style="color:#f92672">.</span>intersects(counties[counties<span style="color:#f92672">.</span>county <span style="color:#f92672">==</span> county]<span style="color:#f92672">.</span>geometry<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">0</span>]):
+</span></span><span style="display:flex;"><span>        county_ests <span style="color:#f92672">=</span> ests[ests<span style="color:#f92672">.</span>county <span style="color:#f92672">==</span> county]
+</span></span><span style="display:flex;"><span>        in_area <span style="color:#f92672">=</span> county_ests[county_ests<span style="color:#f92672">.</span>within(circle)]
+</span></span><span style="display:flex;"><span>        sub_dyads <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>concat([sub_dyads, in_area])
+</span></span></code></pre></div><p>Two things to notice here. First, this code uses the <a href="http://geopandas.org/">geopandas</a> package, so the dataframe-query structure follows that of <a href="https://pandas.pydata.org/">pandas</a>, while functions like <code>intersects()</code> and <code>within()</code> are ultimately being drawn from <a href="https://pypi.org/project/Shapely/">shapely</a>. Second, this code involves three geodataframes: one with the establishments, one with the &ldquo;circles&rdquo; around each establishment, and one with the polygon geometries of all the counties. We&rsquo;ll come back to this use of dataframes and the like.</p>
+<h1 id="a-surprise-appearance-of">A surprise appearance of $O(n^2)$</h1>
+<p>So far, so good. Code of this type took forever to run, though. It would start fine, managing some 3,000 establishments per minute, but it would gradually slow down. Indeed this took <em>longer</em> to complete than the original, naïve version&ndash;nearly 30 hours for 100,000 establishments! This isn&rsquo;t how programming is supposed to work, right? What was I doing wrong?</p>
+<p>The problem lay in the <code>pandas.concat()</code> function. This takes two dataframes as inputs and returns their concatenation as an output. It might seem that this would just write the elements to the existing dataframe (in which case it would run in $O(n)$), but no: it writes both elements anew. Think about what this means at every step:</p>
+<ul>
+<li>Step 1: write $n_1$ rows</li>
+<li>Step 2: write $n_1 + n_2$ rows</li>
+<li>Step 3: write $n_1 + n_2 + n_3$ rows</li>
+<li>Step N: write $n_1 + n_2 + \ldots{} + n_N$ rows</li>
+</ul>
+<p>This amounts to writing data $(n^2−n)/2$ times, which means we&rsquo;re back to $O(n^2)$. No matter how many operations I was saving by my clever spatial sub-setting, I was more than gaining them back with this incredibly inefficient write process! (Before you ask, <code>pandas.append()</code> has the same behavior.)</p>
+<p>The solution to <em>this</em> problem, at least, was to create results as a list of lists rather than as a dataframe, and then use <code>list.append()</code>, which runs in $O(n)$. This removed the dramatic slowdowns, but by itself it could not surpass the fastest <em>initial</em> performance of this type of code, which as mentioned was about 3,000 establishments per minute.</p>
+<h1 id="detouring-through-search-algorithms">Detouring through search algorithms</h1>
+<p>Obviously, if I could figure out some faster way to subset the feasible candidates, I could go faster still. But how? By itself, Euclidean distance is pretty fast to calculate. And indeed that&rsquo;s what the <code>within()</code> function was doing. I began Googling phrases like &ldquo;efficient algorithm to find points within distance&rdquo; and the like. At some point, this led me to a page comparing linear to binary search.</p>
+<p>Say you have a list. You want to find whether an item is in the list&ndash;or find its index in the list, which amounts to the same thing. If the list isn&rsquo;t sorted then the best approach is just to start at the first element and compare it to your item. If it matches, you&rsquo;re done! If not, take the next element, and repeat. On average, you&rsquo;d expect to have to check $n/2$ elements, where $n$ is the length of the list. This means that the compute time for a linear search is proportional to the length of the list&ndash;classic $O(n)$ stuff.</p>
+<p>Now imagine that the list is sorted. Then the best approach is to start, not at the list&rsquo;s start, but in its <em>middle</em>. If the middle element matches your item, you&rsquo;re done! If not, then ask whether it&rsquo;s bigger or smaller than your item. If it&rsquo;s bigger, then you can rule out the entire second half of the list. If it&rsquo;s smaller, then you can rule out the entire <em>first</em> half of the list. Take the middle element of the remaining half, and repeat. After each test, you halve the remaining search space, so after $k$ tests there are $n/2^k$ elements left. The most searches we can do before having one item left will therefore be when $n/2^k=1$; solving for $k$ gives $k=\mathrm{log}_2n$. This means that binary search runs in $O(\mathrm{log}(n))$, which is a damned sight faster than linear time!</p>
+<h1 id="from--to">From $O(n^2)$ to $O(\mathrm{log}(n))$</h1>
+<p>This seemed exciting. What if I could sort my establishments by their locations? But that seemed problematic. $(x,y)$ coordinates are by their nature two-dimensional. How would you order them?</p>
+<p>Ah, but here&rsquo;s the thing: sorting is itself something that can be implemented very efficiently. So why not just sort by $x$, and then sort by $y$? Granted, I didn&rsquo;t need to find each establishment in the sorted list, but instead all establishments within a certain $x$- or $y$-distance from them. In a sorted list, though, this just amounts to finding the indices of the establishments at $x \pm r$, where $r$ is the radius. Once you have those, you have the subset of establishments that are feasible candidates, at least in the $x$ dimension. If you do the same thing with a list sorted on the $y$ coordinate, then you can get the subset of establishments that are feasible candidates, at least in the $y$ dimension. Then you can find the list intersection (another efficiently implemented algorithm), and you&rsquo;re really quite close.</p>
+<p>Consider it graphically, using a bit of Boston in 1971 from the last post:</p>
+<p><img src="/bigo_1.webp" alt="foo"></p>
+<p>With this process, I could very quickly extract a strip of land half a mile wide with all $x$ candidates and very quickly extract another half-mile strip with all $y$ candidates. Then the list intersection would correspond to establishments within the square, half a mile on each side, centered on the focal establishment. All that I&rsquo;d need to do then would be to run something like <code>distance()</code> on that comparatively tiny number of candidates to check that they were in the circle, not just in the &ldquo;corners&rdquo; of the square.</p>
+<p>At this point, I started implementing a binary search function, one that could return a slice of the list around the position in question, rather than the position itself. This is extremely simple in comparison. From there you just need the intersection of those two lists of lists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">intersectionLoL</span>(list_of_listsA, list_of_listsB):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; Returns the list of lists that is the intersection of two
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    other lists of lists. The tuple/set/list nonsense is there because
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    lists are not themselves hashable objects &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> list(list(i)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> list(set(tuple(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> list_of_listsA) <span style="color:#f92672">&amp;</span>
+</span></span><span style="display:flex;"><span>                              set(tuple(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> list_of_listsB)))
+</span></span></code></pre></div><p>From there, you can define a function that checks whether points in that list are within the circle:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">withinCircle</span>(intersect_list):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39; Takes a list of lists with (x_coord, y_coord) for points and
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    (x_center, y_center) for some reference point. Returns the
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    sub-list where the distance between those is below a quarter
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    mile. (Yes, I know there&#39;s a lot of hard-coded garbage in here.) &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    new_list <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> record <span style="color:#f92672">in</span> intersect_list:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> math<span style="color:#f92672">.</span>sqrt((record[x_coord] <span style="color:#f92672">-</span> record[x_center])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                     (record[y_coord] <span style="color:#f92672">-</span> record[y_center])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                     <span style="color:#ae81ff">.004167</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            new_list<span style="color:#f92672">.</span>append(record)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> new_list
+</span></span></code></pre></div><p>Obviously, there&rsquo;s more code involved than that to read in the data, create the sorted lists, and so on. Yet this gives me a way to find the relevant establishments around every focal establishment, a way that runs blazing fast in comparison to everything else I&rsquo;ve tried.</p>
+<p>You know I&rsquo;m going to crow about it: whereas some of these approaches took more than 30 hours per year of data, this takes less than 20 seconds.</p>
+<h1 id="genuinely-some-lessons-are-learned">Genuinely, some lessons are learned</h1>
+<p>It&rsquo;s a cliché in the quantitative social sciences that we don&rsquo;t roll our own code, whether in data management or in statistical estimation. Instead we rely on canned routines. Often you can date the diffusion of a new estimation technique, not from when it is discovered or demonstrated to be better than earlier approaches, but from when it appears as a standard command in a popular stats package. And in general, I think this is fine. Replication is easier when implementations are transparent. Ideally, canned routines are also efficient routines.</p>
+<p>But this isn&rsquo;t always the case. A benefit of open-source programs and user-generated code, the ease with which new routines can be distributed, is also sometimes a curse. Inefficient initial implementations make it into codebases all the time.</p>
+<p>I want to consider a more subtle problem, though. Frameworks like pandas were developed to make it easier for people used to a statistical-programming environment to wrassle with a general-purpose language like python. Pandas implements the dataframe structure, which feels very comfortable to those of us used to R, Stata, or the like. There&rsquo;s a cost, though. Pandas dataframes leverage <a href="https://www.numpy.org/">NumPy</a>&rsquo;s numerical arrays, which means you have interpreted code running interpreted code. And then geopandas is is itself leveraging pandas, as well as shapely, which draws on its own set of libraries&hellip;</p>
+<p>In most cases, this is all worth it. Most of us will accept longer run time if it takes us less time to think and write the code we run. Implementing routines at a lower level of the &ldquo;comprehensibility stack&rdquo; rarely saves time. Usually, the only benefit is that you gain skills that you&rsquo;ll use later on elsewhere, and it&rsquo;s too easy to trot out <em>that</em> excuse whenever you want to procrastinate.</p>
+<p>Sometimes though you want to bend a package to do something its authors didn&rsquo;t have in mind when they wrote it. In those moments, all of their conveniences become things you&rsquo;ll have to work around, which usually means inefficiency. And if the goal is speed or even just feasible run times, This Is A Problem.</p>
+<p>None of this is news to computer scientists. But <em>social</em> scientists aren&rsquo;t taught to think in these terms. There are entire classes of models that traditionally weren&rsquo;t often used because their implementations took so long to run (multinomial logistic regression, anyone?). This wasn&rsquo;t too severe a problem&ndash;but as our data sets continue to grow in size, the underlying implementations in our workaday software increasingly pose constraints.</p>
+<p>The irony is that, thirty or forty years ago, discussion of specific implementations was very common in our literature. When computers were far weaker, it mattered more to get the method of computation right. Why do you think we all got taught OLS&ndash;because it is realistic or flexible? No. It&rsquo;s relatively easy to implement by hand, and has an analytical solution. Many early papers in network analysis have appendices discussing the algorithms for calculating the network statistics. The spread of faster computers and standardized software packages has definitely been a net positive, but this type of thinking has fallen out of fashion over the last generation. (I make an exception, of course, for anyone obsessed with Bayesian statistics.) Yet as Moore&rsquo;s Law slows down while data continues to increase, I suspect we&rsquo;ll all have to get back in the habit.</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

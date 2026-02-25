@@ -2,13 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/a_vow_i_made/</loc>
-    <lastmod>2019-03-18T17:52:55-05:00</lastmod>
+    <loc>http://localhost:1313/posts/fun_with_modulo_and_boole/</loc>
+    <lastmod>2020-01-19T20:54:16-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2019-03-18T17:52:55-05:00</lastmod>
+    <lastmod>2020-01-19T20:54:16-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2020-01-19T20:54:16-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/a_christmas_miracle/</loc>
+    <lastmod>2019-12-20T20:50:56-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/why_i_love_emacs_sometimes/</loc>
+    <lastmod>2019-10-08T20:40:28-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/trials_of_self_replication/</loc>
+    <lastmod>2019-07-17T20:16:24-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/social_science_and_the_big_o/</loc>
+    <lastmod>2019-06-18T19:54:53-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/will_it_work/</loc>
+    <lastmod>2019-05-08T19:45:21-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/not_denying_the_data/</loc>
+    <lastmod>2019-05-07T19:33:49-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/a_vow_i_made/</loc>
     <lastmod>2019-03-18T17:52:55-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/down_in_the_muck_of_data/</loc>
