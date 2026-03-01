@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Keep calm and ODBC | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="This post has many parents. I want to update where I am on the project that started this blog: studying the diffusion of unfair labor practices in union settings. I also recently solved a problem that took far longer than it should have. I want to document what I did, to remind myself and maybe to help others. And I want to get back to blogging after a truly hellacious year, for me and for everyone. If a rant about database connectivity kickstarts things, so be it!">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/keep_calm_and_odbc/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/keep_calm_and_odbc/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Keep calm and ODBC">
+  <meta property="og:description" content="This post has many parents. I want to update where I am on the project that started this blog: studying the diffusion of unfair labor practices in union settings. I also recently solved a problem that took far longer than it should have. I want to document what I did, to remind myself and maybe to help others. And I want to get back to blogging after a truly hellacious year, for me and for everyone. If a rant about database connectivity kickstarts things, so be it!">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-04-14T12:05:28-05:00">
+    <meta property="article:modified_time" content="2021-04-14T12:05:28-05:00">
+
+  <meta itemprop="name" content="Keep calm and ODBC">
+  <meta itemprop="description" content="This post has many parents. I want to update where I am on the project that started this blog: studying the diffusion of unfair labor practices in union settings. I also recently solved a problem that took far longer than it should have. I want to document what I did, to remind myself and maybe to help others. And I want to get back to blogging after a truly hellacious year, for me and for everyone. If a rant about database connectivity kickstarts things, so be it!">
+  <meta itemprop="datePublished" content="2021-04-14T12:05:28-05:00">
+  <meta itemprop="dateModified" content="2021-04-14T12:05:28-05:00">
+  <meta itemprop="wordCount" content="2099">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Keep calm and ODBC">
+  <meta name="twitter:description" content="This post has many parents. I want to update where I am on the project that started this blog: studying the diffusion of unfair labor practices in union settings. I also recently solved a problem that took far longer than it should have. I want to document what I did, to remind myself and maybe to help others. And I want to get back to blogging after a truly hellacious year, for me and for everyone. If a rant about database connectivity kickstarts things, so be it!">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-keep_calm_and_odbc">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-keep_calm_and_odbc flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Keep calm and ODBC</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-04-14T12:05:28-05:00">April 14, 2021</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>This post has many parents. I want to update where I am on the project that started this blog: studying the diffusion of unfair labor practices in union settings. I also recently solved a problem that took far longer than it should have. I want to document what I did, to remind myself and maybe to help others. And I want to get back to blogging after a truly hellacious year, for me and for everyone. If a rant about database connectivity kickstarts things, so be it!</p>
+<h1 id="changing-languages">Changing languages</h1>
+<p>In late 2018 I discovered a trove of data on unfair labor practices dating back to the early 1960s. I had sought these data a decade earlier, without success. Now, here they were: copious megabytes of eighty-character punched-card records that needed deciphering and translating into a modern format. I saw this as a means for me to keep learning R.</p>
+<p>In 2019, though, I used Python for more projects. Changes in my research also affected my choice of programming languages. Inequality and segregation research can privilege accounting statistics over inferential statistics. This makes the data-management capabilities of general-purpose languages relatively more valuable, and the installed base of routines in focused statistical languages relatively less. I work with masters-level research assistants at McGill, more than I do with PhD students, at least on my own projects; and masters students are more interested in learning Python than R. Thus last summer I chose to clean these data with Python. My existing R code base was small, thus switching costs were low.</p>
+<p>The <a href="https://pandas.pydata.org/">Pandas</a> library expedites data analysis in Python. Something that kept me devoted to Stata for so long, though, is its felicity at <em>cleaning</em> archival data&ndash;finding typos, fixing data types, and the like. I&rsquo;ve not yet found a Python library to speed up this process, though of course Python&rsquo;s strength lies in the ease of defining simple helper functions. (Such functions probably merit a post of their own.)</p>
+<h1 id="where-do-you-put-the-clean-stuff">Where do you put the clean stuff?</h1>
+<p>Python it is, then. Coming from languages like Stata or R, though, it is striking how Pandas does not have a specific data-file type.</p>
+<p>This is good and bad. I&rsquo;ve struggled with proprietary data formats. In particular, I think SAS files should come with a trigger warning! CSV is so very slow, though, partly because most programs have to guess variable types while reading in data. Categorical data types can be extra problematic when you write data to plain-text files. If categorical value labels are long, file sizes can explode. You can write label dictionaries, but you must then manage multiple files. The same point holds for data dictionaries.</p>
+<p>The best compromise is a relational database. The SQL database structure is non-proprietary and widely supported. Most statistical languages have built-in facilities for I/O with such databases. I&rsquo;ve actually felt guilty for years that I <em>don&rsquo;t</em> store my most often-used datasets in such a format. Since Python doesn&rsquo;t give me an easy binary format by default, this seemed the right project to start with.</p>
+<p>Writing a Pandas dataframe to SQL is straightforward. I find <a href="https://www.sqlite.org/index.html">SQLite</a> much easier to use than, say, MySQL, since accessing files with SQLite does not require your mimicking a client-server interface on your local machine. Python has the <code>sqlite3</code> library as part of the base installation. You just need to create a &ldquo;connection&rdquo; to the file through which you pipe SQL code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sqlite3 <span style="color:#66d9ef">as</span> sql
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CreateConnection</span>(db_file):
+</span></span><span style="display:flex;"><span>    conn <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>: 
+</span></span><span style="display:flex;"><span>        conn <span style="color:#f92672">=</span> sql<span style="color:#f92672">.</span>connect(db_file)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> conn
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> sql<span style="color:#f92672">.</span>Error <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(e)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> conn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CreateTable</span>(conn, create_table_sql):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        c <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>cursor()
+</span></span><span style="display:flex;"><span>        c<span style="color:#f92672">.</span>execute(create_table_sql)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> sql<span style="color:#f92672">.</span>Error <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(e)
+</span></span></code></pre></div><p>Imagine you want to put four columns of a dataframe called &ldquo;cases&rdquo; into a table called &ldquo;ulp&rdquo;: _id, caseNumber, dateFiled, and state. Create a connection to the relevant database file. Define the SQL to lay out the table and pass it to <code>CreateTable()</code>, which puts the table into the database file&rsquo;s schema. Then use the Pandas <code>to_sql()</code> method to pass data from the dataframe into the database:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>conn <span style="color:#f92672">=</span> CreateConnection(<span style="color:#e6db74">&#39;ULPs.db&#39;</span>)
+</span></span><span style="display:flex;"><span>sql_create_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS ulp (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    _id INTEGER PRIMARY KEY,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    caseNumber TEXT,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    dateFiled TIMESTAMP,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    state INTEGER
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    );&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>CreateTable(conn, sql_create_table)
+</span></span><span style="display:flex;"><span>cases[[<span style="color:#e6db74">&#39;caseNumber&#39;</span>, <span style="color:#e6db74">&#39;dateFiled&#39;</span>, <span style="color:#e6db74">&#39;state&#39;</span>]]<span style="color:#f92672">.</span>to_sql(<span style="color:#e6db74">&#39;ulp&#39;</span>, conn,
+</span></span><span style="display:flex;"><span>       if_exists<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;append&#39;</span>, index_label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;_id&#39;</span>)
+</span></span></code></pre></div><p>Here I have &ldquo;state&rdquo; stored as an integer. Really this is a categorical variable, and I would like to keep the value labels associated with it. I have a dictionary called <code>state_map</code> with those labels. Writing this dictionary to its own table is simple enough:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sql_create_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS state (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    state_id INTEGER PRIMARY KEY,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    state TEXT
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    );&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>CreateTable(conn, sql_create_table)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> state_map:
+</span></span><span style="display:flex;"><span>    sequel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;INSERT INTO state(state_id, state) VALUES(?,?)&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    c<span style="color:#f92672">.</span>execute(sequel, (key, state_map[key]))
+</span></span><span style="display:flex;"><span>    conn<span style="color:#f92672">.</span>commit()
+</span></span></code></pre></div><p>Notice here that <code>sequel</code> is a SQL command that itself takes arguments <code>(?,?)</code>. Thus <code>c.execute()</code> sends the command <em>and</em> a key-value pair from <code>state_map</code> to the database. In other words, the variable expansion here happens on the SQL side, not the Python side. Simple enough, though passing variables defined in one language to commands in another is tricky the first time!</p>
+<p>Datasets that have many categorical variables tend to have many sets of value lables. It would be better to define a loop to build all such tables. I found this head-scratching enough that a solution seems worth sharing. For each categorical variable foo I create a dictionary, <code>foo_map</code>, with value labels. I then create a dictionary of dictionaries:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>table_maps <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;foo&#39;</span>: foo_map, <span style="color:#e6db74">&#39;bar&#39;</span>: bar_map, <span style="color:#e6db74">&#39;baz&#39;</span>: baz_map, <span style="color:#f92672">...</span>}
+</span></span></code></pre></div><p>I then put the preceding code into a loop that iterates over the key-value pairs in this dictionary. I must now include Python variables in the SQL code along with the SQL variables, and reference nested dictionaries:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> table_maps:
+</span></span><span style="display:flex;"><span>    sql_create_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">_id INTEGER PRIMARY KEY,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> TEXT
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    );&#39;&#39;&#39;</span> <span style="color:#f92672">%</span> (key, key, key)
+</span></span><span style="display:flex;"><span>    CreateTable(conn, sql_create_table)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> table_maps[key]:
+</span></span><span style="display:flex;"><span>        sequel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;INSERT INTO </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">(</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">_id, </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">) VALUES(?,?)&#39;&#39;&#39;</span> <span style="color:#f92672">%</span> (key,
+</span></span><span style="display:flex;"><span>            key, key)
+</span></span><span style="display:flex;"><span>        c<span style="color:#f92672">.</span>execute(sequel, (k, table_maps[key][k]))
+</span></span><span style="display:flex;"><span>        conn<span style="color:#f92672">.</span>commit()
+</span></span></code></pre></div><p>This code rewards working through the variable expansions. And yes, it makes sense to build this code into a function, and then call the function for each item in <code>table_maps</code>.</p>
+<p>At this point, somewhere, you have a SQLite database. Huzzah!</p>
+<h1 id="fine-but-how-do-you-read-it">Fine, but how do you <em>read</em> it?</h1>
+<p>Now we get to the part that has driven me nuts multiple times: how do you read data from such a file?</p>
+<p>In Python this is trivial: open a connection as above, define a SQL query, and pipe the results into a Pandas dataframe:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Assume conn already exists</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_sql_query(<span style="color:#e6db74">&#34;SELECT * FROM ulp&#34;</span>, conn)
+</span></span></code></pre></div><p>In that case, you&rsquo;d have the data that we wrote to the table <code>ulp</code> previously. In R, presuming that you have installed the <code>RSQLite</code> library, it&rsquo;s virtually the same:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>conn <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbConnect</span>(RSQLite<span style="color:#f92672">::</span><span style="color:#a6e22e">SQLite</span>(), <span style="color:#e6db74">&#34;ULPs.db&#34;</span>)
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbSendQuery</span>(conn, <span style="color:#e6db74">&#34;SELECT * FROM ulp&#34;</span>)
+</span></span></code></pre></div><p>And in Stata it&rsquo;s&hellip;oh, <em>God damn it</em>.</p>
+<p>Stata lacks this type of SQL integration. Instead it uses open database connectivity or <a href="https://en.wikipedia.org/wiki/Open_Database_Connectivity">ODBC</a>, &ldquo;a standard API for accessing database management systems.&rdquo; Let me be clear that ODBC is a <em>good thing</em>. Out in the real world, having an interoperability layer between databases and applications is extremely important, and drivers are widely available. For an individual researcher, though, getting ODBC working just to read a SQLite file can feel like Carl Sagan&rsquo;s &ldquo;To make an apple pie, first create the universe&rdquo; line.</p>
+<p>Stata has a series of <code>odbc</code> commands, but (per the nature of ODBC) these just talk to the operating system&rsquo;s <em>ODBC device manager</em>. This is where the fun starts. These days, OS X does not come with an ODBC device manager; they dropped <code>iodbc</code> with Snow Leopard, because Apple.</p>
+<p>There are two main ODBC device managers, <code>unixodbc</code> and <code>iodbc</code>. I&rsquo;ll use the former, which you can install with Homebrew. (Don&rsquo;t have Homebrew installed? Yak shaving time.)</p>
+<p>Thus in Stata I can <code>set odbcmgr unixodbc</code> (becuase Stata looks for the erstwhile <code>iodbc</code> on Mac) and then use the ODBC device manager to talk to the database. But the device manager does not automatically how to do this. You must specify an <em>ODBC device driver</em>, which, inevitably, is not installed. Things get squirrelly around device drivers. You can find DevArt charging US$169 for a desktop license for a SQLite ODBC driver; but you can also install <code>sqliteodbc</code>, again from Homebrew, for free. YMMV, but for research projects, I think you&rsquo;ll find the free version sufficient.</p>
+<p>With these installed, you&rsquo;re almost there. However, <code>unixodbc</code> is very Unix-y, in that it expects to find information in various initialization files, notably <code>odbcinst.ini</code> and <code>odbc.ini</code>. These can live in several places (type <code>odbcinst -j</code> in terminal to see where it looks by default), but&ndash;in a grudging concession to usability&ndash;it will preferentially use copies in your home directory. Mine look like this:</p>
+<pre tabindex="0"><code>.odbcinst.ini:
+[SQLite Driver]
+Driver = /usr/local/Cellar/sqliteodbc/0.9998/lib/libsqlite3odbc.dylib
+
+.odbc.ini:
+[ULPs]
+Driver = SQLite Driver
+Database = /Users/jpferg/Dropbox/research/ulp_diffuse/data/ulps.db
+</code></pre><p>Once you have all of the things in the right places, then you can pull the relevant data with <code>odbc load, table(&quot;ulp&quot;)</code>. Short, simple command, but there&rsquo;s a pile of infrastructure behind it!</p>
+<h1 id="the-curse-of-thin-documentation">The curse of thin documentation</h1>
+<p>I swear, I didn&rsquo;t write all this just to complain. I&rsquo;ve tried to figure out ODBC in Stata for years. Each time, I bounced off the complication of lining these pieces up. Multiple device managers, multiple device drivers, an implied client-server model on the local machine&hellip;I can perhaps be forgiven for throwing up my hands and sticking with .dta files.</p>
+<p>Here&rsquo;s the thing though: when you look at what I wrote to read SQL database records into Stata, it doesn&rsquo;t look complex:</p>
+<ol>
+<li>Install <code>unixodbc</code> and <code>sqliteodbc</code> with Homebrew</li>
+<li>Write <code>~/.odbcinst.ini</code>. List where the device driver lives and give it an easy-to-use name.</li>
+<li>Write <code>~/.odbc.ini</code>. List where the database file lives, the driver it needs (using that easy name), and an easy-to-remember name for the file.</li>
+</ol>
+<p>Now you can type <code>odbc list</code>, <code>odbc query</code>, and other commands inside Stata. These show databases you can access, which tables are in each, the tables&rsquo; structure and the like. <code>odbc</code> also lets you do database I/O with SQL commands. Adding databases or drivers is just a matter of adding lines to those files. The Python code I excerpted in this post is <em>way</em> more complicated than the process I describe here. So why am I complaining about <em>this?</em></p>
+<p>Though simpler, this process was much harder to learn. This is the cause and the effect of Stata&rsquo;s fading prevalance. Stata is more than 30 years old; many of its user conventions are almost pre-Internet. For eons the canonical place to trade information was Statalist, an email list. The hardcore user community never migrated to Stackexchange or other successors. Because new people use different software, the posts that do exist for Stata/ODBC connectivity are increasingly ancient. This doesn&rsquo;t cause problems for Stata itself but, because odbc is separate software, changes that affect <em>its</em> availability sow confusion. I mentioned for example that OS X dropped <code>iodbc</code> from the base install with Snow Leopard. I learned that from posts on Statalist about people trying to configure <code>odbc</code> on Mac. But Snow Leopard was released twelve years ago!</p>
+<p>Maybe Stata will include SQL support in version 17. They could bundle their own device drivers. But why? Almost anyone who uses Stata with SQL databases already knows how <code>odbc</code> works, and new people are unlikely to install Stata.</p>
+<p>There is plenty of information about ODBC and SQL online, of course. But, crucially, there is little about using those them <em>with Stata</em>. That is where things break down. I don&rsquo;t want to learn a ton about ODBC&ndash;I just want to read a database! Yet Stata&rsquo;s own documentation stops at the modularity frontier.</p>
+<p>As of this writing, nine of the first ten hits from a Google search of &ldquo;reading SQL with R&rdquo; are third-party pages walking through ways to do this. The oldest is 2015; most were posted within the last three years. By contrast, three of the first ten hits for &ldquo;reading SQL with Stata&rdquo; are from stata.com, and direct toward the <code>odbc</code> documentation. Five of the remaining seven are from between 2014 and 2017, and virtually all of them are rants about how Stata does <em>not</em> support SQL! One of the two remining is a query (from 2017) on Statalist asking about reading SQL. Tellingly, the person on the list who recommends <code>odbc</code> follows up with &ldquo;I haven&rsquo;t used the <code>odbc</code> command in many years&ndash;it just doesn&rsquo;t come up in my work. So all I can tell you is that this is what <code>odbc</code> does. But I no longer remember any of the details of how it is used.&rdquo;</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

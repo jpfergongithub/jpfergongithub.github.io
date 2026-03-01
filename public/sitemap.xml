@@ -2,13 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/fun_with_modulo_and_boole/</loc>
-    <lastmod>2020-01-19T20:54:16-05:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2020-01-19T20:54:16-05:00</lastmod>
+    <lastmod>2025-04-11T13:11:23-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/npw_culture_same_planet/</loc>
+    <lastmod>2025-04-11T13:11:23-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-04-11T13:11:23-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/replication_never_stops/</loc>
+    <lastmod>2025-01-08T13:07:46-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/nwp_dbtc/</loc>
+    <lastmod>2024-02-13T13:05:29-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/whats_happening_eeo_update/</loc>
+    <lastmod>2024-02-13T13:00:50-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/nwp_occupational_licensure_race_entrepreneurship/</loc>
+    <lastmod>2022-01-26T12:58:15-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/crosswalks_or_error_propagation/</loc>
+    <lastmod>2021-10-19T12:27:28-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/keep_calm_and_odbc/</loc>
+    <lastmod>2021-04-14T12:05:28-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pernicious_problem_perfect_paper/</loc>
+    <lastmod>2020-07-07T11:57:02-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/whats_happening_eeo/</loc>
+    <lastmod>2020-05-13T11:55:02-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/refactoring_a_project/</loc>
+    <lastmod>2020-04-29T11:43:39-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/fun_with_modulo_and_boole/</loc>
     <lastmod>2020-01-19T20:54:16-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/a_christmas_miracle/</loc>

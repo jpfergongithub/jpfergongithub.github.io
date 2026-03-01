@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Crosswalks, or error propagation | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In the summer of 2021, my research assistant Hasnain Shaikh and I made great progress cleaning up the Unfair Labor Practice data that I have mentioned elsewhere. I have written before about the challenges with making sense of geography in these records, because the National Labor Relations Board switched versions of their coding schemes without documenting that. (Also they had a lot of typos on ancient keyboards.) Eventually we reached the point where we could make some simple plots showing the relative intensity of ULP charges in various states, with the states scaled by their union membership.">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/crosswalks_or_error_propagation/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/crosswalks_or_error_propagation/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Crosswalks, or error propagation">
+  <meta property="og:description" content="In the summer of 2021, my research assistant Hasnain Shaikh and I made great progress cleaning up the Unfair Labor Practice data that I have mentioned elsewhere. I have written before about the challenges with making sense of geography in these records, because the National Labor Relations Board switched versions of their coding schemes without documenting that. (Also they had a lot of typos on ancient keyboards.) Eventually we reached the point where we could make some simple plots showing the relative intensity of ULP charges in various states, with the states scaled by their union membership.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-10-19T12:27:28-05:00">
+    <meta property="article:modified_time" content="2021-10-19T12:27:28-05:00">
+
+  <meta itemprop="name" content="Crosswalks, or error propagation">
+  <meta itemprop="description" content="In the summer of 2021, my research assistant Hasnain Shaikh and I made great progress cleaning up the Unfair Labor Practice data that I have mentioned elsewhere. I have written before about the challenges with making sense of geography in these records, because the National Labor Relations Board switched versions of their coding schemes without documenting that. (Also they had a lot of typos on ancient keyboards.) Eventually we reached the point where we could make some simple plots showing the relative intensity of ULP charges in various states, with the states scaled by their union membership.">
+  <meta itemprop="datePublished" content="2021-10-19T12:27:28-05:00">
+  <meta itemprop="dateModified" content="2021-10-19T12:27:28-05:00">
+  <meta itemprop="wordCount" content="1607">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Crosswalks, or error propagation">
+  <meta name="twitter:description" content="In the summer of 2021, my research assistant Hasnain Shaikh and I made great progress cleaning up the Unfair Labor Practice data that I have mentioned elsewhere. I have written before about the challenges with making sense of geography in these records, because the National Labor Relations Board switched versions of their coding schemes without documenting that. (Also they had a lot of typos on ancient keyboards.) Eventually we reached the point where we could make some simple plots showing the relative intensity of ULP charges in various states, with the states scaled by their union membership.">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-crosswalks_or_error_propagation">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-crosswalks_or_error_propagation flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Crosswalks, or error propagation</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-10-19T12:27:28-05:00">October 19, 2021</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>In the summer of 2021, my research assistant Hasnain Shaikh and I made great progress cleaning up the Unfair Labor Practice data that I have mentioned elsewhere. I have written before about the challenges with making sense of geography in these records, because the National Labor Relations Board switched versions of their coding schemes without documenting that. (Also they had a lot of typos on ancient keyboards.) Eventually we reached the point where we could make some simple plots showing the relative intensity of ULP charges in various states, with the states scaled by their union membership.</p>
+<p><img src="/1974_cropped.webp" alt="foo"></p>
+<p><img src="/1984_cropped.webp" alt="foo"></p>
+<p>In those two images above, for example, you can see 1974 and 1984. The upswing of employer intimidation and firings for union activity, commented on at the time, is well under way. The production of the cartograms is a story for another time (we did these with <a href="https://qgis.org/en/site/">QGIS</a>, but dang we need a python-only toolchain!). Given that these were text strings of punched-card records not too long ago, though, I&rsquo;ll call this progress.</p>
+<p>The real challenge in these data though is getting the coding of <em>industry</em> right. All industry-classification systems are compromises, but the challenge inheres in converting between them. Industry change means that these schemes need frequent updating. Said updates can be drastic; the shift from the Standard Industrial Classification (SIC) codes to the North American Industry Classification Scheme (NAICS) codes around the turn of the century famously breaks many longitudinal series. The further back in time you go, the worse this can be.</p>
+<p>The data we use run through 1999, which spares us the SIC/NAICS mess, but there are still multiple versions of the SIC to deal with. For the most part, industry classification in the data look like this:</p>
+<p><img src="/data_overlap_small.webp" alt="foo"></p>
+<p>This isn&rsquo;t bad, and many crosswalks exist for moving between SIC classification schemes. I think it best to standardize these records to the 1987 SIC. This will produce the numerator for certain analyses. But what about the denominator?</p>
+<p>When looking at geography, at least at the state level, a denominator is easy. <a href="http://unionstats.com/MonthlyLaborReviewArticle.htm">Hirsch, Macpherson, and Vroman&rsquo;s work</a> gives us state-level union density annually back to 1964. For industry, we need union density by industry. Here the troubles begin: the Bureau of Labor Statistics is very clear that they have only gathered consistent data on union membership and coverage by industry since 1983. Even where they do have it, they have used <em>yet another</em> scheme: the Census Industry Code lists. This means the data to be made commensurate really look more like this:</p>
+<p><img src="/data_overlap.webp" alt="foo"></p>
+<p>What is going on in the 1970s? There are references to data that the BLS gathered on union density between 1973 and 1983. In the data appendix to <a href="https://doi-org.proxy3.library.mcgill.ca/10.1093/qje/qjab012">Farber et al.&rsquo;s 2021 QJE (gated)</a>, for example, the authors write that &ldquo;The CPS first asks respondents their union status in 1973, and then only in selected months until 1983 from which time information on union status was collected each month in the CPS as part of the outgoing rotation group supplement&rdquo; (113). <a href="https://journals.sagepub.com/doi/epub/10.1177/23294965221089914">Shawn Perron&rsquo;s 2022 Social Currents (gated)</a> has more information: &ldquo;The [CPS] has asked about employment status, household demographics, and other labor force characteristics, such as union membership and wages since 1973. Extracts are compiled by the National Bureau of Economic Research (NBER). &hellip; These estimates draw on the May extracts of the CPS between 1973 and 1982 and the merged outgoing rotation group (MORG) from 1983 onward&rdquo; (375). Once you know what you are looking for, it is easy to find the <a href="https://www.nber.org/research/data/current-population-survey-cps-may-extracts-1969-1987">CPS&rsquo;s archive of May extracts</a>. Not for the first time on this projectb, once I have the right search terms, the data are trivial to grab; the problem is finding those search terms.</p>
+<p>Consider what this diagram implies:</p>
+<ul>
+<li>Before 1973, no industry-density information is available</li>
+<li>1973-1982, we must match 1972 SIC to the May CPS extracts</li>
+<li>1983-1987, we must match 1972 SIC to 1980 CIC</li>
+<li>1987-1992, we must match 1987 SIC to 1980 CIC</li>
+<li>1992-1999, we must match 1987 SIC to 1990 CIC</li>
+</ul>
+<p>Again, this isn&rsquo;t <em>too</em> bad. The good news is that, at least in recent years, <a href="https://www.census.gov/topics/employment/industry-occupation/guidance/code-lists.html">CIC codes appear derived from NAICS codes</a>. This gives me hope that the same will hold for the era covered by SIC codes.</p>
+<p>Thus we could eventually do with industry what we have done with geography: plot counts of ULP charges across industry, scaled by industry density. (Whereas geography lends itself to cartograms, industry probably needs something like a mosaic plot.) But before I do so, it&rsquo;s worth discussing error propagation.</p>
+<h1 id="error-propagation-in-crosswalks">Error propagation in crosswalks</h1>
+<p>The social sciences (apart from some parts of psychology) don&rsquo;t spend much formal time on error propagation, or the <a href="https://en.wikipedia.org/wiki/Propagation_of_uncertainty">propagation of uncertainty</a>. I think that this is because direct measurement is so rare. We usually get our data from somewhere else. While we learn about measurement error, and understand that classical measurement error can introduce noise (but not necessarily bias) into our analyses, we spend very little time trying to quantify it. We also place too much emphasis on statistical significance <em>per se</em>, and downplay getting parameter estimates right. The situation is different in other sciences, where hypotheses are often about specific parameter values and where experimentalists often generate the data they analyze.</p>
+<p>Assume we want to know how variable $y$ responds to changes in variable $x$
+&ndash; i.e., correlation. Pearson&rsquo;s correlation coefficient $\rho_{xy}$ is just $\frac{\mathrm{cov}(x,y)}{\sigma_x \sigma_y}$, that is, how much $x$ and $y$ vary together as a share of how much they vary individually. (Ever notice how much $\rho$ looks like a Jaccard index?) Assume that we have classical measurement error; we measure $x$ with a lot of noise. A noisy measure is going to have more internal variance, which increases $\sigma_x$. Noise will also increase the variance of $x$ relative to any given variation in $y$, which by construction will decrease $\mathrm{cov}(x,y)$. Noise thus shrinks the numerator of $\rho_{xy}$ while inflating its denominator. This is why classical measurement error biases coefficients toward zero.</p>
+<p>So far, so good&ndash;this is basic stats. It&rsquo;s also why experimental scientists obsess over accurate measurement at every stage: measurement error in any stage of a variable&rsquo;s construction will propagate. Social scientists know that measurement error happens, but because we usually inherit our data from some other entity that did the primary measurement, we limit ourselves to discussing how it <em>could</em> affect our results. Most often, we assume that measurement error will bias our results toward zero, and therefore treat any results as conservative estimates of effects.</p>
+<p>There is a place though where social scientists generate a lot of data even though they make no primary measurements: crosswalks. This is the generic term for our heroic and often flailing attempts to make incompatible datasets compatible. One of my heroes in this area is David Dorn, whose <a href="https://www.ddorn.net/data.htm">data page</a>, replete with crosswalks, has bailed out countless researchers. (Seriously, people like David should set up Patreon accounts. Though perhaps citations do the same, in the currency of academic reputation?)</p>
+<p>I want to distinguish two types of crosswalks. One is a straightforward recoding. You might have US states recorded as full names, two-digit abbreviations, or FIPS codes. This needs fixing, and there are <a href="https://cran.r-project.org/web/packages/crosswalkr/vignettes/crosswalkr.html">whole packages</a> for it, but there is no uncertainty in this process. I don&rsquo;t care about these. The second type is when we make guesses (educated guesses, but guesses nonetheless) about the code we should assign an observation in scheme 2, given the code it was assigned in scheme 1. There is ample room for measurement error here.</p>
+<p>(Aside: crosswalks are just joins, to use the SQL term. There are a ton of <a href="https://en.wikipedia.org/wiki/Join_(SQL)">different types of joins</a>, though. The simple-recoding type of crosswalk boils down to a one-to-one join between two tables of codes. At the other end, many-to-many joins are often indeterminate. Because we use &ldquo;crosswalk&rdquo; to cover all of these, I think that the term can hide more than it reveals.)</p>
+<p>I think the <em>order</em> in which you should build a complicated crosswalk is interesting. Say that you have data that&rsquo;s been encoded using three schemes, S70, S80, and S90, and that you want to standardize everything to S90. You could harmonize the S70 to S90 and the S80 data to S90. Alternatively, you could harmonize S70 to S80, <em>then</em> harmonize S70/S80 to S90. These aren&rsquo;t the same! Is there a formal way to choose between them?</p>
+<p>I think that the answer lies in the data-generating process of the schemes themselves. If industry change is random then we can think about said change as retroactively applied mistakes in coding individual observations. This is a stochastic process, like Brownian motion. If I learned anything from <a href="https://pubsonline.informs.org/doi/abs/10.1287/orsc.2019.1330?journalCode=orsc">Scott Ganz&rsquo;s work</a>, it&rsquo;s that fixing a data point partway through a Brownian process reduces the variance of our estimates later on in the process. In these cases, it would make sense to harmonize S70 to S80, then harmonize S70/S80 to S90.</p>
+<p>There are problems with that line of thinking, though. Even if the assume that the enumeration of possible industries in each scheme is appropriate (and we have little choice but to assume that), we don&rsquo;t necessarily know where to assign a firm in scheme 2, given solely its assignment in scheme 1. The best such crosswalks have probability weights that can be used to build transition matrices, but that means you&rsquo;re introducing assignment error <em>at each stage</em>. This is when we cycle back to error propagation. When are sequential probabilistic assignments with small(er) errors preferable to a single probabilistic assignment with large(r) errors?</p>
+<p>This is a post that almost certainly will have an update. But, gosh, I&rsquo;m curious whether other people have worked on this point.</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

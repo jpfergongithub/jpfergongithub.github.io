@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Refactoring a project | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="The trials of organization
+Let&rsquo;s talk about replicable research. I think that it&rsquo;s important for other people to be able to reproduce your results, but the main reason I care about replicability is so I can reproduce my own results. I&rsquo;ve found that I need to stop at certain points in a project and clean up, not just the code in files, but also the file structure itself. My rule is that the first time I have trouble remembering which file I&rsquo;m supposed to be working on, it&rsquo;s time to clean up the project directory. Trust me: if you wait until the &ldquo;end&rdquo; of the project, it will be too late.">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/refactoring_a_project/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/refactoring_a_project/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Refactoring a project">
+  <meta property="og:description" content="The trials of organization Let’s talk about replicable research. I think that it’s important for other people to be able to reproduce your results, but the main reason I care about replicability is so I can reproduce my own results. I’ve found that I need to stop at certain points in a project and clean up, not just the code in files, but also the file structure itself. My rule is that the first time I have trouble remembering which file I’m supposed to be working on, it’s time to clean up the project directory. Trust me: if you wait until the “end” of the project, it will be too late.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-04-29T11:43:39-05:00">
+    <meta property="article:modified_time" content="2020-04-29T11:43:39-05:00">
+
+  <meta itemprop="name" content="Refactoring a project">
+  <meta itemprop="description" content="The trials of organization Let’s talk about replicable research. I think that it’s important for other people to be able to reproduce your results, but the main reason I care about replicability is so I can reproduce my own results. I’ve found that I need to stop at certain points in a project and clean up, not just the code in files, but also the file structure itself. My rule is that the first time I have trouble remembering which file I’m supposed to be working on, it’s time to clean up the project directory. Trust me: if you wait until the “end” of the project, it will be too late.">
+  <meta itemprop="datePublished" content="2020-04-29T11:43:39-05:00">
+  <meta itemprop="dateModified" content="2020-04-29T11:43:39-05:00">
+  <meta itemprop="wordCount" content="1506">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Refactoring a project">
+  <meta name="twitter:description" content="The trials of organization Let’s talk about replicable research. I think that it’s important for other people to be able to reproduce your results, but the main reason I care about replicability is so I can reproduce my own results. I’ve found that I need to stop at certain points in a project and clean up, not just the code in files, but also the file structure itself. My rule is that the first time I have trouble remembering which file I’m supposed to be working on, it’s time to clean up the project directory. Trust me: if you wait until the “end” of the project, it will be too late.">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-refactoring_a_project">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-refactoring_a_project flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Refactoring a project</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-04-29T11:43:39-05:00">April 29, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h1 id="the-trials-of-organization">The trials of organization</h1>
+<p>Let&rsquo;s talk about replicable research. I think that it&rsquo;s important for other people to be able to reproduce your results, but the main reason I care about replicability is so I can reproduce <em>my own</em> results. I&rsquo;ve found that I need to stop at certain points in a project and clean up, not just the code in files, but also the file structure itself. My rule is that the first time I have trouble remembering which file I&rsquo;m supposed to be working on, it&rsquo;s time to clean up the project directory. Trust me: if you wait until the &ldquo;end&rdquo; of the project, it will be too late.</p>
+<p>I use a standard directory structure for my research projects:</p>
+<pre tabindex="0"><code>project_name
+   |--canonical
+   |--data
+   |--documentation
+   |--drafts
+   |--figures
+   |--literature
+   |--presentations
+   |--scripts
+      |--old_code
+   |--tables
+</code></pre><p>A lot of people use something like this. <code>Canonical</code> holds original data and ideally is read-only except when explicitly adding new files. This is the stuff that, if I lost it, I&rsquo;d be back to square one. <code>Data</code> holds any data <em>that I create</em>. I think the distinction is important. I never write output to <code>canonical</code> because it&rsquo;s just too easy to overwrite or erase things. If I&rsquo;ve done things correctly, <code>data</code> could be erased and I could be up and running again in the time it takes to run my code. <code>Documentation</code> has how-tos of various sorts. These might be software manuals, dataset codebooks, methodological pieces, and the like. These are separate from <code>literature</code>, which has phenomenological pieces related to the project. Typically, if it will wind up in the lit review, it goes in <code>literature</code>; if it will wind up in a footnote or appendix, it goes in <code>documentation</code>. The distinction between these two directories is the least important.</p>
+<p>I keep all of my code in a directory called <code>scripts</code>. That name probably says a lot about me. First, I started doing research before it became chic to talk about &ldquo;code&rdquo; and &ldquo;coding&rdquo; all the damned time. Second, I&rsquo;ve spent too long in programs like Stata, and I maintain a mental distinction between &ldquo;scripts,&rdquo; where I invoke existing commands, and &ldquo;programming,&rdquo; where I write my own commands to give me functions beyond those built in. I realize this is a hoary and obsolete distinction. But let me have my old-coot-dom.</p>
+<p><code>Drafts</code> is where the paper drafts go. <code>Figures</code> and <code>tables</code> hold the obvious things. Note that TiKZ drawings live in <code>figures</code> both as TeX and as PDF documents. Finally, <code>presentations</code> has the inevitable PowerPoints. I maintain a separate directory for presentations because I often have ancillary graphical elements and perhaps custom-built figures for presentations, and it&rsquo;s easier to keep those in one place. LaTeX is fine with crawling across a directory structure for its needed elements, and there are traces in the files themselves of what resources are needed. Because PowerPoint embeds things, it&rsquo;s hard to reverse-engineer where the elements in a presentation came from.</p>
+<p>Other people use other structures, but almost all productive people have some structure. The advantage of using the same skeleton across all projects is that you don&rsquo;t have to spend mental energy remembering where you put things on <em>this</em> one.</p>
+<p>This skeleton also implies a rough workflow. Write scripts that read from <code>canonical</code> and write to <code>data</code>. Write other scripts that read from <code>data</code> and write to <code>figures</code> and <code>tables</code>. Reference those outputs in a document that lives in <code>drafts</code>. Store the scripts in <code>scripts</code>. Rinse; repeat.</p>
+<p>In practice, it can be hard to follow this. Even if you save files in the right places, you can go down blind alleys and have to restart. But what do you do with that old code? Maybe you write a temporary file at some point because the code has grown too complex, or because some programming step takes a long time to run. Do you keep that file in the workflow, or do you refactor things to make it unnecessary? This is where the next step comes in.</p>
+<h1 id="projects-as-directed-graphs">Projects as directed graphs</h1>
+<p>When I can no longer easily remember how the files of one of my projects fit together, I map dependencies. If I already have a draft paper, that&rsquo;s a good place to start. What files does it call? What files generate those files? What files generate <em>those</em> files? And so on, back to the canonical data. I mark up these connections freehand, in a notebook or in a text editor. Then&ndash;and this is probably where I reveal myself to be an obsessive&ndash;I write it up formally in the <code>dot</code> language, as a directed graph. I do this because I can then visualize the dependencies, which helps me immensely.</p>
+<p>One of my running projects is on spatial metrics of employment segregation. I hit the wall last night, so today the directed graph came out. That produced the following code:</p>
+<pre tabindex="0"><code class="language-dot" data-lang="dot">digraph S {
+        &#34;S/spatial_segregation_scripts.py&#34; [shape=box];
+        &#34;S/spatial_v_aspatial_theils.py&#34; [shape=box];
+        &#34;S/pyloess.py&#34; [shape=box];
+        &#34;D/geocoded_YEAR_short.csv&#34; [shape=box,color=blue];
+        &#34;D/spatial_figs.csv&#34; [shape=box,color=blue];
+        &#34;F/spatial_win_btw2.pdf&#34; [shape=box,color=green];
+        &#34;F/overstate.pdf&#34; [shape=box,color=green];
+        &#34;S/overstatement_figure.do&#34; [shape=box];
+        &#34;E/eeoc_addresses_census_school.csv&#34; [shape=box,color=red];
+        &#34;S/build_geocoded_years.do&#34; [shape=box];
+        &#34;E/EEO1_1971_2014.dta&#34; [shape=box,color=red];
+        &#34;D/eeo_YEAR_short.csv&#34; [shape=box,color=blue];
+        &#34;D/geocoded_YEAR.dta&#34; [shape=box,color=blue];
+        &#34;E/MATCHING_XWALK_EEO1_1971_2014.dta&#34; [shape=box,color=red];
+        &#34;F/overstatement.pdf&#34; [shape=box,color=green];
+        &#34;D/matchrates.dta&#34; [shape=box,color=red];
+        &#34;S/matchrates.do&#34; [shape=box];
+        &#34;F/matchrates.pdf&#34; [shape=box,color=green];
+        &#34;F/kdensities.pdf&#34; [shape=box,color=green];
+        &#34;D/spatial_figs.csv&#34; [shape=box,color=blue];
+        &#34;S/spatial_segregation_scripts.py&#34; -&gt; &#34;S/spatial_v_aspatial_theils.py&#34;;
+        &#34;S/pyloess.py&#34; -&gt; &#34;S/spatial_v_aspatial_theils.py&#34;;
+        &#34;D/geocoded_YEAR_short.csv&#34; -&gt; &#34;S/spatial_v_aspatial_theils.py&#34;;
+        &#34;S/spatial_v_aspatial_theils.py&#34; -&gt; {&#34;D/spatial_figs.csv&#34;;
+                &#34;F/spatial_win_btw2.pdf&#34;; &#34;F/overstate.pdf&#34;;
+                &#34;S/overstatement_figure.do&#34;}
+        &#34;E/eeoc_addresses_census_school.csv&#34; -&gt; &#34;S/build_geocoded_years.do&#34;;
+        &#34;E/EEO1_1971_2014.dta&#34; -&gt; &#34;S/build_geocoded_years.do&#34;;
+        &#34;S/build_geocoded_years.do&#34; -&gt; {&#34;D/eeo_YEAR_short.csv&#34;;
+                &#34;D/geocoded_YEAR.dta&#34;; &#34;D/geocoded_YEAR_short.csv&#34;}
+        &#34;E/MATCHING_XWALK_EEO1_1971_2014.dta&#34; -&gt; &#34;S/build_geocoded_years.do&#34;;
+        &#34;S/overstatement_figure.do&#34; -&gt; &#34;F/overstatement.pdf&#34;;
+        &#34;D/matchrates.dta&#34; -&gt; &#34;S/matchrates.do&#34;;
+        &#34;S/matchrates.do&#34; -&gt; {&#34;F/matchrates.pdf&#34;;
+                &#34;F/kdensities.pdf&#34;}
+        &#34;E/eeoc_addresses_census_school.csv&#34; -&gt; &#34;S/matchrates.do&#34;;
+}
+</code></pre><p>Don&rsquo;t get hung up in the code. Consider the output:</p>
+<p><img src="/refactor1.webp" alt="foo"></p>
+<p>Red boxes are canonical data, things that are not generated by any of my code. Black boxes are scripts. Blue boxes are generated data, while green boxes are figures. The capital letters stand for <code>scripts</code>, <code>data</code>, <code>figures</code>, and <code>elsewhere</code>. (The latter would normally be <code>canonical</code>, but in this case the original data lives in a protected directory separate from the project itself.)</p>
+<p>This <em>mostly</em> follows that workflow I mentioned, but there are weird exceptions. The script <code>build_geocoded_years.do</code> writes a couple of data files that aren&rsquo;t used by anything downstream; so does <code>spatial_v_aspatial_theils.py</code>. There are two figures, <code>overstate.pdf</code> and <code>overstatement.pdf</code>, that look suspiciously similar. At first I thought I&rsquo;d just typed something wrong, but no, they&rsquo;re both in <code>figures</code>. The biggest problem though is in the upper right. The file <code>matchrates.dta</code> lives in <code>data</code>, yet there is nothing that generates it! It&rsquo;s an orphan, and yet a script then calls it to create two figures that are in the paper. This is a problem. Without that file, or at least a record of where it came from, you cannot replicate these results from the original data sources.</p>
+<p>Orphan and widow files like these jump out when you code up a directory this way. So to do those bugbears of reproducible research, the circular dependencies. Now I can clean them up:</p>
+<ul>
+<li>The extra data files written by <code>build_geocoded_years.do</code> are intermediate files in route to <code>geocoded_YEAR_short.csv</code>. (There are actually 41 such files; the YEAR in caps is my way of noting a variable in a loop.) Intermediate files are especially common in Stata, where before version 16 you could only hold one dataset in memory at a time. It&rsquo;s just important to include the relevant <code>erase</code> commands at the end of that script to get rid of them.</li>
+<li>The <code>spatial_figs.csv</code> and <code>overstatement_figure.do</code> that come out of <code>spatial_v_aspatial_theils.py</code> are there because of one another. When I was first trying to plot the overstatement of aspatial (vs. spatial) employment segregation, and how to fit a locally weighted regression line through the points, I wrote a quick-and-dirty Stata script to do it. That script needed the data, so I had the python script write a CSV file that Stata could read. Later, I figured out how to plot this graphic directly in python (that&rsquo;s why the script calls <code>pyloess.py</code>). Thus all of these excess files can be removed, and the script that produced them can be cleaned up.</li>
+<li>Some experimentation revealed that the data in <code>matchrates.dta</code> was probably produced at one stage in <code>build_geocoded_years.do</code>. I have <em>no memory whatsoever</em> of doing this, but there was a fragment of commented-out code in the latter file, so there you go. I altered that code to reliably generate the needed data, and moved the figure-plotting code from <code>matchrates.do</code> into <code>build_geocoded_years.do</code> itself. That eliminates the need for the intermediate data file and the subsequent script.</li>
+</ul>
+<p><img src="/refactor2.webp" alt="foo"></p>
+<p>The new dependency structure appears above. The only deviation from that idealized workflow is where one python script calls others. But that&rsquo;s OK, since the scripts called just define functions used in the calling one.</p>
+<p>These aren&rsquo;t gigantic changes, but that&rsquo;s kind of the point. If you stop and do this every now and then, before things get too convoluted, it isn&rsquo;t a big deal to tidy things up. If instead you wait until a deep clean is necessary&ndash;if you wait until you have to Marie Kondo your project directory&ndash;this can become a true nightmare. Lest I seem pretentious, let me end with a similar file map that I created while trying to clean up an earlier project, before stopping in despair:</p>
+<p><img src="/refactor3.webp" alt="foo"></p>
+<p>Delay refactoring at your own risk!</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

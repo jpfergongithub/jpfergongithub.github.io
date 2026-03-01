@@ -6,8 +6,78 @@
     <description>Recent content in Posts on JP Ferguson dot net</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Jan 2020 20:54:16 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 11 Apr 2025 13:11:23 -0500</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NWPs: Culture and spatial segregation</title>
+      <link>http://localhost:1313/posts/npw_culture_same_planet/</link>
+      <pubDate>Fri, 11 Apr 2025 13:11:23 -0500</pubDate>
+      <guid>http://localhost:1313/posts/npw_culture_same_planet/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been on sabbatical this academic year. One of the side effects of that is I&amp;rsquo;ve actually been &lt;em&gt;writing&lt;/em&gt;. Thus I should share two &amp;ldquo;new&amp;rdquo; papers.&lt;/p&gt;&#xA;&lt;p&gt;The first is a draft that I posted in November and then forgot to mention: &lt;a href=&#34;https://osf.io/p9h7x&#34;&gt;Culture as Entropy Reduction: Finding the &amp;lsquo;Organizational&amp;rsquo; in Organizational Culture&lt;/a&gt;. Apologies for the lame name. This is my ongoing effort to develop an empirical approach for examining whether and when it makes sense to talk about an organizational culture as such, rather than a concatenation of national, occupational, or other cultures. It adapts the basic approach to measuring segregation that I&amp;rsquo;ve used elsewhere in service of the task.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Replication never stops</title>
+      <link>http://localhost:1313/posts/replication_never_stops/</link>
+      <pubDate>Wed, 08 Jan 2025 13:07:46 -0500</pubDate>
+      <guid>http://localhost:1313/posts/replication_never_stops/</guid>
+      <description>&lt;p&gt;Every so often I get email from people who are working with union-represenation data from the National Labor Relations Board. (No surprise here: &lt;a href=&#34;https://www.jpferguson.net/nlrb-representation-case-data&#34;&gt;I host files and code for the CHIPS and CATS databases&lt;/a&gt;.) Upon getting one recent such message, I decided to broaden the conversation, and copied &lt;em&gt;everyone&lt;/em&gt; who had written me asking about such data in recent years. I think it has been useful for people to see what resources others have developed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>NWP: Demographically biased technological change?</title>
+      <link>http://localhost:1313/posts/nwp_dbtc/</link>
+      <pubDate>Tue, 13 Feb 2024 13:05:29 -0500</pubDate>
+      <guid>http://localhost:1313/posts/nwp_dbtc/</guid>
+      <description>&lt;p&gt;I am six weeks into the first academic term in four years where I am not teaching any courses. How good &lt;em&gt;that&lt;/em&gt; feels! This frees up time to push projects through the pipeline.&lt;/p&gt;&#xA;&lt;p&gt;With that in mind, a project several years in the making with &lt;a href=&#34;https://eccles.utah.edu/team/victor-bennett/&#34;&gt;Victor Bennett&lt;/a&gt;, &lt;a href=&#34;https://www.hbs.edu/faculty/Pages/profile.aspx?facId=876389&#34;&gt;Rem Koning&lt;/a&gt;, and my graduate student &lt;a href=&#34;https://www.mcgill.ca/desautels/masoomeh-kalantari&#34;&gt;Masoomeh Kalantari&lt;/a&gt; finally has a 1.0 draft. &amp;ldquo;&lt;a href=&#34;https://osf.io/tuqxh&#34;&gt;Demographically Biased Technological Change: Investments in Industrial Automation Disproportionately Benefit White Workers&lt;/a&gt;&amp;rdquo; is now available on OSF. All comments are welcome!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What&#39;s happening with the EEO-1 data? An update</title>
+      <link>http://localhost:1313/posts/whats_happening_eeo_update/</link>
+      <pubDate>Tue, 13 Feb 2024 13:00:50 -0500</pubDate>
+      <guid>http://localhost:1313/posts/whats_happening_eeo_update/</guid>
+      <description>&lt;p&gt;Nearly four years ago I posted an update about the (un)availability of the Equal Employment Opportunity Commission&amp;rsquo;s data. I promised that I would update when I have more information. I finally do. I post here the announcement that went out from Donald Tomaskovic-Devey, from the Sociology department at the University of Amherst, who has long been the point of contact between the EEOC and academic researchers:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;After a hiatus of eight years the U.S. Equal Employment Opportunity Commission is making its incredible data resources available again to the research community. These data will be found in &lt;a href=&#34;https://www.census.gov/about/adrm/fsrdc.html&#34;&gt;Census Research Data Centers&lt;/a&gt; and access procedures are detailed below.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>NWP: Occupational licensure, race, and entrepreneurship</title>
+      <link>http://localhost:1313/posts/nwp_occupational_licensure_race_entrepreneurship/</link>
+      <pubDate>Wed, 26 Jan 2022 12:58:15 -0500</pubDate>
+      <guid>http://localhost:1313/posts/nwp_occupational_licensure_race_entrepreneurship/</guid>
+      <description>&lt;p&gt;I can&amp;rsquo;t be the only academic who spent the pandemic doing extra administrative work, trying to keep the lights on. A depressing number of my current projects were started around 2019 and are only now reaching fruition. After the paper that &lt;a href=&#34;https://www.hbs.edu/faculty/Pages/profile.aspx?facId=876389&#34;&gt;Rem Koning&lt;/a&gt;, &lt;a href=&#34;https://www.iese.edu/faculty-research/faculty/sampsa-samila/&#34;&gt;Sampsa Samila&lt;/a&gt; and I &lt;a href=&#34;https://www.science.org/doi/10.1126/science.aba6990&#34;&gt;published in &lt;em&gt;Science&lt;/em&gt;&lt;/a&gt; came out in the summer of 2021, I entered the longest dry spell of my career: nineteen goddamn months without a paper under review.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Crosswalks, or error propagation</title>
+      <link>http://localhost:1313/posts/crosswalks_or_error_propagation/</link>
+      <pubDate>Tue, 19 Oct 2021 12:27:28 -0500</pubDate>
+      <guid>http://localhost:1313/posts/crosswalks_or_error_propagation/</guid>
+      <description>&lt;p&gt;In the summer of 2021, my research assistant Hasnain Shaikh and I made great progress cleaning up the Unfair Labor Practice data that I have mentioned elsewhere. I have written before about the challenges with making sense of geography in these records, because the National Labor Relations Board switched versions of their coding schemes without documenting that. (Also they had a lot of typos on ancient keyboards.) Eventually we reached the point where we could make some simple plots showing the relative intensity of ULP charges in various states, with the states scaled by their union membership.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Keep calm and ODBC</title>
+      <link>http://localhost:1313/posts/keep_calm_and_odbc/</link>
+      <pubDate>Wed, 14 Apr 2021 12:05:28 -0500</pubDate>
+      <guid>http://localhost:1313/posts/keep_calm_and_odbc/</guid>
+      <description>&lt;p&gt;This post has many parents. I want to update where I am on the project that started this blog: studying the diffusion of unfair labor practices in union settings. I also recently solved a problem that took far longer than it should have. I want to document what I did, to remind myself and maybe to help others. And I want to get back to blogging after a truly hellacious year, for me and for everyone. If a rant about database connectivity kickstarts things, so be it!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The pernicious problem of the perfect paper</title>
+      <link>http://localhost:1313/posts/pernicious_problem_perfect_paper/</link>
+      <pubDate>Tue, 07 Jul 2020 11:57:02 -0500</pubDate>
+      <guid>http://localhost:1313/posts/pernicious_problem_perfect_paper/</guid>
+      <description>&lt;p&gt;Insisting that studies should not have errors or weaknesses handicaps scientific progress in organizational research. Let me explain.&lt;/p&gt;&#xA;&lt;p&gt;Within this field, it seems bad form to point out the errors or limitations in prior studies. This is especially so when it comes to problems with the operationalization of the theory or weaknesses in the study design. You find rare instances of papers&amp;rsquo; pointing out a previous paper&amp;rsquo;s &lt;em&gt;mistakes&lt;/em&gt; but rarer still find papers&amp;rsquo; citing previous paper&amp;rsquo;s &lt;em&gt;empirical limitations&lt;/em&gt;. Yet this second kind of truth-telling is more important, because empirical limitations are more common than out-and-out mistakes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What&#39;s happening with the EEO-1 data?</title>
+      <link>http://localhost:1313/posts/whats_happening_eeo/</link>
+      <pubDate>Wed, 13 May 2020 11:55:02 -0500</pubDate>
+      <guid>http://localhost:1313/posts/whats_happening_eeo/</guid>
+      <description>&lt;p&gt;I get asked this question enough that it seemed worth putting the answer in one place.&lt;/p&gt;&#xA;&lt;p&gt;I work with the Equal Employment Opportunity Commission&amp;rsquo;s EEO-1 establishment-survey data, which surveys large private employers about the racial and sexual composition of their workforces. Historically, researchers gained access to these data via the Intergovernmental Personnel Agreement. This is the law that governs secondment between federal agencies and other employers. Say that you work for the California Parks Service and are going to spend a year in Washington at the Department of the Interior. California is still paying your salary but you get treated as a federal employee for other purposes; this is the type of secondment the IPA handles. In our case, researchers were treated as Commission employees at a salary of $0 per year. We could access the data, and we could be punished to the full extent of the law if we were responsible for a breach.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Refactoring a project</title>
+      <link>http://localhost:1313/posts/refactoring_a_project/</link>
+      <pubDate>Wed, 29 Apr 2020 11:43:39 -0500</pubDate>
+      <guid>http://localhost:1313/posts/refactoring_a_project/</guid>
+      <description>&lt;h1 id=&#34;the-trials-of-organization&#34;&gt;The trials of organization&lt;/h1&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s talk about replicable research. I think that it&amp;rsquo;s important for other people to be able to reproduce your results, but the main reason I care about replicability is so I can reproduce &lt;em&gt;my own&lt;/em&gt; results. I&amp;rsquo;ve found that I need to stop at certain points in a project and clean up, not just the code in files, but also the file structure itself. My rule is that the first time I have trouble remembering which file I&amp;rsquo;m supposed to be working on, it&amp;rsquo;s time to clean up the project directory. Trust me: if you wait until the &amp;ldquo;end&amp;rdquo; of the project, it will be too late.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Fun with modulo and Boole</title>
       <link>http://localhost:1313/posts/fun_with_modulo_and_boole/</link>

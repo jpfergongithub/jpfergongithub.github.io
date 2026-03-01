@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Replication never stops | JP Ferguson dot net</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Every so often I get email from people who are working with union-represenation data from the National Labor Relations Board. (No surprise here: I host files and code for the CHIPS and CATS databases.) Upon getting one recent such message, I decided to broaden the conversation, and copied everyone who had written me asking about such data in recent years. I think it has been useful for people to see what resources others have developed.">
+    <meta name="generator" content="Hugo 0.156.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/posts/replication_never_stops/">
+    
+
+    
+    
+    <meta property="og:url" content="http://localhost:1313/posts/replication_never_stops/">
+  <meta property="og:site_name" content="JP Ferguson dot net">
+  <meta property="og:title" content="Replication never stops">
+  <meta property="og:description" content="Every so often I get email from people who are working with union-represenation data from the National Labor Relations Board. (No surprise here: I host files and code for the CHIPS and CATS databases.) Upon getting one recent such message, I decided to broaden the conversation, and copied everyone who had written me asking about such data in recent years. I think it has been useful for people to see what resources others have developed.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-08T13:07:46-05:00">
+    <meta property="article:modified_time" content="2025-01-08T13:07:46-05:00">
+
+  <meta itemprop="name" content="Replication never stops">
+  <meta itemprop="description" content="Every so often I get email from people who are working with union-represenation data from the National Labor Relations Board. (No surprise here: I host files and code for the CHIPS and CATS databases.) Upon getting one recent such message, I decided to broaden the conversation, and copied everyone who had written me asking about such data in recent years. I think it has been useful for people to see what resources others have developed.">
+  <meta itemprop="datePublished" content="2025-01-08T13:07:46-05:00">
+  <meta itemprop="dateModified" content="2025-01-08T13:07:46-05:00">
+  <meta itemprop="wordCount" content="589">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Replication never stops">
+  <meta name="twitter:description" content="Every so often I get email from people who are working with union-represenation data from the National Labor Relations Board. (No surprise here: I host files and code for the CHIPS and CATS databases.) Upon getting one recent such message, I decided to broaden the conversation, and copied everyone who had written me asking about such data in recent years. I think it has been useful for people to see what resources others have developed.">
+
+	<script>
+  MathJax = {
+      tex: {
+	  inlineMath: [ ['$', '$'] ],
+	  displayMath: [ ['$$', '$$'] ]
+      },
+      svg: {
+	  fontCache: 'global'
+      }
+  };
+</script>
+<script
+  type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+
+  </head><body class="ma0 avenir bg-near-white development is-page is-page page-replication_never_stops">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        JP Ferguson dot net
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-replication_never_stops flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Replication never stops</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-01-08T13:07:46-05:00">January 8, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>Every so often I get email from people who are working with union-represenation data from the National Labor Relations Board. (No surprise here: <a href="https://www.jpferguson.net/nlrb-representation-case-data">I host files and code for the CHIPS and CATS databases</a>.) Upon getting one recent such message, I decided to broaden the conversation, and copied <em>everyone</em> who had written me asking about such data in recent years. I think it has been useful for people to see what resources others have developed.</p>
+<p>As part of that conversation, <a href="https://www.linkedin.com/in/tom-baz/">Tom Baz</a> wrote that &ldquo;I want to raise some more general questions. How do you approach connecting related R Cases and C Cases that happen in the same establishment?&rdquo; To translate: the NLRB&rsquo;s union-election cases, or representation cases, are the &ldquo;R Cases,&rdquo; while the charges of unfair labor practices, or complaints, are the &ldquo;C Cases.&rdquo;</p>
+<p>I told Tom that he had triggered my PTSD. In my first-ever sole-authored paper, I linked these two datasets together. The challenge is that the NLRB&rsquo;s fundamental unit in its own database is the case, which has nothing to do with more sensible units like the establishment. The NLRB doesn&rsquo;t record consistent employer IDs, and for many years chose not to release the address information included with these filings. Any researcher trying to link these data would be starting from scratch.</p>
+<p>That paper was part of my dissertation. In said dissertation I wrote a detailed appendix about how I matched the records. I did this entirely because, at the time, I was getting pushback from other researchers about how I had identified ULP charges that accompanied specific union election drives. I pulled this appendix out of the thesis and shared a copy of it, which I&rsquo;ll also <a href="/Ferguson_2009thesis_AppendixA.pdf">share here</a>.</p>
+<p>I&rsquo;m not sharing this because I think there is a large untapped demand for it. I share it because, while it&rsquo;s existed since 2009, it exists as an appendix in a dissertation in the MIT Library system. The odds that someone would ever find it by searching the open web are extremely small. This is exactly the sort of work that gets lost in what should theoretically be a shared body of scientific progress.</p>
+<p>I&rsquo;m also sharing it because, dang, if you&rsquo;d told me that the appendix that I wrote in my dissertation nearly sixteen years ago would <em>ever</em> be helpful to anyone, I would&rsquo;ve laughed at you. Yet here I am, exposing how I documented my work. In a perfect world I would just direct the reader to a full replication package, but when I first started doing this project (in the summer of 2004!) those weren&rsquo;t much spoken of. Now I wonder: <em>can</em> I rebuild that project&rsquo;s results from scratch?</p>
+<p>Sometimes, I get the impression that people think we only build replication packages because we want to guard against scientific fraud. And this leads to some of my colleagues complaining, stupidly, about the &ldquo;replication police&rdquo; or some such. But it has to be said, time and again, that you should take the time to document your work in reproducible form <em>because it helps the research process</em>. There is no better way to ensure that research will be built upon than to make sure that people can see how it was built in the first place.</p>
+<p>UPDATE (24 January): Sixteen days after I wrote this post, I got <em>another</em> email asking me about how I matched RC and CA cases in that paper, so many years ago. I was delighted to direct them to this post! Rarely is a good turn so quickly repaid.</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/" >
+    &copy;  JP Ferguson dot net 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
