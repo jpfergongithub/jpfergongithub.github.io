@@ -16,3 +16,11 @@ author = "JP Ferguson"
 [params]
   math = true
   featured_image = '/content/weird_head.jpg'
+
+  # list items
+  datesinlist = true
+
+  # footer items
+  nextprev = true
+  showrss = true
+  
