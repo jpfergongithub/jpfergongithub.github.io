@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'JP Ferguson dot net'
-theme = 'ananke'
+theme = 'even'
 author = "JP Ferguson"
 
 [markup]
